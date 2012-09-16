@@ -1,0 +1,401 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		494549BA160548EC001F93A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494549B9160548EC001F93A4 /* UIKit.framework */; };
+		494549BC160548EC001F93A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494549BB160548EC001F93A4 /* Foundation.framework */; };
+		494549BE160548EC001F93A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 494549BD160548EC001F93A4 /* CoreGraphics.framework */; };
+		494549C4160548EC001F93A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 494549C2160548EC001F93A4 /* InfoPlist.strings */; };
+		494549C6160548EC001F93A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549C5160548EC001F93A4 /* main.m */; };
+		494549CA160548EC001F93A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549C9160548EC001F93A4 /* AppDelegate.m */; };
+		494549CD160548EC001F93A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549CC160548EC001F93A4 /* ViewController.m */; };
+		494549D0160548EC001F93A4 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494549CE160548EC001F93A4 /* ViewController_iPhone.xib */; };
+		494549D3160548EC001F93A4 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494549D1160548EC001F93A4 /* ViewController_iPad.xib */; };
+		494549DA1605AD9D001F93A4 /* libBehaviorTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 494549D91605AD9D001F93A4 /* libBehaviorTree.a */; };
+		494549DE1605AE62001F93A4 /* Seek.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549DD1605AE62001F93A4 /* Seek.m */; };
+		494549E11605AEC4001F93A4 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549E01605AEC4001F93A4 /* Food.m */; };
+		494549E71605AEF9001F93A4 /* Prey.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549E61605AEF9001F93A4 /* Prey.m */; };
+		494549EA1605AF5B001F93A4 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549E91605AF5B001F93A4 /* Actor.m */; };
+		494549ED1605B22A001F93A4 /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549EC1605B22A001F93A4 /* World.m */; };
+		494549F01605B657001F93A4 /* ActorAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549EF1605B657001F93A4 /* ActorAction.m */; };
+		494549F31605BC3B001F93A4 /* EatFood.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549F21605BC3B001F93A4 /* EatFood.m */; };
+		494549F61605BE6A001F93A4 /* Predator.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549F51605BE6A001F93A4 /* Predator.m */; };
+		4964A5801605C1D800FE3588 /* TargetFood.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964A57F1605C1D700FE3588 /* TargetFood.m */; };
+		4964A5841605C37700FE3588 /* TargetPrey.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964A5831605C37700FE3588 /* TargetPrey.m */; };
+		49DAC7F41605E30700BD1DE5 /* PredatorDetected.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC7F31605E30700BD1DE5 /* PredatorDetected.m */; };
+		49DAC7F81605E3A400BD1DE5 /* Flee.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC7F71605E3A400BD1DE5 /* Flee.m */; };
+		49DAC7FB1605E49900BD1DE5 /* BPGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC7FA1605E49900BD1DE5 /* BPGeometry.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		494549B5160548EC001F93A4 /* BehaviorTreeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BehaviorTreeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		494549B9160548EC001F93A4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		494549BB160548EC001F93A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		494549BD160548EC001F93A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		494549C1160548EC001F93A4 /* BehaviorTreeDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BehaviorTreeDemo-Info.plist"; sourceTree = "<group>"; };
+		494549C3160548EC001F93A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		494549C5160548EC001F93A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		494549C7160548EC001F93A4 /* BehaviorTreeDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BehaviorTreeDemo-Prefix.pch"; sourceTree = "<group>"; };
+		494549C8160548EC001F93A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		494549C9160548EC001F93A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		494549CB160548EC001F93A4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		494549CC160548EC001F93A4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		494549CF160548EC001F93A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		494549D2160548EC001F93A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		494549D91605AD9D001F93A4 /* libBehaviorTree.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBehaviorTree.a; path = "../../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos/libBehaviorTree.a"; sourceTree = "<group>"; };
+		494549DC1605AE62001F93A4 /* Seek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seek.h; sourceTree = "<group>"; };
+		494549DD1605AE62001F93A4 /* Seek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seek.m; sourceTree = "<group>"; };
+		494549DF1605AEC4001F93A4 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		494549E01605AEC4001F93A4 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		494549E51605AEF9001F93A4 /* Prey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prey.h; sourceTree = "<group>"; };
+		494549E61605AEF9001F93A4 /* Prey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prey.m; sourceTree = "<group>"; };
+		494549E81605AF5B001F93A4 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
+		494549E91605AF5B001F93A4 /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Actor.m; sourceTree = "<group>"; };
+		494549EB1605B22A001F93A4 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
+		494549EC1605B22A001F93A4 /* World.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = World.m; sourceTree = "<group>"; };
+		494549EE1605B657001F93A4 /* ActorAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorAction.h; sourceTree = "<group>"; };
+		494549EF1605B657001F93A4 /* ActorAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorAction.m; sourceTree = "<group>"; };
+		494549F11605BC3B001F93A4 /* EatFood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EatFood.h; sourceTree = "<group>"; };
+		494549F21605BC3B001F93A4 /* EatFood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EatFood.m; sourceTree = "<group>"; };
+		494549F41605BE6A001F93A4 /* Predator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Predator.h; sourceTree = "<group>"; };
+		494549F51605BE6A001F93A4 /* Predator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Predator.m; sourceTree = "<group>"; };
+		4964A57E1605C1D700FE3588 /* TargetFood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetFood.h; sourceTree = "<group>"; };
+		4964A57F1605C1D700FE3588 /* TargetFood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetFood.m; sourceTree = "<group>"; };
+		4964A5821605C37700FE3588 /* TargetPrey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetPrey.h; sourceTree = "<group>"; };
+		4964A5831605C37700FE3588 /* TargetPrey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetPrey.m; sourceTree = "<group>"; };
+		49DAC7F21605E30700BD1DE5 /* PredatorDetected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PredatorDetected.h; sourceTree = "<group>"; };
+		49DAC7F31605E30700BD1DE5 /* PredatorDetected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredatorDetected.m; sourceTree = "<group>"; };
+		49DAC7F61605E3A400BD1DE5 /* Flee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flee.h; sourceTree = "<group>"; };
+		49DAC7F71605E3A400BD1DE5 /* Flee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flee.m; sourceTree = "<group>"; };
+		49DAC7F91605E49900BD1DE5 /* BPGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPGeometry.h; sourceTree = "<group>"; };
+		49DAC7FA1605E49900BD1DE5 /* BPGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPGeometry.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		494549B2160548EC001F93A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				494549DA1605AD9D001F93A4 /* libBehaviorTree.a in Frameworks */,
+				494549BA160548EC001F93A4 /* UIKit.framework in Frameworks */,
+				494549BC160548EC001F93A4 /* Foundation.framework in Frameworks */,
+				494549BE160548EC001F93A4 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		494549AA160548EC001F93A4 = {
+			isa = PBXGroup;
+			children = (
+				494549BF160548EC001F93A4 /* BehaviorTreeDemo */,
+				494549B8160548EC001F93A4 /* Frameworks */,
+				494549B6160548EC001F93A4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		494549B6160548EC001F93A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				494549B5160548EC001F93A4 /* BehaviorTreeDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		494549B8160548EC001F93A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				494549D91605AD9D001F93A4 /* libBehaviorTree.a */,
+				494549B9160548EC001F93A4 /* UIKit.framework */,
+				494549BB160548EC001F93A4 /* Foundation.framework */,
+				494549BD160548EC001F93A4 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		494549BF160548EC001F93A4 /* BehaviorTreeDemo */ = {
+			isa = PBXGroup;
+			children = (
+				49DAC7F91605E49900BD1DE5 /* BPGeometry.h */,
+				49DAC7FA1605E49900BD1DE5 /* BPGeometry.m */,
+				494549DB1605AE2B001F93A4 /* Behaviors */,
+				494549C8160548EC001F93A4 /* AppDelegate.h */,
+				494549C9160548EC001F93A4 /* AppDelegate.m */,
+				494549CB160548EC001F93A4 /* ViewController.h */,
+				494549CC160548EC001F93A4 /* ViewController.m */,
+				494549CE160548EC001F93A4 /* ViewController_iPhone.xib */,
+				494549D1160548EC001F93A4 /* ViewController_iPad.xib */,
+				494549C0160548EC001F93A4 /* Supporting Files */,
+				494549DF1605AEC4001F93A4 /* Food.h */,
+				494549E01605AEC4001F93A4 /* Food.m */,
+				494549E51605AEF9001F93A4 /* Prey.h */,
+				494549E61605AEF9001F93A4 /* Prey.m */,
+				494549E81605AF5B001F93A4 /* Actor.h */,
+				494549E91605AF5B001F93A4 /* Actor.m */,
+				494549EB1605B22A001F93A4 /* World.h */,
+				494549EC1605B22A001F93A4 /* World.m */,
+				494549F41605BE6A001F93A4 /* Predator.h */,
+				494549F51605BE6A001F93A4 /* Predator.m */,
+			);
+			path = BehaviorTreeDemo;
+			sourceTree = "<group>";
+		};
+		494549C0160548EC001F93A4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				494549C1160548EC001F93A4 /* BehaviorTreeDemo-Info.plist */,
+				494549C2160548EC001F93A4 /* InfoPlist.strings */,
+				494549C5160548EC001F93A4 /* main.m */,
+				494549C7160548EC001F93A4 /* BehaviorTreeDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		494549DB1605AE2B001F93A4 /* Behaviors */ = {
+			isa = PBXGroup;
+			children = (
+				494549DC1605AE62001F93A4 /* Seek.h */,
+				494549DD1605AE62001F93A4 /* Seek.m */,
+				494549EE1605B657001F93A4 /* ActorAction.h */,
+				494549EF1605B657001F93A4 /* ActorAction.m */,
+				494549F11605BC3B001F93A4 /* EatFood.h */,
+				494549F21605BC3B001F93A4 /* EatFood.m */,
+				4964A57E1605C1D700FE3588 /* TargetFood.h */,
+				4964A57F1605C1D700FE3588 /* TargetFood.m */,
+				4964A5821605C37700FE3588 /* TargetPrey.h */,
+				4964A5831605C37700FE3588 /* TargetPrey.m */,
+				49DAC7F21605E30700BD1DE5 /* PredatorDetected.h */,
+				49DAC7F31605E30700BD1DE5 /* PredatorDetected.m */,
+				49DAC7F61605E3A400BD1DE5 /* Flee.h */,
+				49DAC7F71605E3A400BD1DE5 /* Flee.m */,
+			);
+			name = Behaviors;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		494549B4160548EC001F93A4 /* BehaviorTreeDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 494549D6160548EC001F93A4 /* Build configuration list for PBXNativeTarget "BehaviorTreeDemo" */;
+			buildPhases = (
+				494549B1160548EC001F93A4 /* Sources */,
+				494549B2160548EC001F93A4 /* Frameworks */,
+				494549B3160548EC001F93A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BehaviorTreeDemo;
+			productName = BehaviorTreeDemo;
+			productReference = 494549B5160548EC001F93A4 /* BehaviorTreeDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		494549AC160548EC001F93A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Andrew O'Connor";
+			};
+			buildConfigurationList = 494549AF160548EC001F93A4 /* Build configuration list for PBXProject "BehaviorTreeDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 494549AA160548EC001F93A4;
+			productRefGroup = 494549B6160548EC001F93A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				494549B4160548EC001F93A4 /* BehaviorTreeDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		494549B3160548EC001F93A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				494549C4160548EC001F93A4 /* InfoPlist.strings in Resources */,
+				494549D0160548EC001F93A4 /* ViewController_iPhone.xib in Resources */,
+				494549D3160548EC001F93A4 /* ViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		494549B1160548EC001F93A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				494549C6160548EC001F93A4 /* main.m in Sources */,
+				494549CA160548EC001F93A4 /* AppDelegate.m in Sources */,
+				494549CD160548EC001F93A4 /* ViewController.m in Sources */,
+				494549DE1605AE62001F93A4 /* Seek.m in Sources */,
+				494549E11605AEC4001F93A4 /* Food.m in Sources */,
+				494549E71605AEF9001F93A4 /* Prey.m in Sources */,
+				494549EA1605AF5B001F93A4 /* Actor.m in Sources */,
+				494549ED1605B22A001F93A4 /* World.m in Sources */,
+				494549F01605B657001F93A4 /* ActorAction.m in Sources */,
+				494549F31605BC3B001F93A4 /* EatFood.m in Sources */,
+				494549F61605BE6A001F93A4 /* Predator.m in Sources */,
+				4964A5801605C1D800FE3588 /* TargetFood.m in Sources */,
+				4964A5841605C37700FE3588 /* TargetPrey.m in Sources */,
+				49DAC7F41605E30700BD1DE5 /* PredatorDetected.m in Sources */,
+				49DAC7F81605E3A400BD1DE5 /* Flee.m in Sources */,
+				49DAC7FB1605E49900BD1DE5 /* BPGeometry.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		494549C2160548EC001F93A4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				494549C3160548EC001F93A4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		494549CE160548EC001F93A4 /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				494549CF160548EC001F93A4 /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		494549D1160548EC001F93A4 /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				494549D2160548EC001F93A4 /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		494549D4160548EC001F93A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		494549D5160548EC001F93A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		494549D7160548EC001F93A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BehaviorTreeDemo/BehaviorTreeDemo-Prefix.pch";
+				INFOPLIST_FILE = "BehaviorTreeDemo/BehaviorTreeDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/BehaviorTree/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		494549D8160548EC001F93A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BehaviorTreeDemo/BehaviorTreeDemo-Prefix.pch";
+				INFOPLIST_FILE = "BehaviorTreeDemo/BehaviorTreeDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/BehaviorTree/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		494549AF160548EC001F93A4 /* Build configuration list for PBXProject "BehaviorTreeDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				494549D4160548EC001F93A4 /* Debug */,
+				494549D5160548EC001F93A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		494549D6160548EC001F93A4 /* Build configuration list for PBXNativeTarget "BehaviorTreeDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				494549D7160548EC001F93A4 /* Debug */,
+				494549D8160548EC001F93A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 494549AC160548EC001F93A4 /* Project object */;
+}

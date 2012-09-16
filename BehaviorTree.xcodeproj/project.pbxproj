@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		49454960160527FC001F93A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945495F160527FC001F93A4 /* Foundation.framework */; };
+		49454965160527FC001F93A4 /* BehaviorTree.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49454964160527FC001F93A4 /* BehaviorTree.h */; };
+		49454967160527FC001F93A4 /* BehaviorTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 49454966160527FC001F93A4 /* BehaviorTree.m */; };
+		4945496F160527FD001F93A4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945496E160527FD001F93A4 /* SenTestingKit.framework */; };
+		49454971160527FD001F93A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49454970160527FD001F93A4 /* UIKit.framework */; };
+		49454972160527FD001F93A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945495F160527FC001F93A4 /* Foundation.framework */; };
+		49454975160527FD001F93A4 /* libBehaviorTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945495C160527FC001F93A4 /* libBehaviorTree.a */; };
+		4945497B160527FD001F93A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49454979160527FD001F93A4 /* InfoPlist.strings */; };
+		4945498D16052999001F93A4 /* libKiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945498C16052999001F93A4 /* libKiwi.a */; };
+		4945499416052BE3001F93A4 /* CompositeTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499316052BE3001F93A4 /* CompositeTask.m */; };
+		4945499616052CC1001F93A4 /* SelectorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499516052CC1001F93A4 /* SelectorSpec.m */; };
+		4945499916052D81001F93A4 /* Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499816052D81001F93A4 /* Selector.m */; };
+		4945499C16052F05001F93A4 /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499B16052F05001F93A4 /* Action.m */; };
+		4945499E16053026001F93A4 /* CompositeTaskSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499D16053026001F93A4 /* CompositeTaskSpec.m */; };
+		494549A116053679001F93A4 /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A016053679001F93A4 /* Sequence.m */; };
+		494549A3160536B1001F93A4 /* SequenceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A2160536B1001F93A4 /* SequenceSpec.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		49454973160527FD001F93A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49454953160527FC001F93A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4945495B160527FC001F93A4;
+			remoteInfo = BehaviorTree;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4945495A160527FC001F93A4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				49454965160527FC001F93A4 /* BehaviorTree.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4945495C160527FC001F93A4 /* libBehaviorTree.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBehaviorTree.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4945495F160527FC001F93A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		49454963160527FC001F93A4 /* BehaviorTree-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BehaviorTree-Prefix.pch"; sourceTree = "<group>"; };
+		49454964160527FC001F93A4 /* BehaviorTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BehaviorTree.h; sourceTree = "<group>"; };
+		49454966160527FC001F93A4 /* BehaviorTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BehaviorTree.m; sourceTree = "<group>"; };
+		4945496D160527FD001F93A4 /* BehaviorTreeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BehaviorTreeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4945496E160527FD001F93A4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		49454970160527FD001F93A4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		49454978160527FD001F93A4 /* BehaviorTreeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BehaviorTreeTests-Info.plist"; sourceTree = "<group>"; };
+		4945497A160527FD001F93A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4945498C16052999001F93A4 /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = "../Frameworks/Kiwi/build/Release-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
+		4945499116052AFC001F93A4 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		4945499216052BE3001F93A4 /* CompositeTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompositeTask.h; sourceTree = "<group>"; };
+		4945499316052BE3001F93A4 /* CompositeTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompositeTask.m; sourceTree = "<group>"; };
+		4945499516052CC1001F93A4 /* SelectorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectorSpec.m; sourceTree = "<group>"; };
+		4945499716052D81001F93A4 /* Selector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Selector.h; sourceTree = "<group>"; };
+		4945499816052D81001F93A4 /* Selector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Selector.m; sourceTree = "<group>"; };
+		4945499A16052F05001F93A4 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
+		4945499B16052F05001F93A4 /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
+		4945499D16053026001F93A4 /* CompositeTaskSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompositeTaskSpec.m; sourceTree = "<group>"; };
+		4945499F16053679001F93A4 /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequence.h; sourceTree = "<group>"; };
+		494549A016053679001F93A4 /* Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sequence.m; sourceTree = "<group>"; };
+		494549A2160536B1001F93A4 /* SequenceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequenceSpec.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49454959160527FC001F93A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49454960160527FC001F93A4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49454969160527FD001F93A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4945498D16052999001F93A4 /* libKiwi.a in Frameworks */,
+				4945496F160527FD001F93A4 /* SenTestingKit.framework in Frameworks */,
+				49454971160527FD001F93A4 /* UIKit.framework in Frameworks */,
+				49454972160527FD001F93A4 /* Foundation.framework in Frameworks */,
+				49454975160527FD001F93A4 /* libBehaviorTree.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49454951160527FC001F93A4 = {
+			isa = PBXGroup;
+			children = (
+				49454961160527FC001F93A4 /* BehaviorTree */,
+				49454976160527FD001F93A4 /* BehaviorTreeTests */,
+				4945495E160527FC001F93A4 /* Frameworks */,
+				4945495D160527FC001F93A4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4945495D160527FC001F93A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4945495C160527FC001F93A4 /* libBehaviorTree.a */,
+				4945496D160527FD001F93A4 /* BehaviorTreeTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4945495E160527FC001F93A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4945498C16052999001F93A4 /* libKiwi.a */,
+				4945495F160527FC001F93A4 /* Foundation.framework */,
+				4945496E160527FD001F93A4 /* SenTestingKit.framework */,
+				49454970160527FD001F93A4 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49454961160527FC001F93A4 /* BehaviorTree */ = {
+			isa = PBXGroup;
+			children = (
+				49454964160527FC001F93A4 /* BehaviorTree.h */,
+				49454966160527FC001F93A4 /* BehaviorTree.m */,
+				49454962160527FC001F93A4 /* Supporting Files */,
+				4945499116052AFC001F93A4 /* Task.h */,
+				4945499216052BE3001F93A4 /* CompositeTask.h */,
+				4945499316052BE3001F93A4 /* CompositeTask.m */,
+				4945499716052D81001F93A4 /* Selector.h */,
+				4945499816052D81001F93A4 /* Selector.m */,
+				4945499A16052F05001F93A4 /* Action.h */,
+				4945499B16052F05001F93A4 /* Action.m */,
+				4945499F16053679001F93A4 /* Sequence.h */,
+				494549A016053679001F93A4 /* Sequence.m */,
+			);
+			path = BehaviorTree;
+			sourceTree = "<group>";
+		};
+		49454962160527FC001F93A4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				49454963160527FC001F93A4 /* BehaviorTree-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49454976160527FD001F93A4 /* BehaviorTreeTests */ = {
+			isa = PBXGroup;
+			children = (
+				49454977160527FD001F93A4 /* Supporting Files */,
+				4945499516052CC1001F93A4 /* SelectorSpec.m */,
+				4945499D16053026001F93A4 /* CompositeTaskSpec.m */,
+				494549A2160536B1001F93A4 /* SequenceSpec.m */,
+			);
+			path = BehaviorTreeTests;
+			sourceTree = "<group>";
+		};
+		49454977160527FD001F93A4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				49454978160527FD001F93A4 /* BehaviorTreeTests-Info.plist */,
+				49454979160527FD001F93A4 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4945495B160527FC001F93A4 /* BehaviorTree */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49454981160527FD001F93A4 /* Build configuration list for PBXNativeTarget "BehaviorTree" */;
+			buildPhases = (
+				49454958160527FC001F93A4 /* Sources */,
+				49454959160527FC001F93A4 /* Frameworks */,
+				4945495A160527FC001F93A4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BehaviorTree;
+			productName = BehaviorTree;
+			productReference = 4945495C160527FC001F93A4 /* libBehaviorTree.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		4945496C160527FD001F93A4 /* BehaviorTreeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49454984160527FD001F93A4 /* Build configuration list for PBXNativeTarget "BehaviorTreeTests" */;
+			buildPhases = (
+				49454968160527FD001F93A4 /* Sources */,
+				49454969160527FD001F93A4 /* Frameworks */,
+				4945496A160527FD001F93A4 /* Resources */,
+				4945496B160527FD001F93A4 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49454974160527FD001F93A4 /* PBXTargetDependency */,
+			);
+			name = BehaviorTreeTests;
+			productName = BehaviorTreeTests;
+			productReference = 4945496D160527FD001F93A4 /* BehaviorTreeTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49454953160527FC001F93A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Andrew O'Connor";
+			};
+			buildConfigurationList = 49454956160527FC001F93A4 /* Build configuration list for PBXProject "BehaviorTree" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 49454951160527FC001F93A4;
+			productRefGroup = 4945495D160527FC001F93A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4945495B160527FC001F93A4 /* BehaviorTree */,
+				4945496C160527FD001F93A4 /* BehaviorTreeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4945496A160527FD001F93A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4945497B160527FD001F93A4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4945496B160527FD001F93A4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49454958160527FC001F93A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49454967160527FC001F93A4 /* BehaviorTree.m in Sources */,
+				4945499416052BE3001F93A4 /* CompositeTask.m in Sources */,
+				4945499916052D81001F93A4 /* Selector.m in Sources */,
+				4945499C16052F05001F93A4 /* Action.m in Sources */,
+				494549A116053679001F93A4 /* Sequence.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49454968160527FD001F93A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4945499616052CC1001F93A4 /* SelectorSpec.m in Sources */,
+				4945499E16053026001F93A4 /* CompositeTaskSpec.m in Sources */,
+				494549A3160536B1001F93A4 /* SequenceSpec.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		49454974160527FD001F93A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4945495B160527FC001F93A4 /* BehaviorTree */;
+			targetProxy = 49454973160527FD001F93A4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		49454979160527FD001F93A4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4945497A160527FD001F93A4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4945497F160527FD001F93A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		49454980160527FD001F93A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		49454982160527FD001F93A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/BehaviorTree.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BehaviorTree/BehaviorTree-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		49454983160527FD001F93A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/BehaviorTree.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BehaviorTree/BehaviorTree-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		49454985160527FD001F93A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BehaviorTree/BehaviorTree-Prefix.pch";
+				INFOPLIST_FILE = "BehaviorTreeTests/BehaviorTreeTests-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/Frameworks/Kiwi/Kiwi";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		49454986160527FD001F93A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BehaviorTree/BehaviorTree-Prefix.pch";
+				INFOPLIST_FILE = "BehaviorTreeTests/BehaviorTreeTests-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/Frameworks/Kiwi/Kiwi";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49454956160527FC001F93A4 /* Build configuration list for PBXProject "BehaviorTree" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4945497F160527FD001F93A4 /* Debug */,
+				49454980160527FD001F93A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49454981160527FD001F93A4 /* Build configuration list for PBXNativeTarget "BehaviorTree" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49454982160527FD001F93A4 /* Debug */,
+				49454983160527FD001F93A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49454984160527FD001F93A4 /* Build configuration list for PBXNativeTarget "BehaviorTreeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49454985160527FD001F93A4 /* Debug */,
+				49454986160527FD001F93A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 49454953160527FC001F93A4 /* Project object */;
+}
