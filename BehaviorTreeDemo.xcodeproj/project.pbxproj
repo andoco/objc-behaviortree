@@ -358,7 +358,7 @@
 				INFOPLIST_FILE = "BehaviorTreeDemo/BehaviorTreeDemo-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/BehaviorTree/**";
@@ -374,7 +374,7 @@
 				INFOPLIST_FILE = "BehaviorTreeDemo/BehaviorTreeDemo-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/BehaviorTree/**";
