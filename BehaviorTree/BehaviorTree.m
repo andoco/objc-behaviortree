@@ -10,4 +10,19 @@
 
 @implementation BehaviorTree
 
+-(id) initWithRootTask:(id<Task>)root
+{
+    self = [super init];
+    if (self) {
+        root_ = root;
+    }
+    return self;
+}
+
+-(void) run {
+    [root_ start];
+    [root_ run:[NSMutableDictionary dictionary]];
+    [root_ stop];
+}
+
 @end
