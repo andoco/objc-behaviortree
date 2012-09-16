@@ -122,26 +122,18 @@
 		494549BF160548EC001F93A4 /* BehaviorTreeDemo */ = {
 			isa = PBXGroup;
 			children = (
-				49DAC7F91605E49900BD1DE5 /* BPGeometry.h */,
-				49DAC7FA1605E49900BD1DE5 /* BPGeometry.m */,
-				494549DB1605AE2B001F93A4 /* Behaviors */,
+				49DAC81D1606433F00BD1DE5 /* Actors */,
 				494549C8160548EC001F93A4 /* AppDelegate.h */,
 				494549C9160548EC001F93A4 /* AppDelegate.m */,
+				49DAC7F91605E49900BD1DE5 /* BPGeometry.h */,
+				49DAC7FA1605E49900BD1DE5 /* BPGeometry.m */,
+				494549C0160548EC001F93A4 /* Supporting Files */,
 				494549CB160548EC001F93A4 /* ViewController.h */,
 				494549CC160548EC001F93A4 /* ViewController.m */,
-				494549CE160548EC001F93A4 /* ViewController_iPhone.xib */,
 				494549D1160548EC001F93A4 /* ViewController_iPad.xib */,
-				494549C0160548EC001F93A4 /* Supporting Files */,
-				494549DF1605AEC4001F93A4 /* Food.h */,
-				494549E01605AEC4001F93A4 /* Food.m */,
-				494549E51605AEF9001F93A4 /* Prey.h */,
-				494549E61605AEF9001F93A4 /* Prey.m */,
-				494549E81605AF5B001F93A4 /* Actor.h */,
-				494549E91605AF5B001F93A4 /* Actor.m */,
+				494549CE160548EC001F93A4 /* ViewController_iPhone.xib */,
 				494549EB1605B22A001F93A4 /* World.h */,
 				494549EC1605B22A001F93A4 /* World.m */,
-				494549F41605BE6A001F93A4 /* Predator.h */,
-				494549F51605BE6A001F93A4 /* Predator.m */,
 			);
 			path = BehaviorTreeDemo;
 			sourceTree = "<group>";
@@ -160,22 +152,38 @@
 		494549DB1605AE2B001F93A4 /* Behaviors */ = {
 			isa = PBXGroup;
 			children = (
-				494549DC1605AE62001F93A4 /* Seek.h */,
-				494549DD1605AE62001F93A4 /* Seek.m */,
 				494549EE1605B657001F93A4 /* ActorAction.h */,
 				494549EF1605B657001F93A4 /* ActorAction.m */,
 				494549F11605BC3B001F93A4 /* EatFood.h */,
 				494549F21605BC3B001F93A4 /* EatFood.m */,
+				49DAC7F61605E3A400BD1DE5 /* Flee.h */,
+				49DAC7F71605E3A400BD1DE5 /* Flee.m */,
+				49DAC7F21605E30700BD1DE5 /* PredatorDetected.h */,
+				49DAC7F31605E30700BD1DE5 /* PredatorDetected.m */,
+				494549DC1605AE62001F93A4 /* Seek.h */,
+				494549DD1605AE62001F93A4 /* Seek.m */,
 				4964A57E1605C1D700FE3588 /* TargetFood.h */,
 				4964A57F1605C1D700FE3588 /* TargetFood.m */,
 				4964A5821605C37700FE3588 /* TargetPrey.h */,
 				4964A5831605C37700FE3588 /* TargetPrey.m */,
-				49DAC7F21605E30700BD1DE5 /* PredatorDetected.h */,
-				49DAC7F31605E30700BD1DE5 /* PredatorDetected.m */,
-				49DAC7F61605E3A400BD1DE5 /* Flee.h */,
-				49DAC7F71605E3A400BD1DE5 /* Flee.m */,
 			);
 			name = Behaviors;
+			sourceTree = "<group>";
+		};
+		49DAC81D1606433F00BD1DE5 /* Actors */ = {
+			isa = PBXGroup;
+			children = (
+				494549DB1605AE2B001F93A4 /* Behaviors */,
+				494549E81605AF5B001F93A4 /* Actor.h */,
+				494549E91605AF5B001F93A4 /* Actor.m */,
+				494549DF1605AEC4001F93A4 /* Food.h */,
+				494549E01605AEC4001F93A4 /* Food.m */,
+				494549F41605BE6A001F93A4 /* Predator.h */,
+				494549F51605BE6A001F93A4 /* Predator.m */,
+				494549E51605AEF9001F93A4 /* Prey.h */,
+				494549E61605AEF9001F93A4 /* Prey.m */,
+			);
+			name = Actors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
