@@ -21,8 +21,28 @@
     return self;
 }
 
--(RunResult) run:(NSDictionary *)blackboard {
-    return Success;
+-(RunResult) run:(NSMutableDictionary *)blackboard {
+    for (id<Task> task in self.children) {
+        if (task.status == Ready)
+            [task start];
+        
+        RunResult r = [task run:blackboard];
+        
+        if (r == Success || r == Failure)
+            [task stop];
+        
+        [self didReceiveResult:r forTask:task];
+        
+        RunResult returnResult;
+        if ([self shouldReturnWithResult:r returnResult:&returnResult])
+            return returnResult;
+    }
+    
+    return [self defaultReturnResult];
+}
+
+-(void) start {
+    
 }
 
 -(void) stop {
@@ -31,6 +51,18 @@
 
 -(void) addChild:(id<Task>)child {
     _children = [_children arrayByAddingObject:child];
+}
+
+-(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task {
+    
+}
+
+-(BOOL) shouldReturnWithResult:(RunResult)result returnResult:(RunResult*)returnResult {
+    return NO;
+}
+
+-(RunResult) defaultReturnResult {
+    return Success;
 }
 
 @end

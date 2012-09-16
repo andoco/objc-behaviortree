@@ -8,16 +8,36 @@
 
 #import "Sequence.h"
 
+@interface Sequence () {
+    id<Task> running_;
+}
+
+@end
+
 @implementation Sequence
 
--(RunResult) run:(NSMutableDictionary *)blackboard {
-    for (id<Task> task in self.children) {
-        RunResult r = [task run:blackboard];
-        if (r == Failure || r == Pending) {
-            return r;
-        }
+-(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task {
+    if (result == Failure || result == Pending) {
+        if (running_)
+            [running_ stop];
+        
+        if (result == Pending)
+            running_ = task;
+        else
+            running_ = nil;
+    }
+}
+
+-(BOOL) shouldReturnWithResult:(RunResult)result returnResult:(RunResult*)returnResult {
+    if (result == Failure || result == Pending) {
+        *returnResult = result;
+        return YES;
     }
     
+    return NO;
+}
+
+-(RunResult) defaultReturnResult {
     return Success;
 }
 
