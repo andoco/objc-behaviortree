@@ -18,10 +18,10 @@ describe(@"Selector", ^{
         
         it(@"should run children until child returns success", ^{
             
-            id task1 = [Action mock];
+            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
             
-            id task2 = [Action mock];
+            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
             [[task2 shouldNot] receive:@selector(run:)];
             
             [selector addChild:task1];
@@ -31,12 +31,12 @@ describe(@"Selector", ^{
         });
         
         it(@"should return success if any child returns success", ^{
-            id task1 = [Action mock];
-            [[task1 should] receive:@selector(run:) andReturn:theValue(Failure)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            [task1 stub:@selector(run:) andReturn:theValue(Failure)];
 
             id task2 = [Action mock];
-            [[task2 should] receive:@selector(run:) andReturn:theValue(Success)];
-
+            [task1 stub:@selector(run:) andReturn:theValue(Success)];
+            
             [selector addChild:task1];
             [selector addChild:task2];
             
@@ -44,8 +44,8 @@ describe(@"Selector", ^{
         });
         
         it(@"should return failure if no child returns success", ^{
-            id task1 = [Action mock];
-            [[task1 should] receive:@selector(run:) andReturn:theValue(Failure)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            [task1 stub:@selector(run:) andReturn:theValue(Failure)];
             
             [selector addChild:task1];
             
@@ -53,46 +53,42 @@ describe(@"Selector", ^{
         });
         
         it(@"should return running if any child returns running", ^{
-            id task1 = [Action mock];
-            [[task1 should] receive:@selector(run:) andReturn:theValue(Failure)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            [task1 stub:@selector(run:) andReturn:theValue(Failure)];
             
-            id task2 = [Action mock];
-            [[task2 should] receive:@selector(run:) andReturn:theValue(Pending)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            [task2 stub:@selector(run:) andReturn:theValue(Pending)];
             
             [selector addChild:task1];
             [selector addChild:task2];
             
             [[theValue([selector run:blackboard]) should] equal:theValue(Pending)];
         });
-        
-//        pending(@"should run child that previously returned running", ^{
-//            
-//        });
-        
+                
         it(@"should stop running child if preceding child returns success", ^{
-            id task1 = [Action mock];
-            [[task1 should] receive:@selector(run:) andReturn:theValue(Failure) withCountAtLeast:2];
-            
-            id task2 = [Action mock];
-            [[task2 should] receive:@selector(run:) andReturn:theValue(Pending)];
-            
+            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            [[task1 stubAndReturn:theValue(Failure)] run:blackboard];
+
+            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            [[task2 stubAndReturn:theValue(Pending)] run:blackboard];
+
             [selector addChild:task1];
             [selector addChild:task2];
             
             [[theValue([selector run:blackboard]) should] equal:theValue(Pending)];
             
             // second run setup
-            [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
+            [[task1 stubAndReturn:theValue(Success)] run:blackboard];
             [[task2 should] receive:@selector(stop)];
             [[theValue([selector run:blackboard]) should] equal:theValue(Success)];
         });
         
         it(@"should stop running child if preceding child returns running", ^{
-            id task1 = [Action mock];
-            [[task1 should] receive:@selector(run:) andReturn:theValue(Failure) withCountAtLeast:2];
+            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            [[task1 stubAndReturn:theValue(Failure)] run:blackboard];
             
-            id task2 = [Action mock];
-            [[task2 should] receive:@selector(run:) andReturn:theValue(Pending)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            [[task2 stubAndReturn:theValue(Pending)] run:blackboard];
             
             [selector addChild:task1];
             [selector addChild:task2];
@@ -100,11 +96,10 @@ describe(@"Selector", ^{
             [[theValue([selector run:blackboard]) should] equal:theValue(Pending)];
             
             // second run setup
-            [[task1 should] receive:@selector(run:) andReturn:theValue(Pending)];
+            [[task1 stubAndReturn:theValue(Pending)] run:blackboard];
             [[task2 should] receive:@selector(stop)];
             [[theValue([selector run:blackboard]) should] equal:theValue(Pending)];
         });
-
     });
 });
 

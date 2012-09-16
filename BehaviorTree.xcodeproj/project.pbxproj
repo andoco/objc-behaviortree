@@ -131,18 +131,18 @@
 		49454961160527FC001F93A4 /* BehaviorTree */ = {
 			isa = PBXGroup;
 			children = (
+				4945499A16052F05001F93A4 /* Action.h */,
+				4945499B16052F05001F93A4 /* Action.m */,
 				49454964160527FC001F93A4 /* BehaviorTree.h */,
 				49454966160527FC001F93A4 /* BehaviorTree.m */,
-				49454962160527FC001F93A4 /* Supporting Files */,
-				4945499116052AFC001F93A4 /* Task.h */,
 				4945499216052BE3001F93A4 /* CompositeTask.h */,
 				4945499316052BE3001F93A4 /* CompositeTask.m */,
 				4945499716052D81001F93A4 /* Selector.h */,
 				4945499816052D81001F93A4 /* Selector.m */,
-				4945499A16052F05001F93A4 /* Action.h */,
-				4945499B16052F05001F93A4 /* Action.m */,
 				4945499F16053679001F93A4 /* Sequence.h */,
 				494549A016053679001F93A4 /* Sequence.m */,
+				49454962160527FC001F93A4 /* Supporting Files */,
+				4945499116052AFC001F93A4 /* Task.h */,
 			);
 			path = BehaviorTree;
 			sourceTree = "<group>";
@@ -158,10 +158,10 @@
 		49454976160527FD001F93A4 /* BehaviorTreeTests */ = {
 			isa = PBXGroup;
 			children = (
-				49454977160527FD001F93A4 /* Supporting Files */,
-				4945499516052CC1001F93A4 /* SelectorSpec.m */,
 				4945499D16053026001F93A4 /* CompositeTaskSpec.m */,
+				4945499516052CC1001F93A4 /* SelectorSpec.m */,
 				494549A2160536B1001F93A4 /* SequenceSpec.m */,
+				49454977160527FD001F93A4 /* Supporting Files */,
 			);
 			path = BehaviorTreeTests;
 			sourceTree = "<group>";
