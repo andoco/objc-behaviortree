@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Task;
+@class BehaviorTree;
 @class World;
 
 @interface Actor : NSObject
@@ -16,7 +16,7 @@
 @property (nonatomic, strong) World *world;
 @property (nonatomic, assign) CGPoint position;
 @property (nonatomic, assign) UIColor *color;
-@property (nonatomic, strong) id<Task> root;
+@property (nonatomic, strong) BehaviorTree *behavior;
 @property (nonatomic, strong) UIView *view;
 @property (nonatomic, assign) CGFloat speed;
 

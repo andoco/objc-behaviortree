@@ -25,7 +25,7 @@
         [hunt addChild:[[TargetPrey alloc] initWithActor:self]];
         [hunt addChild:[[Seek alloc] initWithActor:self]];
         
-        self.root = hunt;
+        self.behavior = [[BehaviorTree alloc] initWithRootTask:hunt];
 
     }
     return self;

@@ -8,12 +8,11 @@
 
 #import "Prey.h"
 
+#import "BehaviorTree.h"
 #import "EatFood.h"
 #import "Flee.h"
 #import "Seek.h"
 #import "PredatorDetected.h"
-#import "Selector.h"
-#import "Sequence.h"
 #import "TargetFood.h"
 
 @implementation Prey
@@ -38,7 +37,7 @@
         [selector addChild:fleeSeq];
         [selector addChild:gatherSeq];
         
-        self.root = selector;
+        self.behavior = [[BehaviorTree alloc] initWithRootTask:selector];
     }
     return self;
 }

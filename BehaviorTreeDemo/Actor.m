@@ -8,7 +8,7 @@
 
 #import "Actor.h"
 
-#import "Task.h"
+#import "BehaviorTree.h"
 
 @implementation Actor
 
@@ -27,7 +27,7 @@
 }
 
 -(void) update {
-    [_root run:[NSMutableDictionary dictionary]];
+    [_behavior run];
 }
 
 @end
