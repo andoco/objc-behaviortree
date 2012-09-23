@@ -23,6 +23,8 @@
 		4945499E16053026001F93A4 /* CompositeTaskSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499D16053026001F93A4 /* CompositeTaskSpec.m */; };
 		494549A116053679001F93A4 /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A016053679001F93A4 /* Sequence.m */; };
 		494549A3160536B1001F93A4 /* SequenceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A2160536B1001F93A4 /* SequenceSpec.m */; };
+		49AC0714160F24AF00516DDD /* Concurrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC0713160F24AF00516DDD /* Concurrent.m */; };
+		49AC0717160F24DC00516DDD /* ConcurrentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC0716160F24DC00516DDD /* ConcurrentSpec.m */; };
 		49DAC82016064E7100BD1DE5 /* BehaviorTreeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +75,9 @@
 		4945499F16053679001F93A4 /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequence.h; sourceTree = "<group>"; };
 		494549A016053679001F93A4 /* Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sequence.m; sourceTree = "<group>"; };
 		494549A2160536B1001F93A4 /* SequenceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequenceSpec.m; sourceTree = "<group>"; };
+		49AC0712160F24AF00516DDD /* Concurrent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Concurrent.h; sourceTree = "<group>"; };
+		49AC0713160F24AF00516DDD /* Concurrent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Concurrent.m; sourceTree = "<group>"; };
+		49AC0716160F24DC00516DDD /* ConcurrentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentSpec.m; sourceTree = "<group>"; };
 		49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BehaviorTreeSpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +144,8 @@
 				49454966160527FC001F93A4 /* BehaviorTree.m */,
 				4945499216052BE3001F93A4 /* CompositeTask.h */,
 				4945499316052BE3001F93A4 /* CompositeTask.m */,
+				49AC0712160F24AF00516DDD /* Concurrent.h */,
+				49AC0713160F24AF00516DDD /* Concurrent.m */,
 				4945499716052D81001F93A4 /* Selector.h */,
 				4945499816052D81001F93A4 /* Selector.m */,
 				4945499F16053679001F93A4 /* Sequence.h */,
@@ -162,6 +169,7 @@
 			children = (
 				49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */,
 				4945499D16053026001F93A4 /* CompositeTaskSpec.m */,
+				49AC0716160F24DC00516DDD /* ConcurrentSpec.m */,
 				4945499516052CC1001F93A4 /* SelectorSpec.m */,
 				494549A2160536B1001F93A4 /* SequenceSpec.m */,
 				49454977160527FD001F93A4 /* Supporting Files */,
@@ -281,6 +289,7 @@
 				4945499916052D81001F93A4 /* Selector.m in Sources */,
 				4945499C16052F05001F93A4 /* Action.m in Sources */,
 				494549A116053679001F93A4 /* Sequence.m in Sources */,
+				49AC0714160F24AF00516DDD /* Concurrent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +301,7 @@
 				4945499E16053026001F93A4 /* CompositeTaskSpec.m in Sources */,
 				494549A3160536B1001F93A4 /* SequenceSpec.m in Sources */,
 				49DAC82016064E7100BD1DE5 /* BehaviorTreeSpec.m in Sources */,
+				49AC0717160F24DC00516DDD /* ConcurrentSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

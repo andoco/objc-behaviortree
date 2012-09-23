@@ -1,5 +1,5 @@
 #import "Kiwi.h"
-#import "Action.h"
+#import "Task.h"
 #import "CompositeTask.h"
 
 SPEC_BEGIN(CompositeTaskSpec)
@@ -20,8 +20,8 @@ describe(@"CompositeTask", ^{
     
     context(@"when child added", ^{
         it(@"should be added to children", ^{
-            id action1 = [Action mock];
-            id action2 = [Action mock];
+            id action1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id action2 = [KWMock nullMockForProtocol:@protocol(Task)];
             
             [task addChild:action1];
             [task addChild:action2];
@@ -29,6 +29,18 @@ describe(@"CompositeTask", ^{
             [[theValue(task.children.count) should] equal:theValue(2)];
             [[[task.children objectAtIndex:0] should] equal:action1];
             [[[task.children objectAtIndex:1] should] equal:action2];
+        });
+    });
+    
+    context(@"when initialized with children", ^{
+        
+        it(@"arguments should be added to children", ^{
+            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            
+            task = [[CompositeTask alloc] initWithChildren:task1, task2, nil];
+
+            [[theValue(task.children.count) should] equal:theValue(2)];
         });
     });
     
