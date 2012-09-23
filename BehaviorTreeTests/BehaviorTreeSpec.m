@@ -27,6 +27,13 @@ describe(@"BehaviorTree", ^{
             [[task should] receive:@selector(stop)];
             [tree run];
         });
+        
+        it(@"should run tasks with supplied blackboard", ^{
+            NSMutableDictionary *blackboard = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"val1", @"key1", nil];
+            [[task should] receive:@selector(run:) withArguments:blackboard];
+            
+            [tree runWithBlackboard:blackboard];
+        });
     });
 });
 
