@@ -14,6 +14,7 @@
 
 @property (nonatomic, readonly) NSArray *children;
 
+-(id) initWithChildren:(id<Task>)firstArg, ... NS_REQUIRES_NIL_TERMINATION;
 -(void) addChild:(id<Task>)child;
 
 @end

@@ -21,6 +21,21 @@
     return self;
 }
 
+-(id) initWithChildren:(id<Task>)firstArg, ...
+{
+    self = [self init];
+    if (self) {
+        va_list args;
+        va_start(args, firstArg);
+        for (id<Task> arg = firstArg; arg != nil; arg = va_arg(args, id<Task>))
+        {
+            [self addChild:arg];
+        }
+        va_end(args);
+    }
+    return self;
+}
+
 -(RunResult) run:(NSMutableDictionary *)blackboard {
     for (id<Task> task in self.children) {
         if (task.status == Ready)
