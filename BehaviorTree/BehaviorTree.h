@@ -19,5 +19,6 @@
 
 -(id) initWithRootTask:(id<Task>)root;
 -(void) run;
+-(void) runWithBlackboard:(NSMutableDictionary*)blackboard;
 
 @end

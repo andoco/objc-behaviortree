@@ -20,9 +20,13 @@
 }
 
 -(void) run {
+    [self runWithBlackboard:[NSMutableDictionary dictionary]];
+}
+
+-(void) runWithBlackboard:(NSMutableDictionary*)blackboard {
     [root_ start];
-    [root_ run:[NSMutableDictionary dictionary]];
-    [root_ stop];
+    [root_ run:blackboard];
+    [root_ stop];    
 }
 
 @end
