@@ -10,7 +10,7 @@
 
 #import "Task.h"
 
-@interface CompositeTask : NSObject <Task>
+@interface CompositeTask : Task
 
 @property (nonatomic, readonly) NSArray *children;
 

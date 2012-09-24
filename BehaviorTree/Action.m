@@ -10,18 +10,4 @@
 
 @implementation Action
 
-@synthesize status;
-
--(RunResult) run:(NSDictionary *)blackboard {
-    return Success;
-}
-
--(void) start {
-    
-}
-
--(void) stop {
-    
-}
-
 @end

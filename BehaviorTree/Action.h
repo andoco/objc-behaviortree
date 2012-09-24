@@ -10,6 +10,6 @@
 
 #import "Task.h"
 
-@interface Action : NSObject <Task>
+@interface Action : Task
 
 @end

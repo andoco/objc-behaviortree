@@ -28,3 +28,7 @@ typedef enum {
 -(void) stop;
 
 @end
+
+@interface Task : NSObject <Task>
+
+@end

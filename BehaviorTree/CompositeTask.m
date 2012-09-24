@@ -10,8 +10,6 @@
 
 @implementation CompositeTask
 
-@synthesize status;
-
 - (id)init
 {
     self = [super init];
@@ -54,14 +52,6 @@
     }
     
     return [self defaultReturnResult];
-}
-
--(void) start {
-    
-}
-
--(void) stop {
-    
 }
 
 -(void) addChild:(id<Task>)child {
