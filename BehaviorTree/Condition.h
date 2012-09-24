@@ -11,6 +11,6 @@
 @interface Condition : Task
 
 -(id) initWithTask:(id<Task>)task;
--(BOOL) evaluate;
+-(BOOL) evaluate:(NSMutableDictionary*)blackboard;
 
 @end

@@ -22,13 +22,13 @@
 }
 
 -(RunResult) run:(NSMutableDictionary *)blackboard {
-    if (![self evaluate])
+    if (![self evaluate:blackboard])
         return Failure;
     
     return [task_ run:blackboard];
 }
 
--(BOOL) evaluate {
+-(BOOL) evaluate:(NSMutableDictionary*)blackboard {
     return YES;
 }
 
