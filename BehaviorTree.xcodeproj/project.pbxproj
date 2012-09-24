@@ -25,6 +25,7 @@
 		494549A3160536B1001F93A4 /* SequenceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A2160536B1001F93A4 /* SequenceSpec.m */; };
 		49AC0714160F24AF00516DDD /* Concurrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC0713160F24AF00516DDD /* Concurrent.m */; };
 		49AC0717160F24DC00516DDD /* ConcurrentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC0716160F24DC00516DDD /* ConcurrentSpec.m */; };
+		49AC072F1610F15600516DDD /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC072E1610F15500516DDD /* Task.m */; };
 		49DAC82016064E7100BD1DE5 /* BehaviorTreeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		49AC0712160F24AF00516DDD /* Concurrent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Concurrent.h; sourceTree = "<group>"; };
 		49AC0713160F24AF00516DDD /* Concurrent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Concurrent.m; sourceTree = "<group>"; };
 		49AC0716160F24DC00516DDD /* ConcurrentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentSpec.m; sourceTree = "<group>"; };
+		49AC072E1610F15500516DDD /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BehaviorTreeSpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,7 @@
 				494549A016053679001F93A4 /* Sequence.m */,
 				49454962160527FC001F93A4 /* Supporting Files */,
 				4945499116052AFC001F93A4 /* Task.h */,
+				49AC072E1610F15500516DDD /* Task.m */,
 			);
 			path = BehaviorTree;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				4945499C16052F05001F93A4 /* Action.m in Sources */,
 				494549A116053679001F93A4 /* Sequence.m in Sources */,
 				49AC0714160F24AF00516DDD /* Concurrent.m in Sources */,
+				49AC072F1610F15600516DDD /* Task.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
