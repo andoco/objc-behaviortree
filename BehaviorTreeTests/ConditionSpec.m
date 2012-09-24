@@ -17,10 +17,16 @@ describe(@"Condition", ^{
     
     context(@"when run", ^{
         
+        it(@"should call evaluate with blackboard", ^{
+            [blackboard setObject:@"testVal" forKey:@"testKey"];
+            [[condition should] receive:@selector(evaluate:) withArguments:blackboard];
+            [condition run:blackboard];
+        });
+        
         context(@"and evaluates to NO", ^{
             
             beforeEach(^{
-                [[condition should] receive:@selector(evaluate) andReturn:theValue(NO)];
+                [[condition should] receive:@selector(evaluate:) andReturn:theValue(NO)];
             });
             
             it(@"should return Failure", ^{
@@ -36,7 +42,7 @@ describe(@"Condition", ^{
         context(@"and evaluates to YES", ^{
 
             beforeEach(^{
-                [[condition should] receive:@selector(evaluate) andReturn:theValue(YES)];
+                [[condition should] receive:@selector(evaluate:) andReturn:theValue(YES)];
             });
 
             it(@"should run task", ^{
