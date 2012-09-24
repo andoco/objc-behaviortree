@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #import "Action.h"
+#import "Concurrent.h"
+#import "Condition.h"
 #import "Selector.h"
 #import "Sequence.h"
 
