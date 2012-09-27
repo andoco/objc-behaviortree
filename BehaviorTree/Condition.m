@@ -21,6 +21,16 @@
     return self;
 }
 
+-(void) start {
+    [super start];
+    [task_ start];
+}
+
+-(void) stop {
+    [super stop];
+    [task_ stop];
+}
+
 -(RunResult) run:(NSMutableDictionary *)blackboard {
     if (![self evaluate:blackboard])
         return Failure;
