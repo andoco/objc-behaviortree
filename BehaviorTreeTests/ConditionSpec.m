@@ -15,6 +15,24 @@ describe(@"Condition", ^{
         condition = [[Condition alloc] initWithTask:task];
     });
     
+    context(@"when started", ^{
+        
+        it(@"should start task", ^{
+            [[task should] receive:@selector(start)];
+            [condition start];
+        });
+        
+    });
+    
+    context(@"when stopped", ^{
+
+        it(@"should stop task", ^{
+            [[task should] receive:@selector(stop)];
+            [condition stop];
+        });
+
+    });
+    
     context(@"when run", ^{
         
         it(@"should call evaluate with blackboard", ^{
