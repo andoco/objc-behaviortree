@@ -54,7 +54,7 @@ describe(@"CompositeTask", ^{
         it(@"should start all child tasks with status Ready", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [[task1 stubAndReturn:theValue(Ready)] status];
-            [[task1 should] receive:@selector(start)];
+            [[task1 should] receive:@selector(start:)];
             
             id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
             [[task2 stubAndReturn:theValue(Running)] status];
@@ -70,7 +70,7 @@ describe(@"CompositeTask", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [[task1 stubAndReturn:theValue(Ready)] status];
             [[task1 stubAndReturn:theValue(Success)] run:blackboard];
-            [[task1 should] receive:@selector(stop)];
+            [[task1 should] receive:@selector(stop:)];
             
             [task addChild:task1];
             
@@ -81,7 +81,7 @@ describe(@"CompositeTask", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [[task1 stubAndReturn:theValue(Ready)] status];
             [[task1 stubAndReturn:theValue(Failure)] run:blackboard];
-            [[task1 should] receive:@selector(stop)];
+            [[task1 should] receive:@selector(stop:)];
             
             [task addChild:task1];
             

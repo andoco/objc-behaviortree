@@ -25,12 +25,12 @@
     return self;
 }
 
--(void) start {
-    [super start];
+-(void) start:(NSMutableDictionary*)blackboard {
+    [super start:blackboard];
     _numFailed = 0;
 }
 
--(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task {
+-(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task withBlackboard:(NSMutableDictionary*)blackboard {
     if (result == Failure)
         _numFailed++;
     

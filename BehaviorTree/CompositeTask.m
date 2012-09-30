@@ -37,14 +37,14 @@
 -(RunResult) run:(NSMutableDictionary *)blackboard {
     for (id<Task> task in self.children) {
         if (task.status == Ready)
-            [task start];
+            [task start:blackboard];
         
         RunResult r = [task run:blackboard];
         
         if (r == Success || r == Failure)
-            [task stop];
+            [task stop:blackboard];
         
-        [self didReceiveResult:r forTask:task];
+        [self didReceiveResult:r forTask:task withBlackboard:blackboard];
         
         RunResult returnResult;
         if ([self shouldReturnWithResult:r returnResult:&returnResult])
@@ -58,7 +58,7 @@
     _children = [_children arrayByAddingObject:child];
 }
 
--(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task {
+-(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task withBlackboard:(NSMutableDictionary*)blackboard {
     
 }
 

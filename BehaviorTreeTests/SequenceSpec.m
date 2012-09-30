@@ -87,7 +87,7 @@ describe(@"Sequence", ^{
             
             // second run setup
             [[task1 should] receive:@selector(run:) andReturn:theValue(Failure)];
-            [[task2 should] receive:@selector(stop)];
+            [[task2 should] receive:@selector(stop:)];
             [[theValue([sequence run:blackboard]) should] equal:theValue(Failure)];
         });
         
@@ -105,7 +105,7 @@ describe(@"Sequence", ^{
             
             // second run setup
             [[task1 should] receive:@selector(run:) andReturn:theValue(Running)];
-            [[task2 should] receive:@selector(stop)];
+            [[task2 should] receive:@selector(stop:)];
             [[theValue([sequence run:blackboard]) should] equal:theValue(Failure)];
         });
     });

@@ -24,9 +24,9 @@
 }
 
 -(void) runWithBlackboard:(NSMutableDictionary*)blackboard {
-    [root_ start];
+    [root_ start:blackboard];
     [root_ run:blackboard];
-    [root_ stop];    
+    [root_ stop:blackboard];
 }
 
 @end

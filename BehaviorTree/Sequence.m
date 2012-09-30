@@ -16,10 +16,10 @@
 
 @implementation Sequence
 
--(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task {
+-(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task withBlackboard:(NSMutableDictionary*)blackboard {
     if (result == Failure || result == Pending) {
         if (running_)
-            [running_ stop];
+            [running_ stop:(NSMutableDictionary*)blackboard];
         
         if (result == Pending)
             running_ = task;

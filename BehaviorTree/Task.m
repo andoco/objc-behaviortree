@@ -12,7 +12,7 @@
 
 @synthesize status;
 
--(void) start {
+-(void) start:(NSMutableDictionary*)blackboard {
     
 }
 
@@ -20,7 +20,7 @@
     return Success;
 }
 
--(void) stop {
+-(void) stop:(NSMutableDictionary*)blackboard {
     
 }
 

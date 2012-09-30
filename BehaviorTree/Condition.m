@@ -21,14 +21,14 @@
     return self;
 }
 
--(void) start {
-    [super start];
-    [task_ start];
+-(void) start:(NSMutableDictionary*)blackboard {
+    [super start:blackboard];
+    [task_ start:blackboard];
 }
 
--(void) stop {
-    [super stop];
-    [task_ stop];
+-(void) stop:(NSMutableDictionary*)blackboard {
+    [super stop:blackboard];
+    [task_ stop:blackboard];
 }
 
 -(RunResult) run:(NSMutableDictionary *)blackboard {

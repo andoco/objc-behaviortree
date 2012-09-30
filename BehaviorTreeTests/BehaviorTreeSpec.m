@@ -14,7 +14,7 @@ describe(@"BehaviorTree", ^{
         });
 
         it(@"should start root task", ^{
-            [[task should] receive:@selector(start)];
+            [[task should] receive:@selector(start:)];
             [tree run];
         });
         
@@ -24,7 +24,7 @@ describe(@"BehaviorTree", ^{
         });
         
         it(@"should stop root task", ^{
-            [[task should] receive:@selector(stop)];
+            [[task should] receive:@selector(stop:)];
             [tree run];
         });
         

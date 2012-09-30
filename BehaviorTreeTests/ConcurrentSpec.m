@@ -61,7 +61,7 @@ describe(@"Concurrent", ^{
             
             [concurrent run:blackboard];
             
-            [concurrent start];
+            [concurrent start:blackboard];
             
             [[theValue(concurrent.numFailed) should] equal:theValue(0)];
         });

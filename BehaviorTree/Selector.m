@@ -16,10 +16,10 @@
 
 @implementation Selector
 
--(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task {
+-(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task withBlackboard:(NSMutableDictionary*)blackboard {
     if (result == Success || result == Pending) {
         if (running_)
-            [running_ stop];
+            [running_ stop:blackboard];
         
         if (result == Pending)
             running_ = task;

@@ -23,9 +23,9 @@ typedef enum {
 
 @property (nonatomic, readonly) TaskStatus status;
 
--(void) start;
+-(void) start:(NSMutableDictionary*)blackboard;
 -(RunResult) run:(NSMutableDictionary*)blackboard;
--(void) stop;
+-(void) stop:(NSMutableDictionary*)blackboard;
 
 @end
 

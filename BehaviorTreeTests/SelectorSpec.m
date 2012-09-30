@@ -79,7 +79,7 @@ describe(@"Selector", ^{
             
             // second run setup
             [[task1 stubAndReturn:theValue(Success)] run:blackboard];
-            [[task2 should] receive:@selector(stop)];
+            [[task2 should] receive:@selector(stop:)];
             [[theValue([selector run:blackboard]) should] equal:theValue(Success)];
         });
         
@@ -97,7 +97,7 @@ describe(@"Selector", ^{
             
             // second run setup
             [[task1 stubAndReturn:theValue(Pending)] run:blackboard];
-            [[task2 should] receive:@selector(stop)];
+            [[task2 should] receive:@selector(stop:)];
             [[theValue([selector run:blackboard]) should] equal:theValue(Pending)];
         });
     });

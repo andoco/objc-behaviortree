@@ -18,8 +18,8 @@ describe(@"Condition", ^{
     context(@"when started", ^{
         
         it(@"should start task", ^{
-            [[task should] receive:@selector(start)];
-            [condition start];
+            [[task should] receive:@selector(start:)];
+            [condition start:blackboard];
         });
         
     });
@@ -27,8 +27,8 @@ describe(@"Condition", ^{
     context(@"when stopped", ^{
 
         it(@"should stop task", ^{
-            [[task should] receive:@selector(stop)];
-            [condition stop];
+            [[task should] receive:@selector(stop:)];
+            [condition stop:blackboard];
         });
 
     });
