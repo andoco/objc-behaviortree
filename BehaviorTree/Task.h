@@ -21,7 +21,7 @@ typedef enum {
 
 @protocol Task <NSObject>
 
-@property (nonatomic, readonly) TaskStatus status;
+@property (nonatomic, assign) TaskStatus status;
 
 -(void) start:(NSMutableDictionary*)blackboard;
 -(RunResult) run:(NSMutableDictionary*)blackboard;

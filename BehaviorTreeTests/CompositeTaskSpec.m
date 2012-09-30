@@ -98,6 +98,43 @@ describe(@"CompositeTask", ^{
             
             [task run:blackboard];            
         });
+        
+        context(@"child task returns Success", ^{
+            it(@"should change task status to Ready", ^{
+                id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+                [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
+                [[task1 should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                
+                [task addChild:task1];
+                
+                [task run:blackboard];
+            });
+        });
+
+        context(@"child task returns Failure", ^{
+            it(@"should change task status to Ready", ^{
+                id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+                [[task1 should] receive:@selector(run:) andReturn:theValue(Failure)];
+                [[task1 should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                
+                [task addChild:task1];
+                
+                [task run:blackboard];
+            });
+        });
+
+        context(@"child task returns Pending", ^{
+            it(@"should change task status to Running", ^{
+                id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+                [[task1 should] receive:@selector(run:) andReturn:theValue(Pending)];
+                [[task1 should] receive:@selector(setStatus:) withArguments:theValue(Running)];
+                
+                [task addChild:task1];
+                
+                [task run:blackboard];
+            });
+        });
+
     });
 });
 

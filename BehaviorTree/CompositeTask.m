@@ -41,9 +41,19 @@
         
         RunResult r = [task run:blackboard];
         
-        if (r == Success || r == Failure)
-            [task stop:blackboard];
-        
+        switch (r) {
+            case Pending:
+                task.status = Running;
+                break;
+            case Success:
+            case Failure:
+                [task stop:blackboard];
+                task.status = Ready;
+                break;
+            default:
+                break;
+        }
+                
         [self didReceiveResult:r forTask:task withBlackboard:blackboard];
         
         RunResult returnResult;
