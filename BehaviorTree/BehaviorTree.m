@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        root_ = root;
+        _root = root;
     }
     return self;
 }
@@ -24,9 +24,9 @@
 }
 
 -(void) runWithBlackboard:(NSMutableDictionary*)blackboard {
-    [root_ start:blackboard];
-    [root_ run:blackboard];
-    [root_ stop:blackboard];
+    [_root start:blackboard];
+    [_root run:blackboard];
+    [_root stop:blackboard];
 }
 
 @end

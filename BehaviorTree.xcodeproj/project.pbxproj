@@ -23,12 +23,20 @@
 		4945499E16053026001F93A4 /* CompositeTaskSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499D16053026001F93A4 /* CompositeTaskSpec.m */; };
 		494549A116053679001F93A4 /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A016053679001F93A4 /* Sequence.m */; };
 		494549A3160536B1001F93A4 /* SequenceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A2160536B1001F93A4 /* SequenceSpec.m */; };
+		4985E1A81629936700571D2D /* BehaviorReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4985E1A71629936700571D2D /* BehaviorReader.m */; };
+		4985E1AA162994C200571D2D /* action.json in Resources */ = {isa = PBXBuildFile; fileRef = 4985E1A9162994C200571D2D /* action.json */; };
 		49AC0714160F24AF00516DDD /* Concurrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC0713160F24AF00516DDD /* Concurrent.m */; };
 		49AC0717160F24DC00516DDD /* ConcurrentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC0716160F24DC00516DDD /* ConcurrentSpec.m */; };
 		49AC072F1610F15600516DDD /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC072E1610F15500516DDD /* Task.m */; };
 		49AC07321610F3BF00516DDD /* Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC07311610F3BF00516DDD /* Condition.m */; };
 		49AC07341610F48600516DDD /* ConditionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC07331610F48600516DDD /* ConditionSpec.m */; };
 		49DAC82016064E7100BD1DE5 /* BehaviorTreeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */; };
+		49FE27B11629969200916552 /* BehaviorReaderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4985E1A31629930400571D2D /* BehaviorReaderSpec.m */; };
+		49FE27B61629B74100916552 /* TestAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FE27B51629B74100916552 /* TestAction.m */; };
+		49FE27B91629B75000916552 /* TestCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FE27B81629B75000916552 /* TestCondition.m */; };
+		49FE27BC1629B7E200916552 /* selector.json in Resources */ = {isa = PBXBuildFile; fileRef = 49FE27BB1629B7E200916552 /* selector.json */; };
+		49FE27BE1629BCEF00916552 /* sequence.json in Resources */ = {isa = PBXBuildFile; fileRef = 49FE27BD1629BCEF00916552 /* sequence.json */; };
+		49FE27C01629BE2900916552 /* condition.json in Resources */ = {isa = PBXBuildFile; fileRef = 49FE27BF1629BE2900916552 /* condition.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +86,10 @@
 		4945499F16053679001F93A4 /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequence.h; sourceTree = "<group>"; };
 		494549A016053679001F93A4 /* Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sequence.m; sourceTree = "<group>"; };
 		494549A2160536B1001F93A4 /* SequenceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequenceSpec.m; sourceTree = "<group>"; };
+		4985E1A31629930400571D2D /* BehaviorReaderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BehaviorReaderSpec.m; sourceTree = "<group>"; };
+		4985E1A61629936700571D2D /* BehaviorReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BehaviorReader.h; sourceTree = "<group>"; };
+		4985E1A71629936700571D2D /* BehaviorReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BehaviorReader.m; sourceTree = "<group>"; };
+		4985E1A9162994C200571D2D /* action.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = action.json; sourceTree = "<group>"; };
 		49AC0712160F24AF00516DDD /* Concurrent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Concurrent.h; sourceTree = "<group>"; };
 		49AC0713160F24AF00516DDD /* Concurrent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Concurrent.m; sourceTree = "<group>"; };
 		49AC0716160F24DC00516DDD /* ConcurrentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentSpec.m; sourceTree = "<group>"; };
@@ -86,6 +98,13 @@
 		49AC07311610F3BF00516DDD /* Condition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Condition.m; sourceTree = "<group>"; };
 		49AC07331610F48600516DDD /* ConditionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConditionSpec.m; sourceTree = "<group>"; };
 		49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BehaviorTreeSpec.m; sourceTree = "<group>"; };
+		49FE27B41629B74100916552 /* TestAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAction.h; sourceTree = "<group>"; };
+		49FE27B51629B74100916552 /* TestAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAction.m; sourceTree = "<group>"; };
+		49FE27B71629B75000916552 /* TestCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCondition.h; sourceTree = "<group>"; };
+		49FE27B81629B75000916552 /* TestCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCondition.m; sourceTree = "<group>"; };
+		49FE27BB1629B7E200916552 /* selector.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = selector.json; sourceTree = "<group>"; };
+		49FE27BD1629BCEF00916552 /* sequence.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence.json; sourceTree = "<group>"; };
+		49FE27BF1629BE2900916552 /* condition.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = condition.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +166,8 @@
 			children = (
 				4945499A16052F05001F93A4 /* Action.h */,
 				4945499B16052F05001F93A4 /* Action.m */,
+				4985E1A61629936700571D2D /* BehaviorReader.h */,
+				4985E1A71629936700571D2D /* BehaviorReader.m */,
 				49454964160527FC001F93A4 /* BehaviorTree.h */,
 				49454966160527FC001F93A4 /* BehaviorTree.m */,
 				4945499216052BE3001F93A4 /* CompositeTask.h */,
@@ -177,6 +198,9 @@
 		49454976160527FD001F93A4 /* BehaviorTreeTests */ = {
 			isa = PBXGroup;
 			children = (
+				49FE27BA1629B79100916552 /* Resources */,
+				49FE27B31629B72900916552 /* TestTasks */,
+				4985E1A31629930400571D2D /* BehaviorReaderSpec.m */,
 				49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */,
 				4945499D16053026001F93A4 /* CompositeTaskSpec.m */,
 				49AC0716160F24DC00516DDD /* ConcurrentSpec.m */,
@@ -195,6 +219,28 @@
 				49454979160527FD001F93A4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49FE27B31629B72900916552 /* TestTasks */ = {
+			isa = PBXGroup;
+			children = (
+				49FE27B41629B74100916552 /* TestAction.h */,
+				49FE27B51629B74100916552 /* TestAction.m */,
+				49FE27B71629B75000916552 /* TestCondition.h */,
+				49FE27B81629B75000916552 /* TestCondition.m */,
+			);
+			name = TestTasks;
+			sourceTree = "<group>";
+		};
+		49FE27BA1629B79100916552 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4985E1A9162994C200571D2D /* action.json */,
+				49FE27BB1629B7E200916552 /* selector.json */,
+				49FE27BD1629BCEF00916552 /* sequence.json */,
+				49FE27BF1629BE2900916552 /* condition.json */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +315,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4945497B160527FD001F93A4 /* InfoPlist.strings in Resources */,
+				4985E1AA162994C200571D2D /* action.json in Resources */,
+				49FE27BC1629B7E200916552 /* selector.json in Resources */,
+				49FE27BE1629BCEF00916552 /* sequence.json in Resources */,
+				49FE27C01629BE2900916552 /* condition.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +353,7 @@
 				49AC0714160F24AF00516DDD /* Concurrent.m in Sources */,
 				49AC072F1610F15600516DDD /* Task.m in Sources */,
 				49AC07321610F3BF00516DDD /* Condition.m in Sources */,
+				4985E1A81629936700571D2D /* BehaviorReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,12 +361,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FE27B11629969200916552 /* BehaviorReaderSpec.m in Sources */,
 				4945499616052CC1001F93A4 /* SelectorSpec.m in Sources */,
 				4945499E16053026001F93A4 /* CompositeTaskSpec.m in Sources */,
 				494549A3160536B1001F93A4 /* SequenceSpec.m in Sources */,
 				49DAC82016064E7100BD1DE5 /* BehaviorTreeSpec.m in Sources */,
 				49AC0717160F24DC00516DDD /* ConcurrentSpec.m in Sources */,
 				49AC07341610F48600516DDD /* ConditionSpec.m in Sources */,
+				49FE27B61629B74100916552 /* TestAction.m in Sources */,
+				49FE27B91629B75000916552 /* TestCondition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

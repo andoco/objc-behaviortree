@@ -8,34 +8,32 @@
 
 #import "Condition.h"
 
-@implementation Condition {
-    id<Task> task_;
-}
+@implementation Condition
 
 -(id) initWithTask:(id<Task>)task
 {
     self = [super init];
     if (self) {
-        task_ = task;
+        _task = task;
     }
     return self;
 }
 
 -(void) start:(NSMutableDictionary*)blackboard {
     [super start:blackboard];
-    [task_ start:blackboard];
+    [_task start:blackboard];
 }
 
 -(void) stop:(NSMutableDictionary*)blackboard {
     [super stop:blackboard];
-    [task_ stop:blackboard];
+    [_task stop:blackboard];
 }
 
 -(RunResult) run:(NSMutableDictionary *)blackboard {
     if (![self evaluate:blackboard])
         return Failure;
     
-    return [task_ run:blackboard];
+    return [_task run:blackboard];
 }
 
 -(BOOL) evaluate:(NSMutableDictionary*)blackboard {

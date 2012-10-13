@@ -10,6 +10,8 @@
 
 @interface Condition : Task
 
+@property (nonatomic, readonly) id<Task> task;
+
 -(id) initWithTask:(id<Task>)task;
 -(BOOL) evaluate:(NSMutableDictionary*)blackboard;
 

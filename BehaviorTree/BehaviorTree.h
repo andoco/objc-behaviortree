@@ -14,10 +14,9 @@
 #import "Selector.h"
 #import "Sequence.h"
 
-@interface BehaviorTree : NSObject {
-    @private
-    id<Task> root_;
-}
+@interface BehaviorTree : NSObject
+
+@property (nonatomic, readonly) id<Task> root;
 
 -(id) initWithRootTask:(id<Task>)root;
 -(void) run;

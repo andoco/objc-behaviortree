@@ -1,0 +1,4 @@
+{"type":"Sequence", "children":[
+    {"type":"TestAction"},
+    {"type":"TestAction"}
+]}
