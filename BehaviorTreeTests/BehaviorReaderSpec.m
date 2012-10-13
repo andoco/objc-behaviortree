@@ -3,6 +3,7 @@
 #import "BehaviorReader.h"
 #import "TestAction.h"
 #import "TestCondition.h"
+#import "TestEntity.h"
 
 SPEC_BEGIN(BehaviorReaderSpec)
 
@@ -27,10 +28,12 @@ describe(@"BehaviorReader", ^{
             
             [[[tree.root class] should] equal:[TestAction class]];
             TestAction *task = tree.root;
+            [[task.stringProperty should] equal:@"Test string"];
             [[theValue(task.intProperty) should] equal:theValue(3)];
             [[theValue(task.boolProperty) should] equal:theValue(YES)];
+            [[task.classProperty should] equal:[TestEntity class]];
         });
-        
+                
         it(@"should build selector", ^{
             NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"selector" ofType:@"json"];
             BehaviorTree *tree = [reader buildTreeWithFile:jsonPath];

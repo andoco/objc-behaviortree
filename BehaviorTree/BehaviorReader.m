@@ -87,7 +87,12 @@
 -(void) populateProperties:(NSObject<Task>*)task fromData:(NSDictionary*)data {
     for (NSString *key in data.allKeys) {
         if (![self isReservedKey:key]) {
-            [task setValue:data[key] forKey:key];
+            id val = data[key];
+            
+            if ([val isKindOfClass:[NSString class]] && [val hasPrefix:@"class:"])
+                val = NSClassFromString([val stringByReplacingOccurrencesOfString:@"class:" withString:@""]);
+            
+            [task setValue:val forKey:key];
         }
     }
 }

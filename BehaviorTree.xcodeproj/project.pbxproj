@@ -37,6 +37,7 @@
 		49FE27BC1629B7E200916552 /* selector.json in Resources */ = {isa = PBXBuildFile; fileRef = 49FE27BB1629B7E200916552 /* selector.json */; };
 		49FE27BE1629BCEF00916552 /* sequence.json in Resources */ = {isa = PBXBuildFile; fileRef = 49FE27BD1629BCEF00916552 /* sequence.json */; };
 		49FE27C01629BE2900916552 /* condition.json in Resources */ = {isa = PBXBuildFile; fileRef = 49FE27BF1629BE2900916552 /* condition.json */; };
+		49FE27CD162A292400916552 /* TestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FE27CC162A292400916552 /* TestEntity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		49FE27BB1629B7E200916552 /* selector.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = selector.json; sourceTree = "<group>"; };
 		49FE27BD1629BCEF00916552 /* sequence.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence.json; sourceTree = "<group>"; };
 		49FE27BF1629BE2900916552 /* condition.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = condition.json; sourceTree = "<group>"; };
+		49FE27CB162A292400916552 /* TestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEntity.h; sourceTree = "<group>"; };
+		49FE27CC162A292400916552 /* TestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEntity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,16 +201,17 @@
 		49454976160527FD001F93A4 /* BehaviorTreeTests */ = {
 			isa = PBXGroup;
 			children = (
-				49FE27BA1629B79100916552 /* Resources */,
-				49FE27B31629B72900916552 /* TestTasks */,
 				4985E1A31629930400571D2D /* BehaviorReaderSpec.m */,
 				49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */,
 				4945499D16053026001F93A4 /* CompositeTaskSpec.m */,
 				49AC0716160F24DC00516DDD /* ConcurrentSpec.m */,
 				49AC07331610F48600516DDD /* ConditionSpec.m */,
+				49FE27BA1629B79100916552 /* Resources */,
 				4945499516052CC1001F93A4 /* SelectorSpec.m */,
 				494549A2160536B1001F93A4 /* SequenceSpec.m */,
 				49454977160527FD001F93A4 /* Supporting Files */,
+				49FE27CE162A2B1B00916552 /* TestEntities */,
+				49FE27B31629B72900916552 /* TestTasks */,
 			);
 			path = BehaviorTreeTests;
 			sourceTree = "<group>";
@@ -241,6 +245,15 @@
 				49FE27BF1629BE2900916552 /* condition.json */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		49FE27CE162A2B1B00916552 /* TestEntities */ = {
+			isa = PBXGroup;
+			children = (
+				49FE27CB162A292400916552 /* TestEntity.h */,
+				49FE27CC162A292400916552 /* TestEntity.m */,
+			);
+			name = TestEntities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +383,7 @@
 				49AC07341610F48600516DDD /* ConditionSpec.m in Sources */,
 				49FE27B61629B74100916552 /* TestAction.m in Sources */,
 				49FE27B91629B75000916552 /* TestCondition.m in Sources */,
+				49FE27CD162A292400916552 /* TestEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

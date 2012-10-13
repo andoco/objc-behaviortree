@@ -1,1 +1,7 @@
-{"type":"TestAction", "intProperty":3, "boolProperty":true}
+{
+    "type":"TestAction",
+    "stringProperty":"Test string",
+    "intProperty":3,
+    "boolProperty":true,
+    "classProperty":"class:TestEntity"
+}

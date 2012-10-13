@@ -10,7 +10,9 @@
 
 @interface TestAction : Action
 
+@property (nonatomic, strong) NSString *stringProperty;
 @property (nonatomic, assign) NSInteger intProperty;
 @property (nonatomic, assign) BOOL boolProperty;
+@property (nonatomic, strong) Class classProperty;
 
 @end
