@@ -30,6 +30,9 @@
 		49AC072F1610F15600516DDD /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC072E1610F15500516DDD /* Task.m */; };
 		49AC07321610F3BF00516DDD /* Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC07311610F3BF00516DDD /* Condition.m */; };
 		49AC07341610F48600516DDD /* ConditionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC07331610F48600516DDD /* ConditionSpec.m */; };
+		49BC784D1631CF5C00F2516A /* libNSLoggerClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC784C1631CF5C00F2516A /* libNSLoggerClient.a */; };
+		49BC784F1631CF7700F2516A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC784E1631CF7700F2516A /* CFNetwork.framework */; };
+		49BC78511631CF7F00F2516A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC78501631CF7F00F2516A /* SystemConfiguration.framework */; };
 		49DAC82016064E7100BD1DE5 /* BehaviorTreeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */; };
 		49FE27B11629969200916552 /* BehaviorReaderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4985E1A31629930400571D2D /* BehaviorReaderSpec.m */; };
 		49FE27B61629B74100916552 /* TestAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FE27B51629B74100916552 /* TestAction.m */; };
@@ -98,6 +101,10 @@
 		49AC07301610F3BF00516DDD /* Condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Condition.h; sourceTree = "<group>"; };
 		49AC07311610F3BF00516DDD /* Condition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Condition.m; sourceTree = "<group>"; };
 		49AC07331610F48600516DDD /* ConditionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConditionSpec.m; sourceTree = "<group>"; };
+		49BC784C1631CF5C00F2516A /* libNSLoggerClient.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libNSLoggerClient.a; path = "build/Release-iphoneos/libNSLoggerClient.a"; sourceTree = "<group>"; };
+		49BC784E1631CF7700F2516A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		49BC78501631CF7F00F2516A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		49C724B316307CA5007C6900 /* BTreeLogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTreeLogging.h; sourceTree = "<group>"; };
 		49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BehaviorTreeSpec.m; sourceTree = "<group>"; };
 		49FE27B41629B74100916552 /* TestAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAction.h; sourceTree = "<group>"; };
 		49FE27B51629B74100916552 /* TestAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAction.m; sourceTree = "<group>"; };
@@ -123,6 +130,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49BC78511631CF7F00F2516A /* SystemConfiguration.framework in Frameworks */,
+				49BC784F1631CF7700F2516A /* CFNetwork.framework in Frameworks */,
+				49BC784D1631CF5C00F2516A /* libNSLoggerClient.a in Frameworks */,
 				4945498D16052999001F93A4 /* libKiwi.a in Frameworks */,
 				4945496F160527FD001F93A4 /* SenTestingKit.framework in Frameworks */,
 				49454971160527FD001F93A4 /* UIKit.framework in Frameworks */,
@@ -157,8 +167,11 @@
 			isa = PBXGroup;
 			children = (
 				4945498C16052999001F93A4 /* libKiwi.a */,
+				49BC784C1631CF5C00F2516A /* libNSLoggerClient.a */,
+				49BC784E1631CF7700F2516A /* CFNetwork.framework */,
 				4945495F160527FC001F93A4 /* Foundation.framework */,
 				4945496E160527FD001F93A4 /* SenTestingKit.framework */,
+				49BC78501631CF7F00F2516A /* SystemConfiguration.framework */,
 				49454970160527FD001F93A4 /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -173,6 +186,7 @@
 				4985E1A71629936700571D2D /* BehaviorReader.m */,
 				49454964160527FC001F93A4 /* BehaviorTree.h */,
 				49454966160527FC001F93A4 /* BehaviorTree.m */,
+				49C724B316307CA5007C6900 /* BTreeLogging.h */,
 				4945499216052BE3001F93A4 /* CompositeTask.h */,
 				4945499316052BE3001F93A4 /* CompositeTask.m */,
 				49AC0712160F24AF00516DDD /* Concurrent.h */,
@@ -458,24 +472,34 @@
 		49454982160527FD001F93A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				DSTROOT = /tmp/BehaviorTree.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BehaviorTree/BehaviorTree-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					BTREE_NSLogger,
+				);
+				HEADER_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/**";
 			};
 			name = Debug;
 		};
 		49454983160527FD001F93A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				DSTROOT = /tmp/BehaviorTree.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BehaviorTree/BehaviorTree-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/**";
 			};
 			name = Release;
 		};
@@ -491,7 +515,7 @@
 				INFOPLIST_FILE = "BehaviorTreeTests/BehaviorTreeTests-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/Frameworks/Kiwi/Kiwi";
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -508,7 +532,7 @@
 				INFOPLIST_FILE = "BehaviorTreeTests/BehaviorTreeTests-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/Frameworks/Kiwi/Kiwi";
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

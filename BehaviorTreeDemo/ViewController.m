@@ -77,7 +77,7 @@
     
     [world_.food addObject:food];
     
-    NSLog(@"Added food at %@", NSStringFromCGPoint(food.position));
+    //NSLog(@"Added food at %@", NSStringFromCGPoint(food.position));
 }
 
 -(void) addPrey {
@@ -89,7 +89,7 @@
     
     world_.prey = prey;
     
-    NSLog(@"Added prey at %@", NSStringFromCGPoint(prey.position));
+    //NSLog(@"Added prey at %@", NSStringFromCGPoint(prey.position));
 }
 
 -(void) addPredator {
@@ -101,7 +101,7 @@
     
     world_.predator = predator;
     
-    NSLog(@"Added predator at %@", NSStringFromCGPoint(predator.position));
+    //NSLog(@"Added predator at %@", NSStringFromCGPoint(predator.position));
 }
 
 -(void) update:(NSTimer*)timer {

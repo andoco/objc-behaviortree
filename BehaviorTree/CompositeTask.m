@@ -35,11 +35,16 @@
 }
 
 -(RunResult) run:(NSMutableDictionary *)blackboard {
+    [super run:blackboard];
+    
     for (id<Task> task in self.children) {
+        DLog(@"Processing child %@", task);
+        
         if (task.status == Ready)
             [task start:blackboard];
         
         RunResult r = [task run:blackboard];
+        DLog(@"Child %@ returned result %d", task, r);
         
         switch (r) {
             case Pending:

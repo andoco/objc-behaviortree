@@ -17,7 +17,7 @@
     Predator *predator = self.actor.world.predator;
     
     if (CGPointMagnitude(CGPointSubtract(predator.position, p)) <= 50) {
-        NSLog(@"Predator detected");
+        //NSLog(@"Predator detected");
         [blackboard setObject:predator forKey:@"target"];
         return Success;
     }

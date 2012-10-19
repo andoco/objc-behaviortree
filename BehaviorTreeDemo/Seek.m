@@ -28,7 +28,7 @@
     if (!target)
         return Failure;
     
-    NSLog(@"Moving to target %@", target);
+    //NSLog(@"Moving to target %@", target);
         
     CGPoint offset = CGPointSubtract(target.position, self.actor.position);
     

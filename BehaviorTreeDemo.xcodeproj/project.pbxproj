@@ -27,6 +27,9 @@
 		494549F61605BE6A001F93A4 /* Predator.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549F51605BE6A001F93A4 /* Predator.m */; };
 		4964A5801605C1D800FE3588 /* TargetFood.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964A57F1605C1D700FE3588 /* TargetFood.m */; };
 		4964A5841605C37700FE3588 /* TargetPrey.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964A5831605C37700FE3588 /* TargetPrey.m */; };
+		49C7245E163072FE007C6900 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C7245D163072FE007C6900 /* CFNetwork.framework */; };
+		49C7246116307314007C6900 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C7246016307314007C6900 /* SystemConfiguration.framework */; };
+		49C724B21630798C007C6900 /* libNSLoggerClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C724B11630798C007C6900 /* libNSLoggerClient.a */; };
 		49DAC7F41605E30700BD1DE5 /* PredatorDetected.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC7F31605E30700BD1DE5 /* PredatorDetected.m */; };
 		49DAC7F81605E3A400BD1DE5 /* Flee.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC7F71605E3A400BD1DE5 /* Flee.m */; };
 		49DAC7FB1605E49900BD1DE5 /* BPGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC7FA1605E49900BD1DE5 /* BPGeometry.m */; };
@@ -68,6 +71,9 @@
 		4964A57F1605C1D700FE3588 /* TargetFood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetFood.m; sourceTree = "<group>"; };
 		4964A5821605C37700FE3588 /* TargetPrey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetPrey.h; sourceTree = "<group>"; };
 		4964A5831605C37700FE3588 /* TargetPrey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetPrey.m; sourceTree = "<group>"; };
+		49C7245D163072FE007C6900 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		49C7246016307314007C6900 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		49C724B11630798C007C6900 /* libNSLoggerClient.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libNSLoggerClient.a; path = "NSLoggerClient/build/Release-iphoneos/libNSLoggerClient.a"; sourceTree = "<group>"; };
 		49DAC7F21605E30700BD1DE5 /* PredatorDetected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PredatorDetected.h; sourceTree = "<group>"; };
 		49DAC7F31605E30700BD1DE5 /* PredatorDetected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredatorDetected.m; sourceTree = "<group>"; };
 		49DAC7F61605E3A400BD1DE5 /* Flee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flee.h; sourceTree = "<group>"; };
@@ -81,6 +87,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C724B21630798C007C6900 /* libNSLoggerClient.a in Frameworks */,
+				49C7246116307314007C6900 /* SystemConfiguration.framework in Frameworks */,
+				49C7245E163072FE007C6900 /* CFNetwork.framework in Frameworks */,
 				494549DA1605AD9D001F93A4 /* libBehaviorTree.a in Frameworks */,
 				494549BA160548EC001F93A4 /* UIKit.framework in Frameworks */,
 				494549BC160548EC001F93A4 /* Foundation.framework in Frameworks */,
@@ -112,6 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				494549D91605AD9D001F93A4 /* libBehaviorTree.a */,
+				49C724B11630798C007C6900 /* libNSLoggerClient.a */,
+				49C7246016307314007C6900 /* SystemConfiguration.framework */,
+				49C7245D163072FE007C6900 /* CFNetwork.framework */,
 				494549B9160548EC001F93A4 /* UIKit.framework */,
 				494549BB160548EC001F93A4 /* Foundation.framework */,
 				494549BD160548EC001F93A4 /* CoreGraphics.framework */,
@@ -355,13 +367,14 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BehaviorTreeDemo/BehaviorTreeDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "BehaviorTreeDemo/BehaviorTreeDemo-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/BehaviorTree/**";
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -377,7 +390,7 @@
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/BehaviorTree/**";
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

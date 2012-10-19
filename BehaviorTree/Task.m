@@ -13,15 +13,20 @@
 @synthesize status;
 
 -(void) start:(NSMutableDictionary*)blackboard {
-    
+    DLog(@"Starting %@", self);
 }
 
 -(RunResult) run:(NSMutableDictionary*)blackboard {
+    DLog(@"Running %@", self);
     return Success;
 }
 
 -(void) stop:(NSMutableDictionary*)blackboard {
-    
+    DLog(@"Stopping %@", self);    
+}
+
+-(NSString*) description {
+    return [NSString stringWithFormat:@"<%@: %p, status=%d>", NSStringFromClass(self.class), self, self.status];
 }
 
 @end

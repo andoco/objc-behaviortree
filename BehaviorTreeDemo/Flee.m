@@ -13,7 +13,7 @@
 -(RunResult) run:(NSMutableDictionary *)blackboard {
     Actor *target = [blackboard objectForKey:@"target"];
         
-    NSLog(@"Fleeing target %@", target);
+    //NSLog(@"Fleeing target %@", target);
     
     CGPoint offset = CGPointSubtract(target.position, self.actor.position);
         

@@ -30,8 +30,12 @@
 }
 
 -(RunResult) run:(NSMutableDictionary *)blackboard {
+    [super run:blackboard];
+    
     if (![self evaluate:blackboard])
         return Failure;
+    
+    DLog(@"Condition met for %@", self);
     
     return [_task run:blackboard];
 }
