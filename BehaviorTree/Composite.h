@@ -1,5 +1,5 @@
 //
-//  CompositeTask.h
+//  Composite.h
 //  BehaviorTree
 //
 //  Created by Andrew O'Connor on 15/09/2012.
@@ -10,7 +10,7 @@
 
 #import "Task.h"
 
-@interface CompositeTask : Task
+@interface Composite : Task
 
 @property (nonatomic, readonly) NSArray *children;
 

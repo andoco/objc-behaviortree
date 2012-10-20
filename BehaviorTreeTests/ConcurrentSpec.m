@@ -66,7 +66,7 @@ describe(@"Concurrent", ^{
             [[theValue(concurrent.numFailed) should] equal:theValue(0)];
         });
 
-        it(@"should return success if failureLimit is zero and has failed children", ^{
+        it(@"should return Success if failureLimit is zero and has failed children", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [task1 stub:@selector(run:) andReturn:theValue(Failure)];
             
@@ -79,7 +79,7 @@ describe(@"Concurrent", ^{
             [[theValue([concurrent run:blackboard]) should] equal:theValue(Success)];
         });
 
-        it(@"should return failure if failed children is greater than or equal to failure limit", ^{
+        it(@"should return Failure if failed children is greater than or equal to failure limit", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [task1 stub:@selector(run:) andReturn:theValue(Failure)];
             
@@ -93,7 +93,7 @@ describe(@"Concurrent", ^{
             [[theValue([concurrent run:blackboard]) should] equal:theValue(Failure)];
         });
 
-        it(@"should return success if failed children is less than failure limit", ^{
+        it(@"should return Success if failed children is less than failure limit", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [task1 stub:@selector(run:) andReturn:theValue(Failure)];
             
@@ -107,7 +107,7 @@ describe(@"Concurrent", ^{
             [[theValue([concurrent run:blackboard]) should] equal:theValue(Success)];
         });
         
-        it(@"should return pending if any child returns pending", ^{
+        it(@"should return Pending if any child returns Pending", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [task1 stub:@selector(run:) andReturn:theValue(Failure)];
             

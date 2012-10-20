@@ -1,14 +1,14 @@
 #import "Kiwi.h"
 #import "Task.h"
-#import "CompositeTask.h"
+#import "Composite.h"
 
-SPEC_BEGIN(CompositeTaskSpec)
+SPEC_BEGIN(CompositeSpec)
 
-describe(@"CompositeTask", ^{
-    __block CompositeTask *task;
+describe(@"Composite", ^{
+    __block Composite *task;
     
     beforeEach(^{
-        task = [[CompositeTask alloc] init];
+        task = [[Composite alloc] init];
     });
 
     context(@"when initialized", ^{
@@ -38,7 +38,7 @@ describe(@"CompositeTask", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
             
-            task = [[CompositeTask alloc] initWithChildren:task1, task2, nil];
+            task = [[Composite alloc] initWithChildren:task1, task2, nil];
 
             [[theValue(task.children.count) should] equal:theValue(2)];
         });

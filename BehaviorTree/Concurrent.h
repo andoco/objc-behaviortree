@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Andrew O'Connor. All rights reserved.
 //
 
-#import "CompositeTask.h"
+#import "Composite.h"
 
-@interface Concurrent : CompositeTask
+@interface Concurrent : Composite
 
 @property (nonatomic, assign) NSInteger failureLimit;
 @property (nonatomic, readonly) NSInteger numFailed;

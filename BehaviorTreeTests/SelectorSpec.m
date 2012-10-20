@@ -16,7 +16,7 @@ describe(@"Selector", ^{
     
     context(@"when run", ^{
         
-        it(@"should run children until child returns success", ^{
+        it(@"should run children until child returns Success", ^{
             
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
@@ -30,7 +30,7 @@ describe(@"Selector", ^{
             [selector run:blackboard];
         });
         
-        it(@"should return success if any child returns success", ^{
+        it(@"should return Success if any child returns Success", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [task1 stub:@selector(run:) andReturn:theValue(Failure)];
 
@@ -43,7 +43,7 @@ describe(@"Selector", ^{
             [[theValue([selector run:blackboard]) should] equal:theValue(Success)];
         });
         
-        it(@"should return failure if no child returns success", ^{
+        it(@"should return Failure if no child returns Success", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [task1 stub:@selector(run:) andReturn:theValue(Failure)];
             
@@ -52,7 +52,7 @@ describe(@"Selector", ^{
             [[theValue([selector run:blackboard]) should] equal:theValue(Failure)];
         });
         
-        it(@"should return running if any child returns running", ^{
+        it(@"should return Pending if any child returns Pending", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [task1 stub:@selector(run:) andReturn:theValue(Failure)];
             
@@ -65,7 +65,7 @@ describe(@"Selector", ^{
             [[theValue([selector run:blackboard]) should] equal:theValue(Pending)];
         });
                 
-        it(@"should stop running child if preceding child returns success", ^{
+        it(@"should stop running child if preceding child returns Success", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [[task1 stubAndReturn:theValue(Failure)] run:blackboard];
 
@@ -83,7 +83,7 @@ describe(@"Selector", ^{
             [[theValue([selector run:blackboard]) should] equal:theValue(Success)];
         });
         
-        it(@"should stop running child if preceding child returns running", ^{
+        it(@"should stop running child if preceding child returns Pending", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
             [[task1 stubAndReturn:theValue(Failure)] run:blackboard];
             

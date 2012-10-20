@@ -1,14 +1,14 @@
 //
-//  CompositeTask.m
+//  Composite.m
 //  BehaviorTree
 //
 //  Created by Andrew O'Connor on 15/09/2012.
 //  Copyright (c) 2012 Andrew O'Connor. All rights reserved.
 //
 
-#import "CompositeTask.h"
+#import "Composite.h"
 
-@implementation CompositeTask
+@implementation Composite
 
 - (id)init
 {

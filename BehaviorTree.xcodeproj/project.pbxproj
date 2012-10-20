@@ -16,11 +16,11 @@
 		49454975160527FD001F93A4 /* libBehaviorTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945495C160527FC001F93A4 /* libBehaviorTree.a */; };
 		4945497B160527FD001F93A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49454979160527FD001F93A4 /* InfoPlist.strings */; };
 		4945498D16052999001F93A4 /* libKiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945498C16052999001F93A4 /* libKiwi.a */; };
-		4945499416052BE3001F93A4 /* CompositeTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499316052BE3001F93A4 /* CompositeTask.m */; };
+		4945499416052BE3001F93A4 /* Composite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499316052BE3001F93A4 /* Composite.m */; };
 		4945499616052CC1001F93A4 /* SelectorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499516052CC1001F93A4 /* SelectorSpec.m */; };
 		4945499916052D81001F93A4 /* Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499816052D81001F93A4 /* Selector.m */; };
 		4945499C16052F05001F93A4 /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499B16052F05001F93A4 /* Action.m */; };
-		4945499E16053026001F93A4 /* CompositeTaskSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499D16053026001F93A4 /* CompositeTaskSpec.m */; };
+		4945499E16053026001F93A4 /* CompositeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499D16053026001F93A4 /* CompositeSpec.m */; };
 		494549A116053679001F93A4 /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A016053679001F93A4 /* Sequence.m */; };
 		494549A3160536B1001F93A4 /* SequenceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A2160536B1001F93A4 /* SequenceSpec.m */; };
 		4985E1A81629936700571D2D /* BehaviorReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4985E1A71629936700571D2D /* BehaviorReader.m */; };
@@ -79,14 +79,14 @@
 		4945497A160527FD001F93A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4945498C16052999001F93A4 /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = "../Frameworks/Kiwi/build/Release-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
 		4945499116052AFC001F93A4 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		4945499216052BE3001F93A4 /* CompositeTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompositeTask.h; sourceTree = "<group>"; };
-		4945499316052BE3001F93A4 /* CompositeTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompositeTask.m; sourceTree = "<group>"; };
+		4945499216052BE3001F93A4 /* Composite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Composite.h; sourceTree = "<group>"; };
+		4945499316052BE3001F93A4 /* Composite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Composite.m; sourceTree = "<group>"; };
 		4945499516052CC1001F93A4 /* SelectorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectorSpec.m; sourceTree = "<group>"; };
 		4945499716052D81001F93A4 /* Selector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Selector.h; sourceTree = "<group>"; };
 		4945499816052D81001F93A4 /* Selector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Selector.m; sourceTree = "<group>"; };
 		4945499A16052F05001F93A4 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		4945499B16052F05001F93A4 /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
-		4945499D16053026001F93A4 /* CompositeTaskSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompositeTaskSpec.m; sourceTree = "<group>"; };
+		4945499D16053026001F93A4 /* CompositeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompositeSpec.m; sourceTree = "<group>"; };
 		4945499F16053679001F93A4 /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequence.h; sourceTree = "<group>"; };
 		494549A016053679001F93A4 /* Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sequence.m; sourceTree = "<group>"; };
 		494549A2160536B1001F93A4 /* SequenceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequenceSpec.m; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		49AC07301610F3BF00516DDD /* Condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Condition.h; sourceTree = "<group>"; };
 		49AC07311610F3BF00516DDD /* Condition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Condition.m; sourceTree = "<group>"; };
 		49AC07331610F48600516DDD /* ConditionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConditionSpec.m; sourceTree = "<group>"; };
-		49BC784C1631CF5C00F2516A /* libNSLoggerClient.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libNSLoggerClient.a; path = "build/Release-iphoneos/libNSLoggerClient.a"; sourceTree = "<group>"; };
+		49BC784C1631CF5C00F2516A /* libNSLoggerClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNSLoggerClient.a; path = "build/Release-iphoneos/libNSLoggerClient.a"; sourceTree = "<group>"; };
 		49BC784E1631CF7700F2516A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		49BC78501631CF7F00F2516A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		49C724B316307CA5007C6900 /* BTreeLogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTreeLogging.h; sourceTree = "<group>"; };
@@ -187,8 +187,8 @@
 				49454964160527FC001F93A4 /* BehaviorTree.h */,
 				49454966160527FC001F93A4 /* BehaviorTree.m */,
 				49C724B316307CA5007C6900 /* BTreeLogging.h */,
-				4945499216052BE3001F93A4 /* CompositeTask.h */,
-				4945499316052BE3001F93A4 /* CompositeTask.m */,
+				4945499216052BE3001F93A4 /* Composite.h */,
+				4945499316052BE3001F93A4 /* Composite.m */,
 				49AC0712160F24AF00516DDD /* Concurrent.h */,
 				49AC0713160F24AF00516DDD /* Concurrent.m */,
 				49AC07301610F3BF00516DDD /* Condition.h */,
@@ -217,7 +217,7 @@
 			children = (
 				4985E1A31629930400571D2D /* BehaviorReaderSpec.m */,
 				49DAC81F16064E7100BD1DE5 /* BehaviorTreeSpec.m */,
-				4945499D16053026001F93A4 /* CompositeTaskSpec.m */,
+				4945499D16053026001F93A4 /* CompositeSpec.m */,
 				49AC0716160F24DC00516DDD /* ConcurrentSpec.m */,
 				49AC07331610F48600516DDD /* ConditionSpec.m */,
 				49FE27BA1629B79100916552 /* Resources */,
@@ -373,7 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49454967160527FC001F93A4 /* BehaviorTree.m in Sources */,
-				4945499416052BE3001F93A4 /* CompositeTask.m in Sources */,
+				4945499416052BE3001F93A4 /* Composite.m in Sources */,
 				4945499916052D81001F93A4 /* Selector.m in Sources */,
 				4945499C16052F05001F93A4 /* Action.m in Sources */,
 				494549A116053679001F93A4 /* Sequence.m in Sources */,
@@ -390,7 +390,7 @@
 			files = (
 				49FE27B11629969200916552 /* BehaviorReaderSpec.m in Sources */,
 				4945499616052CC1001F93A4 /* SelectorSpec.m in Sources */,
-				4945499E16053026001F93A4 /* CompositeTaskSpec.m in Sources */,
+				4945499E16053026001F93A4 /* CompositeSpec.m in Sources */,
 				494549A3160536B1001F93A4 /* SequenceSpec.m in Sources */,
 				49DAC82016064E7100BD1DE5 /* BehaviorTreeSpec.m in Sources */,
 				49AC0717160F24DC00516DDD /* ConcurrentSpec.m in Sources */,

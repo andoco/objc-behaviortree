@@ -51,7 +51,7 @@
 }
 
 -(id) buildCompositeTask:(Class)type data:(NSDictionary*)data {
-    CompositeTask *task = [[type alloc] init];
+    Composite *task = [[type alloc] init];
 
 	NSDictionary *children = data[@"children"];
 		
@@ -77,7 +77,7 @@
 }
 
 -(BOOL) isCompositeTask:(Class)type {
-    return [type isSubclassOfClass:[CompositeTask class]];
+    return [type isSubclassOfClass:[Composite class]];
 }
 
 -(BOOL) isDecoratorTask:(Class)type {

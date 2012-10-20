@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Andrew O'Connor. All rights reserved.
 //
 
-#import "CompositeTask.h"
+#import "Composite.h"
 
-@interface Sequence : CompositeTask
+@interface Sequence : Composite
 
 @end
