@@ -25,6 +25,17 @@
 		494549A3160536B1001F93A4 /* SequenceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A2160536B1001F93A4 /* SequenceSpec.m */; };
 		4985E1A81629936700571D2D /* BehaviorReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4985E1A71629936700571D2D /* BehaviorReader.m */; };
 		4985E1AA162994C200571D2D /* action.json in Resources */ = {isa = PBXBuildFile; fileRef = 4985E1A9162994C200571D2D /* action.json */; };
+		4998C467163494FF00E38F3C /* BehaviorTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 49454966160527FC001F93A4 /* BehaviorTree.m */; };
+		4998C468163494FF00E38F3C /* Composite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499316052BE3001F93A4 /* Composite.m */; };
+		4998C469163494FF00E38F3C /* Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499816052D81001F93A4 /* Selector.m */; };
+		4998C46A163494FF00E38F3C /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499B16052F05001F93A4 /* Action.m */; };
+		4998C46B163494FF00E38F3C /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A016053679001F93A4 /* Sequence.m */; };
+		4998C46C163494FF00E38F3C /* Concurrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC0713160F24AF00516DDD /* Concurrent.m */; };
+		4998C46D163494FF00E38F3C /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC072E1610F15500516DDD /* Task.m */; };
+		4998C46E163494FF00E38F3C /* Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC07311610F3BF00516DDD /* Condition.m */; };
+		4998C46F163494FF00E38F3C /* BehaviorReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4985E1A71629936700571D2D /* BehaviorReader.m */; };
+		4998C471163494FF00E38F3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945495F160527FC001F93A4 /* Foundation.framework */; };
+		4998C473163494FF00E38F3C /* BehaviorTree.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49454964160527FC001F93A4 /* BehaviorTree.h */; };
 		49AC0714160F24AF00516DDD /* Concurrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC0713160F24AF00516DDD /* Concurrent.m */; };
 		49AC0717160F24DC00516DDD /* ConcurrentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC0716160F24DC00516DDD /* ConcurrentSpec.m */; };
 		49AC072F1610F15600516DDD /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC072E1610F15500516DDD /* Task.m */; };
@@ -64,6 +75,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4998C472163494FF00E38F3C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				4998C473163494FF00E38F3C /* BehaviorTree.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +115,7 @@
 		4985E1A61629936700571D2D /* BehaviorReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BehaviorReader.h; sourceTree = "<group>"; };
 		4985E1A71629936700571D2D /* BehaviorReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BehaviorReader.m; sourceTree = "<group>"; };
 		4985E1A9162994C200571D2D /* action.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = action.json; sourceTree = "<group>"; };
+		4998C477163494FF00E38F3C /* libBehaviorTree-verbose.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libBehaviorTree-verbose.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AC0712160F24AF00516DDD /* Concurrent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Concurrent.h; sourceTree = "<group>"; };
 		49AC0713160F24AF00516DDD /* Concurrent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Concurrent.m; sourceTree = "<group>"; };
 		49AC0716160F24DC00516DDD /* ConcurrentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentSpec.m; sourceTree = "<group>"; };
@@ -141,6 +163,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4998C470163494FF00E38F3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4998C471163494FF00E38F3C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -159,6 +189,7 @@
 			children = (
 				4945495C160527FC001F93A4 /* libBehaviorTree.a */,
 				4945496D160527FD001F93A4 /* BehaviorTreeTests.octest */,
+				4998C477163494FF00E38F3C /* libBehaviorTree-verbose.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -309,6 +340,23 @@
 			productReference = 4945496D160527FD001F93A4 /* BehaviorTreeTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		4998C465163494FF00E38F3C /* BehaviorTree-verbose */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4998C474163494FF00E38F3C /* Build configuration list for PBXNativeTarget "BehaviorTree-verbose" */;
+			buildPhases = (
+				4998C466163494FF00E38F3C /* Sources */,
+				4998C470163494FF00E38F3C /* Frameworks */,
+				4998C472163494FF00E38F3C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BehaviorTree-verbose";
+			productName = BehaviorTree;
+			productReference = 4998C477163494FF00E38F3C /* libBehaviorTree-verbose.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -332,6 +380,7 @@
 			targets = (
 				4945495B160527FC001F93A4 /* BehaviorTree */,
 				4945496C160527FD001F93A4 /* BehaviorTreeTests */,
+				4998C465163494FF00E38F3C /* BehaviorTree-verbose */,
 			);
 		};
 /* End PBXProject section */
@@ -398,6 +447,22 @@
 				49FE27B61629B74100916552 /* TestAction.m in Sources */,
 				49FE27B91629B75000916552 /* TestCondition.m in Sources */,
 				49FE27CD162A292400916552 /* TestEntity.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4998C466163494FF00E38F3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4998C467163494FF00E38F3C /* BehaviorTree.m in Sources */,
+				4998C468163494FF00E38F3C /* Composite.m in Sources */,
+				4998C469163494FF00E38F3C /* Selector.m in Sources */,
+				4998C46A163494FF00E38F3C /* Action.m in Sources */,
+				4998C46B163494FF00E38F3C /* Sequence.m in Sources */,
+				4998C46C163494FF00E38F3C /* Concurrent.m in Sources */,
+				4998C46D163494FF00E38F3C /* Task.m in Sources */,
+				4998C46E163494FF00E38F3C /* Condition.m in Sources */,
+				4998C46F163494FF00E38F3C /* BehaviorReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,10 +541,7 @@
 				DSTROOT = /tmp/BehaviorTree.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BehaviorTree/BehaviorTree-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					BTREE_NSLogger,
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -537,6 +599,40 @@
 			};
 			name = Release;
 		};
+		4998C475163494FF00E38F3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BehaviorTree.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BehaviorTree/BehaviorTree-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					BTREE_NSLogger,
+				);
+				HEADER_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "BehaviorTree-verbose";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/**";
+			};
+			name = Debug;
+		};
+		4998C476163494FF00E38F3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BehaviorTree.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BehaviorTree/BehaviorTree-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "BehaviorTree-verbose";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/**";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -563,6 +659,15 @@
 			buildConfigurations = (
 				49454985160527FD001F93A4 /* Debug */,
 				49454986160527FD001F93A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4998C474163494FF00E38F3C /* Build configuration list for PBXNativeTarget "BehaviorTree-verbose" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4998C475163494FF00E38F3C /* Debug */,
+				4998C476163494FF00E38F3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

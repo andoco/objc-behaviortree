@@ -16,7 +16,6 @@
 		494549CD160548EC001F93A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549CC160548EC001F93A4 /* ViewController.m */; };
 		494549D0160548EC001F93A4 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494549CE160548EC001F93A4 /* ViewController_iPhone.xib */; };
 		494549D3160548EC001F93A4 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494549D1160548EC001F93A4 /* ViewController_iPad.xib */; };
-		494549DA1605AD9D001F93A4 /* libBehaviorTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 494549D91605AD9D001F93A4 /* libBehaviorTree.a */; };
 		494549DE1605AE62001F93A4 /* Seek.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549DD1605AE62001F93A4 /* Seek.m */; };
 		494549E11605AEC4001F93A4 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549E01605AEC4001F93A4 /* Food.m */; };
 		494549E71605AEF9001F93A4 /* Prey.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549E61605AEF9001F93A4 /* Prey.m */; };
@@ -27,6 +26,7 @@
 		494549F61605BE6A001F93A4 /* Predator.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549F51605BE6A001F93A4 /* Predator.m */; };
 		4964A5801605C1D800FE3588 /* TargetFood.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964A57F1605C1D700FE3588 /* TargetFood.m */; };
 		4964A5841605C37700FE3588 /* TargetPrey.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964A5831605C37700FE3588 /* TargetPrey.m */; };
+		4998C48316349A8C00E38F3C /* libBehaviorTree-verbose.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4998C48216349A8C00E38F3C /* libBehaviorTree-verbose.a */; };
 		49C7245E163072FE007C6900 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C7245D163072FE007C6900 /* CFNetwork.framework */; };
 		49C7246116307314007C6900 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C7246016307314007C6900 /* SystemConfiguration.framework */; };
 		49C724B21630798C007C6900 /* libNSLoggerClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C724B11630798C007C6900 /* libNSLoggerClient.a */; };
@@ -50,7 +50,6 @@
 		494549CC160548EC001F93A4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		494549CF160548EC001F93A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		494549D2160548EC001F93A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
-		494549D91605AD9D001F93A4 /* libBehaviorTree.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBehaviorTree.a; path = "../../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos/libBehaviorTree.a"; sourceTree = "<group>"; };
 		494549DC1605AE62001F93A4 /* Seek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seek.h; sourceTree = "<group>"; };
 		494549DD1605AE62001F93A4 /* Seek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seek.m; sourceTree = "<group>"; };
 		494549DF1605AEC4001F93A4 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
@@ -71,9 +70,10 @@
 		4964A57F1605C1D700FE3588 /* TargetFood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetFood.m; sourceTree = "<group>"; };
 		4964A5821605C37700FE3588 /* TargetPrey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetPrey.h; sourceTree = "<group>"; };
 		4964A5831605C37700FE3588 /* TargetPrey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetPrey.m; sourceTree = "<group>"; };
+		4998C48216349A8C00E38F3C /* libBehaviorTree-verbose.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libBehaviorTree-verbose.a"; path = "build/Release-iphoneos/libBehaviorTree-verbose.a"; sourceTree = "<group>"; };
 		49C7245D163072FE007C6900 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		49C7246016307314007C6900 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		49C724B11630798C007C6900 /* libNSLoggerClient.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libNSLoggerClient.a; path = "NSLoggerClient/build/Release-iphoneos/libNSLoggerClient.a"; sourceTree = "<group>"; };
+		49C724B11630798C007C6900 /* libNSLoggerClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNSLoggerClient.a; path = "NSLoggerClient/build/Release-iphoneos/libNSLoggerClient.a"; sourceTree = "<group>"; };
 		49DAC7F21605E30700BD1DE5 /* PredatorDetected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PredatorDetected.h; sourceTree = "<group>"; };
 		49DAC7F31605E30700BD1DE5 /* PredatorDetected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredatorDetected.m; sourceTree = "<group>"; };
 		49DAC7F61605E3A400BD1DE5 /* Flee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flee.h; sourceTree = "<group>"; };
@@ -87,10 +87,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4998C48316349A8C00E38F3C /* libBehaviorTree-verbose.a in Frameworks */,
 				49C724B21630798C007C6900 /* libNSLoggerClient.a in Frameworks */,
 				49C7246116307314007C6900 /* SystemConfiguration.framework in Frameworks */,
 				49C7245E163072FE007C6900 /* CFNetwork.framework in Frameworks */,
-				494549DA1605AD9D001F93A4 /* libBehaviorTree.a in Frameworks */,
 				494549BA160548EC001F93A4 /* UIKit.framework in Frameworks */,
 				494549BC160548EC001F93A4 /* Foundation.framework in Frameworks */,
 				494549BE160548EC001F93A4 /* CoreGraphics.framework in Frameworks */,
@@ -120,13 +120,13 @@
 		494549B8160548EC001F93A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				494549D91605AD9D001F93A4 /* libBehaviorTree.a */,
+				4998C48216349A8C00E38F3C /* libBehaviorTree-verbose.a */,
 				49C724B11630798C007C6900 /* libNSLoggerClient.a */,
-				49C7246016307314007C6900 /* SystemConfiguration.framework */,
 				49C7245D163072FE007C6900 /* CFNetwork.framework */,
-				494549B9160548EC001F93A4 /* UIKit.framework */,
-				494549BB160548EC001F93A4 /* Foundation.framework */,
 				494549BD160548EC001F93A4 /* CoreGraphics.framework */,
+				494549BB160548EC001F93A4 /* Foundation.framework */,
+				49C7246016307314007C6900 /* SystemConfiguration.framework */,
+				494549B9160548EC001F93A4 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
