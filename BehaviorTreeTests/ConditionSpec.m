@@ -99,14 +99,35 @@ describe(@"Condition", ^{
                 [[condition should] receive:@selector(evaluate:) andReturn:theValue(YES)];
             });
 
-            it(@"should start task", ^{
-                [[task should] receive:@selector(start:)];
-                [condition run:blackboard];
-            });
-
             it(@"should run task", ^{
                 [[task should] receive:@selector(run:)];
                 [condition run:blackboard];
+            });
+            
+            context(@"when task status is Ready", ^{
+                
+                beforeEach(^{
+                    [[task should] receive:@selector(status) andReturn:theValue(Ready)];
+                });
+                
+                it(@"should start task", ^{
+                    [[task should] receive:@selector(start:)];
+                    [condition run:blackboard];
+                });
+
+            });
+            
+            context(@"when task status is Running", ^{
+
+                beforeEach(^{
+                    [[task should] receive:@selector(status) andReturn:theValue(Running)];
+                });
+
+                it(@"should not start task", ^{
+                    [[task shouldNot] receive:@selector(start:)];
+                    [condition run:blackboard];
+                });
+
             });
             
             context(@"when task returns Success", ^{
@@ -123,7 +144,7 @@ describe(@"Condition", ^{
                 it(@"should return Success", ^{
                     [[theValue([condition run:blackboard]) should] equal:theValue(Success)];
                 });
-                
+                                
             });
             
             context(@"when task returns Failure", ^{

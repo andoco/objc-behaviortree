@@ -49,14 +49,17 @@
     
     DLog(@"Condition met for %@", self);
     
-    [_task start:blackboard];
+    if (_task.status == Ready)
+        [_task start:blackboard];
     
     RunResult result = [_task run:blackboard];
     
-    if (result == Success || result == Failure)
+    if (result == Success || result == Failure) {
+        [_task stop:blackboard];
         _task.status = Ready;
-    else if (result == Pending)
+    } else if (result == Pending) {
         _task.status = Running;
+    }
     
     return result;
 }
