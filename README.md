@@ -19,4 +19,6 @@ Logs to console window using standard NSLog
  
     BTree_NSLogger
     
-Logs to an NSLogger client using the NSLogger client library, which is much faster than using NSLog. See fpillet/NSLogger for more details.
+Logs to an [NSLogger] client using the [NSLogger] client library, which is much faster than using NSLog.
+
+[NSLogger]: https://github.com/fpillet/NSLogger
