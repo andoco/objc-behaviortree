@@ -41,16 +41,23 @@ describe(@"Condition", ^{
     
     context(@"when started", ^{
         
-        it(@"should start task", ^{
-            [[task should] receive:@selector(start:)];
+        it(@"should not start task", ^{
+            [[task shouldNot] receive:@selector(start:)];
             [condition start:blackboard];
         });
         
     });
     
     context(@"when stopped", ^{
+        
+        it(@"should not stop task if task is not Running", ^{
+            [[task should] receive:@selector(status) andReturn:theValue(Ready)];
+            [[task shouldNot] receive:@selector(stop:)];
+            [condition stop:blackboard];
+        });
 
-        it(@"should stop task", ^{
+        it(@"should stop task if task is Running", ^{
+            [[task should] receive:@selector(status) andReturn:theValue(Running)];
             [[task should] receive:@selector(stop:)];
             [condition stop:blackboard];
         });
@@ -75,8 +82,13 @@ describe(@"Condition", ^{
                 [[theValue([condition run:blackboard]) should] equal:theValue(Failure)];
             });
             
+            it(@"should not start task", ^{
+                [[task shouldNot] receive:@selector(start:)];
+                [condition run:blackboard];
+            });
+            
             it(@"should not run task", ^{
-                [[task shouldNot] receive:@selector(start)];
+                [[task shouldNot] receive:@selector(run:)];
                 [condition run:blackboard];
             });
         });
@@ -87,24 +99,65 @@ describe(@"Condition", ^{
                 [[condition should] receive:@selector(evaluate:) andReturn:theValue(YES)];
             });
 
+            it(@"should start task", ^{
+                [[task should] receive:@selector(start:)];
+                [condition run:blackboard];
+            });
+
             it(@"should run task", ^{
                 [[task should] receive:@selector(run:)];
                 [condition run:blackboard];
             });
             
-            it(@"should return Success if task returns Success", ^{
-                [[task should] receive:@selector(run:) andReturn:theValue(Success)];
-                [[theValue([condition run:blackboard]) should] equal:theValue(Success)];
+            context(@"when task returns Success", ^{
+                
+                beforeEach(^{
+                    [[task should] receive:@selector(run:) andReturn:theValue(Success)];
+                });
+                
+                it(@"should set task status to Ready", ^{
+                    [[task should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    [condition run:blackboard];
+                });
+                
+                it(@"should return Success", ^{
+                    [[theValue([condition run:blackboard]) should] equal:theValue(Success)];
+                });
+                
             });
+            
+            context(@"when task returns Failure", ^{
 
-            it(@"should return Failure if task returns Failure", ^{
-                [[task should] receive:@selector(run:) andReturn:theValue(Failure)];
-                [[theValue([condition run:blackboard]) should] equal:theValue(Failure)];
+                beforeEach(^{
+                    [[task should] receive:@selector(run:) andReturn:theValue(Failure)];
+                });
+                
+                it(@"should set task status to Ready", ^{
+                    [[task should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    [condition run:blackboard];
+                });
+
+                it(@"should return Failure", ^{
+                    [[theValue([condition run:blackboard]) should] equal:theValue(Failure)];
+                });
+
             });
+            
+            context(@"when task returns Pending", ^{
 
-            it(@"should return Pending if task returns Pending", ^{
-                [[task should] receive:@selector(run:) andReturn:theValue(Pending)];
-                [[theValue([condition run:blackboard]) should] equal:theValue(Pending)];
+                beforeEach(^{
+                    [[task should] receive:@selector(run:) andReturn:theValue(Pending)];
+                });
+                
+                it(@"should set task status to Running", ^{
+                    [[task should] receive:@selector(setStatus:) withArguments:theValue(Running)];
+                    [condition run:blackboard];
+                });
+
+                it(@"should return Pending", ^{
+                    [[theValue([condition run:blackboard]) should] equal:theValue(Pending)];
+                });
+
             });
 
         });

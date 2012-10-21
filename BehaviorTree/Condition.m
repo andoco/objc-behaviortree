@@ -35,14 +35,10 @@
     return self;
 }
 
--(void) start:(NSMutableDictionary*)blackboard {
-    [super start:blackboard];
-    [_task start:blackboard];
-}
-
 -(void) stop:(NSMutableDictionary*)blackboard {
     [super stop:blackboard];
-    [_task stop:blackboard];
+    if (_task.status == Running)
+        [_task stop:blackboard];
 }
 
 -(RunResult) run:(NSMutableDictionary *)blackboard {
@@ -53,7 +49,16 @@
     
     DLog(@"Condition met for %@", self);
     
-    return [_task run:blackboard];
+    [_task start:blackboard];
+    
+    RunResult result = [_task run:blackboard];
+    
+    if (result == Success || result == Failure)
+        _task.status = Ready;
+    else if (result == Pending)
+        _task.status = Running;
+    
+    return result;
 }
 
 -(BOOL) evaluate:(NSMutableDictionary*)blackboard {
