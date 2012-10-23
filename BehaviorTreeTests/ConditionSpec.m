@@ -136,6 +136,11 @@ describe(@"Condition", ^{
                     [[task should] receive:@selector(run:) andReturn:theValue(Success)];
                 });
                 
+                it(@"should stop task", ^{
+                    [[task should] receive:@selector(stop:)];
+                    [condition run:blackboard];
+                });
+                
                 it(@"should set task status to Ready", ^{
                     [[task should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
                     [condition run:blackboard];
@@ -144,7 +149,7 @@ describe(@"Condition", ^{
                 it(@"should return Success", ^{
                     [[theValue([condition run:blackboard]) should] equal:theValue(Success)];
                 });
-                                
+                
             });
             
             context(@"when task returns Failure", ^{
@@ -152,7 +157,12 @@ describe(@"Condition", ^{
                 beforeEach(^{
                     [[task should] receive:@selector(run:) andReturn:theValue(Failure)];
                 });
-                
+
+                it(@"should stop task", ^{
+                    [[task should] receive:@selector(stop:)];
+                    [condition run:blackboard];
+                });
+
                 it(@"should set task status to Ready", ^{
                     [[task should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
                     [condition run:blackboard];
@@ -168,6 +178,11 @@ describe(@"Condition", ^{
 
                 beforeEach(^{
                     [[task should] receive:@selector(run:) andReturn:theValue(Pending)];
+                });
+                
+                it(@"should not stop task", ^{
+                    [[task shouldNot] receive:@selector(stop:)];
+                    [condition run:blackboard];
                 });
                 
                 it(@"should set task status to Running", ^{

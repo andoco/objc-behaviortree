@@ -132,6 +132,68 @@ describe(@"Sequence", ^{
             [[task2 should] receive:@selector(stop:)];
             [[theValue([sequence run:blackboard]) should] equal:theValue(Failure)];
         });
+        
+        context(@"a child is already Running", ^{
+            
+            __block id task1;
+            __block id task2;
+            
+            beforeEach(^{
+                task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+                task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+                
+                [sequence addChild:task1];
+                [sequence addChild:task2];
+                
+                [[task1 stubAndReturn:theValue(Success)] run:blackboard];
+                [[task2 stubAndReturn:theValue(Pending)] run:blackboard];
+                [sequence run:blackboard];
+            });
+            
+            context(@"a child returns Pending", ^{
+                
+                it(@"should stop already running child if not same as child", ^{
+                    [task1 clearStubs];
+                    [task2 clearStubs];
+                    
+                    [[task1 should] receive:@selector(run:) andReturn:theValue(Pending)];
+                    [[task2 should] receive:@selector(stop:)];
+                    [[task2 should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    
+                    [sequence run:blackboard];
+                });
+                
+                it(@"should not stop already running child if same as child", ^{
+                    [[task2 shouldNot] receive:@selector(stop:)];
+                    [[task2 shouldNot] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    
+                    [sequence run:blackboard];
+                });
+            });
+            
+            context(@"a child returns Failure", ^{
+                
+                it(@"should stop already running child if not same as child", ^{
+                    [task1 clearStubs];
+                    [task2 clearStubs];
+                    
+                    [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
+                    [[task2 should] receive:@selector(stop:)];
+                    [[task2 should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    
+                    [sequence run:blackboard];
+                });
+                
+                it(@"should not stop already running child if same as child", ^{
+                    [[task2 shouldNot] receive:@selector(stop:)];
+                    [[task2 shouldNot] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    
+                    [sequence run:blackboard];
+                });
+            });
+
+        });
+
     });
 });
 

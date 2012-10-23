@@ -34,8 +34,10 @@
 
 -(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task withBlackboard:(NSMutableDictionary*)blackboard {
     if (result == Success || result == Pending) {
-        if (running_)
+        if (running_ && running_ != task) {
             [running_ stop:blackboard];
+            running_.status = Ready;
+        }
         
         if (result == Pending)
             running_ = task;
