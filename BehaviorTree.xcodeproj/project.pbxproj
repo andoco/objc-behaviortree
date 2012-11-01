@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49243ED31642EECB0040271B /* prefixed.json in Resources */ = {isa = PBXBuildFile; fileRef = 49243ED21642EECB0040271B /* prefixed.json */; };
+		49243ED71642EF1A0040271B /* AOPrefixedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 49243ED61642EF1A0040271B /* AOPrefixedAction.m */; };
 		49454960160527FC001F93A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4945495F160527FC001F93A4 /* Foundation.framework */; };
 		49454965160527FC001F93A4 /* BehaviorTree.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49454964160527FC001F93A4 /* BehaviorTree.h */; };
 		49454967160527FC001F93A4 /* BehaviorTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 49454966160527FC001F93A4 /* BehaviorTree.m */; };
@@ -88,6 +90,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		49243ED21642EECB0040271B /* prefixed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = prefixed.json; sourceTree = "<group>"; };
+		49243ED51642EF190040271B /* AOPrefixedAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOPrefixedAction.h; sourceTree = "<group>"; };
+		49243ED61642EF1A0040271B /* AOPrefixedAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOPrefixedAction.m; sourceTree = "<group>"; };
 		4945495C160527FC001F93A4 /* libBehaviorTree.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBehaviorTree.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4945495F160527FC001F93A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49454963160527FC001F93A4 /* BehaviorTree-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BehaviorTree-Prefix.pch"; sourceTree = "<group>"; };
@@ -273,6 +278,8 @@
 		49FE27B31629B72900916552 /* TestTasks */ = {
 			isa = PBXGroup;
 			children = (
+				49243ED51642EF190040271B /* AOPrefixedAction.h */,
+				49243ED61642EF1A0040271B /* AOPrefixedAction.m */,
 				49FE27B41629B74100916552 /* TestAction.h */,
 				49FE27B51629B74100916552 /* TestAction.m */,
 				49FE27B71629B75000916552 /* TestCondition.h */,
@@ -285,9 +292,10 @@
 			isa = PBXGroup;
 			children = (
 				4985E1A9162994C200571D2D /* action.json */,
+				49FE27BF1629BE2900916552 /* condition.json */,
+				49243ED21642EECB0040271B /* prefixed.json */,
 				49FE27BB1629B7E200916552 /* selector.json */,
 				49FE27BD1629BCEF00916552 /* sequence.json */,
-				49FE27BF1629BE2900916552 /* condition.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -395,6 +403,7 @@
 				49FE27BC1629B7E200916552 /* selector.json in Resources */,
 				49FE27BE1629BCEF00916552 /* sequence.json in Resources */,
 				49FE27C01629BE2900916552 /* condition.json in Resources */,
+				49243ED31642EECB0040271B /* prefixed.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +456,7 @@
 				49FE27B61629B74100916552 /* TestAction.m in Sources */,
 				49FE27B91629B75000916552 /* TestCondition.m in Sources */,
 				49FE27CD162A292400916552 /* TestEntity.m in Sources */,
+				49243ED71642EF1A0040271B /* AOPrefixedAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

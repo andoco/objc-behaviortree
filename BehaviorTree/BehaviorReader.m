@@ -28,6 +28,20 @@
 
 @implementation BehaviorReader
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _prefixes = [NSArray array];
+        [self registerPrefix:@"AO"];
+    }
+    return self;
+}
+
+-(void) registerPrefix:(NSString*)prefix {
+    _prefixes = [_prefixes arrayByAddingObject:prefix];
+}
+
 -(id) buildTreeWithFile:(NSString*)jsonPath {
     NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
     
@@ -87,8 +101,19 @@
 
 -(Class) taskClass:(NSDictionary*)data {
 	Class type = NSClassFromString(data[@"type"]);
+    
+    if (!type) {
+        for (NSString *prefix in _prefixes) {
+            NSString *prefixedType = [prefix stringByAppendingString:data[@"type"]];
+            type = NSClassFromString(prefixedType);
+            if (type)
+                break;
+        }
+    }
+    
     if (!type)
         [NSException raise:@"Unknown task type" format:@"%@", data[@"type"]];
+    
     return type;
 }
 

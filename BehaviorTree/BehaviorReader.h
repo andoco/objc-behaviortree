@@ -26,6 +26,9 @@
 
 @interface BehaviorReader : NSObject
 
+@property (nonatomic, readonly) NSArray *prefixes;
+
+-(void) registerPrefix:(NSString*)prefix;
 -(id) buildTree:(NSDictionary*)data;
 -(id) buildTreeWithFile:(NSString*)jsonPath;
 

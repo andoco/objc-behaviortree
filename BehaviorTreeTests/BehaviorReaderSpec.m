@@ -23,6 +23,7 @@
  */
 
 #import "Kiwi.h"
+#import "AOPrefixedAction.h"
 #import "BehaviorTree.h"
 #import "BehaviorReader.h"
 #import "TestAction.h"
@@ -32,12 +33,34 @@
 SPEC_BEGIN(BehaviorReaderSpec)
 
 describe(@"BehaviorReader", ^{
-    context(@"when reading behavior json", ^{
-        __block BehaviorReader *reader;
-        
-        beforeEach(^{
-            reader = [[BehaviorReader alloc] init];
+    
+    __block BehaviorReader *reader;
+    
+    beforeEach(^{
+        reader = [[BehaviorReader alloc] init];
+    });
+    
+    context(@"when initialized", ^{
+       
+        it(@"prefix AO should be registered", ^{
+            [[theValue(reader.prefixes.count) should] equal:theValue(1)];
+            [[reader.prefixes[0] should] equal:@"AO"];
         });
+        
+    });
+    
+    context(@"when registering prefix", ^{
+        
+        it(@"prefix should be added", ^{
+            [reader registerPrefix:@"AB"];
+            [[theValue(reader.prefixes.count) should] equal:theValue(2)];
+            [[reader.prefixes[0] should] equal:@"AO"];
+            [[reader.prefixes[1] should] equal:@"AB"];
+        });
+        
+    });
+    
+    context(@"when reading behavior json", ^{
         
         it(@"should build task", ^{
             NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"action" ofType:@"json"];
@@ -89,14 +112,29 @@ describe(@"BehaviorReader", ^{
             [[[condition.task class] should] equal:[TestAction class]];
         });
 
-        context(@"and task type not found", ^{
-            it(@"should raise exception", ^{
-                NSDictionary *data = @{@"type":@"UnknownAction"};
+        context(@"and class does not exist for task type string", ^{
+            
+            it(@"should search for type using registered prefixes", ^{
+                [reader registerPrefix:@"AO"];
+
+                NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"prefixed" ofType:@"json"];
+                BehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
                 
-                [[theBlock(^{
-                    [reader buildTree:data];
-                }) should] raiseWithName:@"Unknown task type"];
+                [[[tree.root class] should] equal:[AOPrefixedAction class]];
             });
+            
+            context(@"task type not found in registered prefixes", ^{
+
+                it(@"should raise exception", ^{
+                    NSDictionary *data = @{@"type":@"UnknownAction"};
+                    
+                    [[theBlock(^{
+                        [reader buildTree:data];
+                    }) should] raiseWithName:@"Unknown task type"];
+                });
+
+            });
+            
         });
         
     });
