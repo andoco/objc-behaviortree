@@ -22,8 +22,8 @@
  * THE SOFTWARE.
  */
 
-#import "Composite.h"
+#import "AOComposite.h"
 
-@interface Sequence : Composite
+@interface AOSequence : AOComposite
 
 @end

@@ -22,8 +22,8 @@
  * THE SOFTWARE.
  */
 
-#import "Condition.h"
+#import "AOCondition.h"
 
-@interface TestCondition : Condition
+@interface TestCondition : AOCondition
 
 @end

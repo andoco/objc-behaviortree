@@ -24,11 +24,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Action.h"
+#import "AOAction.h"
 #import "Actor.h"
 #import "World.h"
 
-@interface ActorAction : Action
+@interface ActorAction : AOAction
 
 @property (nonatomic, readonly) Actor *actor;
 -(id) initWithActor:(Actor*)actor;

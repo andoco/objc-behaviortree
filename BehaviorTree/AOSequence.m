@@ -22,27 +22,41 @@
  * THE SOFTWARE.
  */
 
-#import "BehaviorTree.h"
+#import "AOSequence.h"
 
-@implementation BehaviorTree
+@interface AOSequence () {
+    id<AOTask> running_;
+}
 
--(id) initWithRootTask:(id<Task>)root
-{
-    self = [super init];
-    if (self) {
-        _root = root;
+@end
+
+@implementation AOSequence
+
+-(void) didReceiveResult:(RunResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
+    if (result == Failure || result == Pending) {
+        if (running_ && running_ != task) {
+            [running_ stop:(NSMutableDictionary*)blackboard];
+            running_.status = Ready;
+        }
+        
+        if (result == Pending)
+            running_ = task;
+        else
+            running_ = nil;
     }
-    return self;
 }
 
--(void) run {
-    [self runWithBlackboard:[NSMutableDictionary dictionary]];
+-(BOOL) shouldReturnWithResult:(RunResult)result returnResult:(RunResult*)returnResult {
+    if (result == Failure || result == Pending) {
+        *returnResult = result;
+        return YES;
+    }
+    
+    return NO;
 }
 
--(void) runWithBlackboard:(NSMutableDictionary*)blackboard {
-    [_root start:blackboard];
-    [_root run:blackboard];
-    [_root stop:blackboard];
+-(RunResult) defaultReturnResult {
+    return Success;
 }
 
 @end

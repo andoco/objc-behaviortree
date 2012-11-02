@@ -22,9 +22,9 @@
  * THE SOFTWARE.
  */
 
-#import "Composite.h"
+#import "AOComposite.h"
 
-@implementation Composite
+@implementation AOComposite
 
 - (id)init
 {
@@ -35,13 +35,13 @@
     return self;
 }
 
--(id) initWithChildren:(id<Task>)firstArg, ...
+-(id) initWithChildren:(id<AOTask>)firstArg, ...
 {
     self = [self init];
     if (self) {
         va_list args;
         va_start(args, firstArg);
-        for (id<Task> arg = firstArg; arg != nil; arg = va_arg(args, id<Task>))
+        for (id<AOTask> arg = firstArg; arg != nil; arg = va_arg(args, id<AOTask>))
         {
             [self addChild:arg];
         }
@@ -53,7 +53,7 @@
 -(RunResult) run:(NSMutableDictionary *)blackboard {
     [super run:blackboard];
     
-    for (id<Task> task in self.children) {
+    for (id<AOTask> task in self.children) {
         DLog(@"Processing child %@", task);
         
         if (task.status == Ready)
@@ -85,11 +85,11 @@
     return [self defaultReturnResult];
 }
 
--(void) addChild:(id<Task>)child {
+-(void) addChild:(id<AOTask>)child {
     _children = [_children arrayByAddingObject:child];
 }
 
--(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task withBlackboard:(NSMutableDictionary*)blackboard {
+-(void) didReceiveResult:(RunResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
     
 }
 

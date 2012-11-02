@@ -22,41 +22,8 @@
  * THE SOFTWARE.
  */
 
-#import "Sequence.h"
+#import "AOComposite.h"
 
-@interface Sequence () {
-    id<Task> running_;
-}
-
-@end
-
-@implementation Sequence
-
--(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task withBlackboard:(NSMutableDictionary*)blackboard {
-    if (result == Failure || result == Pending) {
-        if (running_ && running_ != task) {
-            [running_ stop:(NSMutableDictionary*)blackboard];
-            running_.status = Ready;
-        }
-        
-        if (result == Pending)
-            running_ = task;
-        else
-            running_ = nil;
-    }
-}
-
--(BOOL) shouldReturnWithResult:(RunResult)result returnResult:(RunResult*)returnResult {
-    if (result == Failure || result == Pending) {
-        *returnResult = result;
-        return YES;
-    }
-    
-    return NO;
-}
-
--(RunResult) defaultReturnResult {
-    return Success;
-}
+@interface AOSelector : AOComposite
 
 @end

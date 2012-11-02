@@ -24,8 +24,8 @@
 
 #import "Kiwi.h"
 #import "AOPrefixedAction.h"
-#import "BehaviorTree.h"
-#import "BehaviorReader.h"
+#import "AOBehaviorTree.h"
+#import "AOBehaviorReader.h"
 #import "TestAction.h"
 #import "TestCondition.h"
 #import "TestEntity.h"
@@ -34,10 +34,10 @@ SPEC_BEGIN(BehaviorReaderSpec)
 
 describe(@"BehaviorReader", ^{
     
-    __block BehaviorReader *reader;
+    __block AOBehaviorReader *reader;
     
     beforeEach(^{
-        reader = [[BehaviorReader alloc] init];
+        reader = [[AOBehaviorReader alloc] init];
     });
     
     context(@"when initialized", ^{
@@ -64,14 +64,14 @@ describe(@"BehaviorReader", ^{
         
         it(@"should build task", ^{
             NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"action" ofType:@"json"];
-            BehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
+            AOBehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
             
             [[[tree.root class] should] equal:[TestAction class]];
         });
         
         it(@"should populate task properties", ^{
             NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"action" ofType:@"json"];
-            BehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
+            AOBehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
             
             [[[tree.root class] should] equal:[TestAction class]];
             TestAction *task = tree.root;
@@ -83,10 +83,10 @@ describe(@"BehaviorReader", ^{
                 
         it(@"should build selector", ^{
             NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"selector" ofType:@"json"];
-            BehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
+            AOBehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
             
-            [[[tree.root class] should] equal:[Selector class]];
-            Selector *selector = tree.root;
+            [[[tree.root class] should] equal:[AOSelector class]];
+            AOSelector *selector = tree.root;
             [[theValue(selector.children.count) should] equal:theValue(2)];
             [[[[selector.children objectAtIndex:0] class] should] equal:[TestAction class]];
             [[[[selector.children objectAtIndex:0] class] should] equal:[TestAction class]];
@@ -94,10 +94,10 @@ describe(@"BehaviorReader", ^{
 
         it(@"should build sequence", ^{
             NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"sequence" ofType:@"json"];
-            BehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
+            AOBehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
             
-            [[[tree.root class] should] equal:[Sequence class]];
-            Sequence *selector = tree.root;
+            [[[tree.root class] should] equal:[AOSequence class]];
+            AOSequence *selector = tree.root;
             [[theValue(selector.children.count) should] equal:theValue(2)];
             [[[[selector.children objectAtIndex:0] class] should] equal:[TestAction class]];
             [[[[selector.children objectAtIndex:0] class] should] equal:[TestAction class]];
@@ -105,10 +105,10 @@ describe(@"BehaviorReader", ^{
         
         it(@"should build condition", ^{
             NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"condition" ofType:@"json"];
-            BehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
+            AOBehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
             
             [[[tree.root class] should] equal:[TestCondition class]];
-            Condition *condition = tree.root;
+            AOCondition *condition = tree.root;
             [[[condition.task class] should] equal:[TestAction class]];
         });
 
@@ -118,7 +118,7 @@ describe(@"BehaviorReader", ^{
                 [reader registerPrefix:@"AO"];
 
                 NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"prefixed" ofType:@"json"];
-                BehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
+                AOBehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
                 
                 [[[tree.root class] should] equal:[AOPrefixedAction class]];
             });

@@ -22,15 +22,13 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import "AOComposite.h"
 
-#import "Task.h"
+@interface AOConcurrent : AOComposite
 
-@interface Composite : Task
+@property (nonatomic, assign) NSInteger failureLimit;
+@property (nonatomic, readonly) NSInteger numFailed;
 
-@property (nonatomic, readonly) NSArray *children;
-
--(id) initWithChildren:(id<Task>)firstArg, ... NS_REQUIRES_NIL_TERMINATION;
--(void) addChild:(id<Task>)child;
+-(id) initWithLimit:(NSInteger)limit;
 
 @end

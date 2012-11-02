@@ -24,7 +24,7 @@
 
 #import "Actor.h"
 
-#import "BehaviorTree.h"
+#import "AOBehaviorTree.h"
 
 @implementation Actor
 

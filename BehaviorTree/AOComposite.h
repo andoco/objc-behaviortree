@@ -24,8 +24,13 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Task.h"
+#import "AOTask.h"
 
-@interface Action : Task
+@interface AOComposite : AOTask
+
+@property (nonatomic, readonly) NSArray *children;
+
+-(id) initWithChildren:(id<AOTask>)firstArg, ... NS_REQUIRES_NIL_TERMINATION;
+-(void) addChild:(id<AOTask>)child;
 
 @end

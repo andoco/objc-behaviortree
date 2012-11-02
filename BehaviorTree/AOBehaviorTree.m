@@ -22,8 +22,27 @@
  * THE SOFTWARE.
  */
 
-#import "Composite.h"
+#import "AOBehaviorTree.h"
 
-@interface Selector : Composite
+@implementation AOBehaviorTree
+
+-(id) initWithRootTask:(id<AOTask>)root
+{
+    self = [super init];
+    if (self) {
+        _root = root;
+    }
+    return self;
+}
+
+-(void) run {
+    [self runWithBlackboard:[NSMutableDictionary dictionary]];
+}
+
+-(void) runWithBlackboard:(NSMutableDictionary*)blackboard {
+    [_root start:blackboard];
+    [_root run:blackboard];
+    [_root stop:blackboard];
+}
 
 @end

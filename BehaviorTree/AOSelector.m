@@ -22,14 +22,41 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import "AOSelector.h"
 
-@interface BehaviorReader : NSObject
+@interface AOSelector () {
+    id<AOTask> running_;
+}
 
-@property (nonatomic, readonly) NSArray *prefixes;
+@end
 
--(void) registerPrefix:(NSString*)prefix;
--(id) buildTree:(NSDictionary*)data;
--(id) buildTreeWithFile:(NSString*)jsonPath;
+@implementation AOSelector
+
+-(void) didReceiveResult:(RunResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
+    if (result == Success || result == Pending) {
+        if (running_ && running_ != task) {
+            [running_ stop:blackboard];
+            running_.status = Ready;
+        }
+        
+        if (result == Pending)
+            running_ = task;
+        else
+            running_ = nil;
+    }
+}
+
+-(BOOL) shouldReturnWithResult:(RunResult)result returnResult:(RunResult*)returnResult {
+    if (result == Success || result == Pending) {
+        *returnResult = result;
+        return YES;
+    }
+    
+    return NO;
+}
+
+-(RunResult) defaultReturnResult {
+    return Failure;
+}
 
 @end

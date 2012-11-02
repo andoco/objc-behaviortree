@@ -23,16 +23,16 @@
  */
 
 #import "Kiwi.h"
-#import "Task.h"
-#import "Composite.h"
+#import "AOTask.h"
+#import "AOComposite.h"
 
 SPEC_BEGIN(CompositeSpec)
 
 describe(@"Composite", ^{
-    __block Composite *task;
+    __block AOComposite *task;
     
     beforeEach(^{
-        task = [[Composite alloc] init];
+        task = [[AOComposite alloc] init];
     });
 
     context(@"when initialized", ^{
@@ -44,8 +44,8 @@ describe(@"Composite", ^{
     
     context(@"when child added", ^{
         it(@"should be added to children", ^{
-            id action1 = [KWMock nullMockForProtocol:@protocol(Task)];
-            id action2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id action1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            id action2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             
             [task addChild:action1];
             [task addChild:action2];
@@ -59,10 +59,10 @@ describe(@"Composite", ^{
     context(@"when initialized with children", ^{
         
         it(@"arguments should be added to children", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
-            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             
-            task = [[Composite alloc] initWithChildren:task1, task2, nil];
+            task = [[AOComposite alloc] initWithChildren:task1, task2, nil];
 
             [[theValue(task.children.count) should] equal:theValue(2)];
         });
@@ -76,11 +76,11 @@ describe(@"Composite", ^{
         });
         
         it(@"should start all child tasks with status Ready", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 stubAndReturn:theValue(Ready)] status];
             [[task1 should] receive:@selector(start:)];
             
-            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task2 stubAndReturn:theValue(Running)] status];
             [[task2 shouldNot] receive:@selector(start)];
             
@@ -91,7 +91,7 @@ describe(@"Composite", ^{
         });
         
         it(@"should stop child task that returns Success", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 stubAndReturn:theValue(Ready)] status];
             [[task1 stubAndReturn:theValue(Success)] run:blackboard];
             [[task1 should] receive:@selector(stop:)];
@@ -102,7 +102,7 @@ describe(@"Composite", ^{
         });
         
         it(@"should stop child task that returns Failure", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 stubAndReturn:theValue(Ready)] status];
             [[task1 stubAndReturn:theValue(Failure)] run:blackboard];
             [[task1 should] receive:@selector(stop:)];
@@ -113,7 +113,7 @@ describe(@"Composite", ^{
         });
 
         it(@"should not stop child task that returns Pending", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 stubAndReturn:theValue(Ready)] status];
             [[task1 stubAndReturn:theValue(Pending)] run:blackboard];
             [[task1 shouldNot] receive:@selector(stop)];
@@ -125,7 +125,7 @@ describe(@"Composite", ^{
         
         context(@"child task returns Success", ^{
             it(@"should change task status to Ready", ^{
-                id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+                id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
                 [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
                 [[task1 should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
                 
@@ -137,7 +137,7 @@ describe(@"Composite", ^{
 
         context(@"child task returns Failure", ^{
             it(@"should change task status to Ready", ^{
-                id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+                id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
                 [[task1 should] receive:@selector(run:) andReturn:theValue(Failure)];
                 [[task1 should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
                 
@@ -149,7 +149,7 @@ describe(@"Composite", ^{
 
         context(@"child task returns Pending", ^{
             it(@"should change task status to Running", ^{
-                id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+                id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
                 [[task1 should] receive:@selector(run:) andReturn:theValue(Pending)];
                 [[task1 should] receive:@selector(setStatus:) withArguments:theValue(Running)];
                 

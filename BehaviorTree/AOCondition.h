@@ -22,29 +22,13 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import "AOTask.h"
 
-typedef enum {
-    Ready,
-    Running
-} TaskStatus;
+@interface AOCondition : AOTask
 
-typedef enum {
-    Success,
-    Failure,
-    Pending
-} RunResult;
+@property (nonatomic, readonly) id<AOTask> task;
 
-@protocol Task <NSObject>
-
-@property (nonatomic, assign) TaskStatus status;
-
--(void) start:(NSMutableDictionary*)blackboard;
--(RunResult) run:(NSMutableDictionary*)blackboard;
--(void) stop:(NSMutableDictionary*)blackboard;
-
-@end
-
-@interface Task : NSObject <Task>
+-(id) initWithTask:(id<AOTask>)task;
+-(BOOL) evaluate:(NSMutableDictionary*)blackboard;
 
 @end

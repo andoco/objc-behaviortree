@@ -24,17 +24,17 @@
 
 #import "Kiwi.h"
 
-#import "Action.h"
-#import "Sequence.h"
+#import "AOAction.h"
+#import "AOSequence.h"
 
 SPEC_BEGIN(SequenceSpec)
 
 describe(@"Sequence", ^{
-    __block Sequence *sequence;
+    __block AOSequence *sequence;
     __block NSMutableDictionary *blackboard;
     
     beforeEach(^{
-        sequence = [[Sequence alloc] init];
+        sequence = [[AOSequence alloc] init];
         blackboard = [NSMutableDictionary dictionary];
     });
     
@@ -42,13 +42,13 @@ describe(@"Sequence", ^{
         
         it(@"should run children until child returns Failure", ^{
             
-            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
 
-            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task2 should] receive:@selector(run:) andReturn:theValue(Failure)];
 
-            id task3 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task3 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task3 shouldNot] receive:@selector(run:)];
             
             [sequence addChild:task1];
@@ -59,10 +59,10 @@ describe(@"Sequence", ^{
         });
         
         it(@"should return Success if no child returns Failure", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
             
-            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task2 should] receive:@selector(run:) andReturn:theValue(Success)];
             
             [sequence addChild:task1];
@@ -72,10 +72,10 @@ describe(@"Sequence", ^{
         });
         
         it(@"should return Failure if any child returns Failure", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
 
-            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task2 should] receive:@selector(run:) andReturn:theValue(Failure)];
 
             [sequence addChild:task1];
@@ -85,10 +85,10 @@ describe(@"Sequence", ^{
         });
         
         it(@"should return Pending if child returns Pending", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
             
-            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task2 should] receive:@selector(run:) andReturn:theValue(Pending)];
             
             [sequence addChild:task1];
@@ -98,10 +98,10 @@ describe(@"Sequence", ^{
         });
                 
         it(@"should stop running child if preceding child returns Failure", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 should] receive:@selector(run:) andReturn:theValue(Success) withCount:2];
             
-            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task2 should] receive:@selector(run:) andReturn:theValue(Pending)];
             
             [sequence addChild:task1];
@@ -116,10 +116,10 @@ describe(@"Sequence", ^{
         });
         
         it(@"should stop running child if preceding child returns Pending", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 should] receive:@selector(run:) andReturn:theValue(Success) withCount:2];
             
-            id task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task2 should] receive:@selector(run:) andReturn:theValue(Pending)];
             
             [sequence addChild:task1];
@@ -139,8 +139,8 @@ describe(@"Sequence", ^{
             __block id task2;
             
             beforeEach(^{
-                task1 = [KWMock nullMockForProtocol:@protocol(Task)];
-                task2 = [KWMock nullMockForProtocol:@protocol(Task)];
+                task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
                 
                 [sequence addChild:task1];
                 [sequence addChild:task2];

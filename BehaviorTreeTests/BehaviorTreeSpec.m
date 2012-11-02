@@ -23,18 +23,18 @@
  */
 
 #import "Kiwi.h"
-#import "BehaviorTree.h"
+#import "AOBehaviorTree.h"
 
 SPEC_BEGIN(BehaviorTreeSpec)
 
 describe(@"BehaviorTree", ^{
     context(@"when run", ^{
-        __block BehaviorTree *tree;
+        __block AOBehaviorTree *tree;
         __block id task;
         
         beforeEach(^{
-            task = [KWMock nullMockForProtocol:@protocol(Task)];
-            tree = [[BehaviorTree alloc] initWithRootTask:task];
+            task = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            tree = [[AOBehaviorTree alloc] initWithRootTask:task];
         });
 
         it(@"should start root task", ^{

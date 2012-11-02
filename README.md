@@ -24,13 +24,13 @@ A behavior tree can be built from a JSON representation:
 ]}
 ```
 
-The JSON is read by a _BehaviorReader_ which builds an instance of _BehaviorTree_:
+The JSON is read by _AOBehaviorReader_ which builds an instance of _AOBehaviorTree_:
 
 ```objective-c
 NSString *json;
 ...
-BehaviorReader *reader = [[BehaviorReader alloc] init];
-BehaviorTree *behavior = [reader buildTreeWithFile:json];
+AOBehaviorReader *reader = [[AOBehaviorReader alloc] init];
+AOBehaviorTree *behavior = [reader buildTreeWithFile:json];
 ```
 
 The reader supports setting properties on task instances:
@@ -52,7 +52,7 @@ Task types read in from JSON are used to instantiate an objective-c class. To av
 For example, if you register the prefix "AB" with the BehaviorReader:
 
 ```objective-c
-BehaviorReader *reader = [[BehaviorReader alloc] init];
+AOBehaviorReader *reader = [[AOBehaviorReader alloc] init];
 [reader registerPrefix:@"AB"];
 ```
 

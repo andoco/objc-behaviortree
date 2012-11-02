@@ -22,9 +22,9 @@
  * THE SOFTWARE.
  */
 
-#import "Action.h"
+#import "AOAction.h"
 
-@interface TestAction : Action
+@interface TestAction : AOAction
 
 @property (nonatomic, strong) NSString *stringProperty;
 @property (nonatomic, assign) NSInteger intProperty;

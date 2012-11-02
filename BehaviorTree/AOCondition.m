@@ -22,13 +22,50 @@
  * THE SOFTWARE.
  */
 
-#import "Task.h"
+#import "AOCondition.h"
 
-@interface Condition : Task
+@implementation AOCondition
 
-@property (nonatomic, readonly) id<Task> task;
+-(id) initWithTask:(id<AOTask>)task
+{
+    self = [super init];
+    if (self) {
+        _task = task;
+    }
+    return self;
+}
 
--(id) initWithTask:(id<Task>)task;
--(BOOL) evaluate:(NSMutableDictionary*)blackboard;
+-(void) stop:(NSMutableDictionary*)blackboard {
+    [super stop:blackboard];
+    if (_task.status == Running)
+        [_task stop:blackboard];
+}
+
+-(RunResult) run:(NSMutableDictionary *)blackboard {
+    [super run:blackboard];
+    
+    if (![self evaluate:blackboard])
+        return Failure;
+    
+    DLog(@"Condition met for %@", self);
+    
+    if (_task.status == Ready)
+        [_task start:blackboard];
+    
+    RunResult result = [_task run:blackboard];
+    
+    if (result == Success || result == Failure) {
+        [_task stop:blackboard];
+        _task.status = Ready;
+    } else if (result == Pending) {
+        _task.status = Running;
+    }
+    
+    return result;
+}
+
+-(BOOL) evaluate:(NSMutableDictionary*)blackboard {
+    return YES;
+}
 
 @end

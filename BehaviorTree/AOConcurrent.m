@@ -22,27 +22,42 @@
  * THE SOFTWARE.
  */
 
-#import "Task.h"
+#import "AOConcurrent.h"
 
-@implementation Task
+@interface AOConcurrent () {
+    id<AOTask> running_;
+}
 
-@synthesize status;
+@end
+
+@implementation AOConcurrent
+
+-(id) initWithLimit:(NSInteger)limit
+{
+    self = [super init];
+    if (self) {
+        _failureLimit = limit;
+    }
+    return self;
+}
 
 -(void) start:(NSMutableDictionary*)blackboard {
-    DLog(@"Starting %@", self);
+    [super start:blackboard];
+    _numFailed = 0;
 }
 
--(RunResult) run:(NSMutableDictionary*)blackboard {
-    DLog(@"Running %@", self);
-    return Success;
+-(void) didReceiveResult:(RunResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
+    if (result == Failure)
+        _numFailed++;
+    
+    running_ = result == Pending ? task : nil;
 }
 
--(void) stop:(NSMutableDictionary*)blackboard {
-    DLog(@"Stopping %@", self);    
-}
-
--(NSString*) description {
-    return [NSString stringWithFormat:@"<%@: %p, status=%d>", NSStringFromClass(self.class), self, self.status];
+-(RunResult) defaultReturnResult {
+    if (running_)
+        return Pending;
+    
+    return _failureLimit == 0 || _numFailed < _failureLimit ? Success : Failure;
 }
 
 @end

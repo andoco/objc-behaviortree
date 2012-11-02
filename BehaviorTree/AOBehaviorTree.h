@@ -22,42 +22,20 @@
  * THE SOFTWARE.
  */
 
-#import "Concurrent.h"
+#import <Foundation/Foundation.h>
 
-@interface Concurrent () {
-    id<Task> running_;
-}
+#import "AOAction.h"
+#import "AOConcurrent.h"
+#import "AOCondition.h"
+#import "AOSelector.h"
+#import "AOSequence.h"
 
-@end
+@interface AOBehaviorTree : NSObject
 
-@implementation Concurrent
+@property (nonatomic, readonly) id<AOTask> root;
 
--(id) initWithLimit:(NSInteger)limit
-{
-    self = [super init];
-    if (self) {
-        _failureLimit = limit;
-    }
-    return self;
-}
-
--(void) start:(NSMutableDictionary*)blackboard {
-    [super start:blackboard];
-    _numFailed = 0;
-}
-
--(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task withBlackboard:(NSMutableDictionary*)blackboard {
-    if (result == Failure)
-        _numFailed++;
-    
-    running_ = result == Pending ? task : nil;
-}
-
--(RunResult) defaultReturnResult {
-    if (running_)
-        return Pending;
-    
-    return _failureLimit == 0 || _numFailed < _failureLimit ? Success : Failure;
-}
+-(id) initWithRootTask:(id<AOTask>)root;
+-(void) run;
+-(void) runWithBlackboard:(NSMutableDictionary*)blackboard;
 
 @end

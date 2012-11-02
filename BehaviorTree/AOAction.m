@@ -22,41 +22,8 @@
  * THE SOFTWARE.
  */
 
-#import "Selector.h"
+#import "AOAction.h"
 
-@interface Selector () {
-    id<Task> running_;
-}
-
-@end
-
-@implementation Selector
-
--(void) didReceiveResult:(RunResult)result forTask:(id<Task>)task withBlackboard:(NSMutableDictionary*)blackboard {
-    if (result == Success || result == Pending) {
-        if (running_ && running_ != task) {
-            [running_ stop:blackboard];
-            running_.status = Ready;
-        }
-        
-        if (result == Pending)
-            running_ = task;
-        else
-            running_ = nil;
-    }
-}
-
--(BOOL) shouldReturnWithResult:(RunResult)result returnResult:(RunResult*)returnResult {
-    if (result == Success || result == Pending) {
-        *returnResult = result;
-        return YES;
-    }
-    
-    return NO;
-}
-
--(RunResult) defaultReturnResult {
-    return Failure;
-}
+@implementation AOAction
 
 @end

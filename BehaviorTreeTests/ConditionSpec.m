@@ -24,19 +24,19 @@
 
 #import "Kiwi.h"
 
-#import "Condition.h"
-#import "Task.h"
+#import "AOCondition.h"
+#import "AOTask.h"
 
 SPEC_BEGIN(ConditionSpec)
 
 describe(@"Condition", ^{
-    __block Condition *condition;
+    __block AOCondition *condition;
     __block id task;
     __block NSMutableDictionary *blackboard;
     
     beforeEach(^{
-        task = [KWMock nullMockForProtocol:@protocol(Task)];
-        condition = [[Condition alloc] initWithTask:task];
+        task = [KWMock nullMockForProtocol:@protocol(AOTask)];
+        condition = [[AOCondition alloc] initWithTask:task];
     });
     
     context(@"when started", ^{

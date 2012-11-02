@@ -24,7 +24,7 @@
 
 #import "ViewController.h"
 
-#import "BehaviorTree.h"
+#import "AOBehaviorTree.h"
 #import "Food.h"
 #import "Predator.h"
 #import "Prey.h"

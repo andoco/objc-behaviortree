@@ -22,50 +22,10 @@
  * THE SOFTWARE.
  */
 
-#import "Condition.h"
+#import <Foundation/Foundation.h>
 
-@implementation Condition
+#import "AOTask.h"
 
--(id) initWithTask:(id<Task>)task
-{
-    self = [super init];
-    if (self) {
-        _task = task;
-    }
-    return self;
-}
-
--(void) stop:(NSMutableDictionary*)blackboard {
-    [super stop:blackboard];
-    if (_task.status == Running)
-        [_task stop:blackboard];
-}
-
--(RunResult) run:(NSMutableDictionary *)blackboard {
-    [super run:blackboard];
-    
-    if (![self evaluate:blackboard])
-        return Failure;
-    
-    DLog(@"Condition met for %@", self);
-    
-    if (_task.status == Ready)
-        [_task start:blackboard];
-    
-    RunResult result = [_task run:blackboard];
-    
-    if (result == Success || result == Failure) {
-        [_task stop:blackboard];
-        _task.status = Ready;
-    } else if (result == Pending) {
-        _task.status = Running;
-    }
-    
-    return result;
-}
-
--(BOOL) evaluate:(NSMutableDictionary*)blackboard {
-    return YES;
-}
+@interface AOAction : AOTask
 
 @end

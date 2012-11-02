@@ -24,7 +24,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class BehaviorTree;
+@class AOBehaviorTree;
 @class World;
 
 @interface Actor : NSObject
@@ -32,7 +32,7 @@
 @property (nonatomic, strong) World *world;
 @property (nonatomic, assign) CGPoint position;
 @property (nonatomic, assign) UIColor *color;
-@property (nonatomic, strong) BehaviorTree *behavior;
+@property (nonatomic, strong) AOBehaviorTree *behavior;
 @property (nonatomic, strong) UIView *view;
 @property (nonatomic, assign) CGFloat speed;
 

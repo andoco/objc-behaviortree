@@ -22,8 +22,8 @@
  * THE SOFTWARE.
  */
 
-#import "Action.h"
+#import "AOAction.h"
 
-@interface AOPrefixedAction : Action
+@interface AOPrefixedAction : AOAction
 
 @end

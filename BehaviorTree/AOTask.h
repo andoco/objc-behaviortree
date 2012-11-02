@@ -24,18 +24,27 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Action.h"
-#import "Concurrent.h"
-#import "Condition.h"
-#import "Selector.h"
-#import "Sequence.h"
+typedef enum {
+    Ready,
+    Running
+} TaskStatus;
 
-@interface BehaviorTree : NSObject
+typedef enum {
+    Success,
+    Failure,
+    Pending
+} RunResult;
 
-@property (nonatomic, readonly) id<Task> root;
+@protocol AOTask <NSObject>
 
--(id) initWithRootTask:(id<Task>)root;
--(void) run;
--(void) runWithBlackboard:(NSMutableDictionary*)blackboard;
+@property (nonatomic, assign) TaskStatus status;
+
+-(void) start:(NSMutableDictionary*)blackboard;
+-(RunResult) run:(NSMutableDictionary*)blackboard;
+-(void) stop:(NSMutableDictionary*)blackboard;
+
+@end
+
+@interface AOTask : NSObject <AOTask>
 
 @end

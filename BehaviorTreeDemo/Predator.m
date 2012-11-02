@@ -24,7 +24,7 @@
 
 #import "Predator.h"
 
-#import "BehaviorTree.h"
+#import "AOBehaviorTree.h"
 #import "Seek.h"
 #import "TargetPrey.h"
 
@@ -37,11 +37,11 @@
         self.color = [UIColor redColor];
         self.speed = 1;
                 
-        id hunt = [[Sequence alloc] init];
+        id hunt = [[AOSequence alloc] init];
         [hunt addChild:[[TargetPrey alloc] initWithActor:self]];
         [hunt addChild:[[Seek alloc] initWithActor:self]];
         
-        self.behavior = [[BehaviorTree alloc] initWithRootTask:hunt];
+        self.behavior = [[AOBehaviorTree alloc] initWithRootTask:hunt];
 
     }
     return self;

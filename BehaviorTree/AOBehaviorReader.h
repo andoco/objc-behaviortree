@@ -22,8 +22,14 @@
  * THE SOFTWARE.
  */
 
-#import "Action.h"
+#import <Foundation/Foundation.h>
 
-@implementation Action
+@interface AOBehaviorReader : NSObject
+
+@property (nonatomic, readonly) NSArray *prefixes;
+
+-(void) registerPrefix:(NSString*)prefix;
+-(id) buildTree:(NSDictionary*)data;
+-(id) buildTreeWithFile:(NSString*)jsonPath;
 
 @end

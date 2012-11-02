@@ -24,7 +24,7 @@
 
 #import "Prey.h"
 
-#import "BehaviorTree.h"
+#import "AOBehaviorTree.h"
 #import "EatFood.h"
 #import "Flee.h"
 #import "Seek.h"
@@ -40,20 +40,20 @@
         self.color = [UIColor blueColor];
         self.speed = 3;
         
-        id fleeSeq = [[Sequence alloc] init];
+        id fleeSeq = [[AOSequence alloc] init];
         [fleeSeq addChild:[[PredatorDetected alloc] initWithActor:self]];
         [fleeSeq addChild:[[Flee alloc] initWithActor:self]];
         
-        id gatherSeq = [[Sequence alloc] init];
+        id gatherSeq = [[AOSequence alloc] init];
         [gatherSeq addChild:[[TargetFood alloc] initWithActor:self]];
         [gatherSeq addChild:[[Seek alloc] initWithActor:self]];
         [gatherSeq addChild:[[EatFood alloc] initWithActor:self]];
         
-        id selector = [[Selector alloc] init];
+        id selector = [[AOSelector alloc] init];
         [selector addChild:fleeSeq];
         [selector addChild:gatherSeq];
         
-        self.behavior = [[BehaviorTree alloc] initWithRootTask:selector];
+        self.behavior = [[AOBehaviorTree alloc] initWithRootTask:selector];
     }
     return self;
 }

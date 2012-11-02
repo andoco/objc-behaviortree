@@ -22,11 +22,11 @@
  * THE SOFTWARE.
  */
 
-#import "BehaviorReader.h"
+#import "AOBehaviorReader.h"
 
-#import "BehaviorTree.h"
+#import "AOBehaviorTree.h"
 
-@implementation BehaviorReader
+@implementation AOBehaviorReader
 
 - (id)init
 {
@@ -55,9 +55,9 @@
 }
 
 -(id) buildTree:(NSDictionary*)jsonObj {
-	id<Task> root = [self buildTask:jsonObj];
+	id<AOTask> root = [self buildTask:jsonObj];
 	
-    BehaviorTree *tree = [[BehaviorTree alloc] initWithRootTask:root];
+    AOBehaviorTree *tree = [[AOBehaviorTree alloc] initWithRootTask:root];
     
 	return tree;
 }
@@ -65,7 +65,7 @@
 -(id) buildTask:(NSDictionary*)data {
 	Class type = [self taskClass:data];
 	
-	id<Task> task;
+	id<AOTask> task;
     
 	if ([self isDecoratorTask:type]) {
 		task = [self buildDecoratorTask:type data:data];
@@ -81,12 +81,12 @@
 }
 
 -(id) buildCompositeTask:(Class)type data:(NSDictionary*)data {
-    Composite *task = [[type alloc] init];
+    AOComposite *task = [[type alloc] init];
 
 	NSDictionary *children = data[@"children"];
 		
 	for (NSDictionary *c in children) {
-		id<Task> t = [self buildTask:c];
+		id<AOTask> t = [self buildTask:c];
 		[task addChild:t];
     }
 		
@@ -94,7 +94,7 @@
 }
 
 -(id) buildDecoratorTask:(Class)type data:(NSDictionary*)data {
-    id<Task> subtask = [self buildTask:data[@"task"]];
+    id<AOTask> subtask = [self buildTask:data[@"task"]];
     
     return [[type alloc] initWithTask:subtask];
 }
@@ -118,14 +118,14 @@
 }
 
 -(BOOL) isCompositeTask:(Class)type {
-    return [type isSubclassOfClass:[Composite class]];
+    return [type isSubclassOfClass:[AOComposite class]];
 }
 
 -(BOOL) isDecoratorTask:(Class)type {
-    return [type isSubclassOfClass:[Condition class]];
+    return [type isSubclassOfClass:[AOCondition class]];
 }
 
--(void) populateProperties:(NSObject<Task>*)task fromData:(NSDictionary*)data {
+-(void) populateProperties:(NSObject<AOTask>*)task fromData:(NSDictionary*)data {
     for (NSString *key in data.allKeys) {
         if (![self isReservedKey:key]) {
             id val = data[key];
