@@ -9,6 +9,21 @@ obj-behaviortree is an implementation of a behavior tree for iOS. Supported task
 
 Behavior trees can be built programatically, or by reading from a JSON file.
 
+# Setup
+
+Clone the repository to a location on your machine, then:
+
+```
+$ git submodule init
+$ git submodule update
+```
+
+Open _BehaviorTree.xcworkspace_
+
+Test scenarios are available in the BehaviorTree project, which can be run in the usual way (CMD+U).
+
+A demo project is available in the BehaviorTreeDemo project.
+
 # JSON Reader
 
 A behavior tree can be built from a JSON representation:
