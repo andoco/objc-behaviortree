@@ -9,6 +9,42 @@ obj-behaviortree is an implementation of a behavior tree for iOS. Supported task
 
 Behavior trees can be built programatically, or by reading from a JSON file.
 
+# JSON Reader
+
+A behavior tree can be built from a JSON representation:
+
+```json
+{"type":"Selector","children":[
+    {"type":"ShouldFlee","task":
+    	{"type":"Flee"}
+	},
+	{"type":"ShouldSeek":"task":
+		{"type":"Seek"}
+	}
+]}
+```
+
+The JSON is read by a _BehaviorReader_ which builds an instance of _BehaviorTree_:
+
+```objective-c
+NSString *json;
+...
+BehaviorReader *reader = [[BehaviorReader alloc] init];
+BehaviorTree *behavior = [reader buildTreeWithFile:json];
+```
+
+The reader supports setting properties on task instances:
+
+```json
+{"type":"MyAction","someBoolean":true}
+```
+
+If you want to set a property of type "Class", you can use the syntax:
+
+```json
+{"type":"Flee","fromClassType":"class:MyEnemy"}
+```
+
 # Task Class Prefixes
 
 Task types read in from JSON are used to instantiate an objective-c class. To avoid polluting the JSON with class prefixes, you can register your own class prefixes that will be automatically searched when attempting to instantiate a task.
@@ -16,6 +52,7 @@ Task types read in from JSON are used to instantiate an objective-c class. To av
 For example, if you register the prefix "AB" with the BehaviorReader:
 
 ```objective-c
+BehaviorReader *reader = [[BehaviorReader alloc] init];
 [reader registerPrefix:@"AB"];
 ```
 
