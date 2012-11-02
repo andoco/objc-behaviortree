@@ -25,22 +25,22 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    Ready,
-    Running
-} TaskStatus;
+    AOStatusReady,
+    AOStatusRunning
+} AOStatus;
 
 typedef enum {
-    Success,
-    Failure,
-    Pending
-} RunResult;
+    AOResultSuccess,
+    AOResultFailure,
+    AOResultPending
+} AOResult;
 
 @protocol AOTask <NSObject>
 
-@property (nonatomic, assign) TaskStatus status;
+@property (nonatomic, assign) AOStatus status;
 
 -(void) start:(NSMutableDictionary*)blackboard;
--(RunResult) run:(NSMutableDictionary*)blackboard;
+-(AOResult) run:(NSMutableDictionary*)blackboard;
 -(void) stop:(NSMutableDictionary*)blackboard;
 
 @end

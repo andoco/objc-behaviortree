@@ -43,7 +43,7 @@ describe(@"Selector", ^{
         it(@"should run children until child returns Success", ^{
             
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
+            [[task1 should] receive:@selector(run:) andReturn:theValue(AOResultSuccess)];
             
             id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task2 shouldNot] receive:@selector(run:)];
@@ -56,73 +56,73 @@ describe(@"Selector", ^{
         
         it(@"should return Success if any child returns Success", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [task1 stub:@selector(run:) andReturn:theValue(Failure)];
+            [task1 stub:@selector(run:) andReturn:theValue(AOResultFailure)];
 
             id task2 = [AOAction mock];
-            [task1 stub:@selector(run:) andReturn:theValue(Success)];
+            [task1 stub:@selector(run:) andReturn:theValue(AOResultSuccess)];
             
             [selector addChild:task1];
             [selector addChild:task2];
             
-            [[theValue([selector run:blackboard]) should] equal:theValue(Success)];
+            [[theValue([selector run:blackboard]) should] equal:theValue(AOResultSuccess)];
         });
         
         it(@"should return Failure if no child returns Success", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [task1 stub:@selector(run:) andReturn:theValue(Failure)];
+            [task1 stub:@selector(run:) andReturn:theValue(AOResultFailure)];
             
             [selector addChild:task1];
             
-            [[theValue([selector run:blackboard]) should] equal:theValue(Failure)];
+            [[theValue([selector run:blackboard]) should] equal:theValue(AOResultFailure)];
         });
         
         it(@"should return Pending if any child returns Pending", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [task1 stub:@selector(run:) andReturn:theValue(Failure)];
+            [task1 stub:@selector(run:) andReturn:theValue(AOResultFailure)];
             
             id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [task2 stub:@selector(run:) andReturn:theValue(Pending)];
+            [task2 stub:@selector(run:) andReturn:theValue(AOResultPending)];
             
             [selector addChild:task1];
             [selector addChild:task2];
             
-            [[theValue([selector run:blackboard]) should] equal:theValue(Pending)];
+            [[theValue([selector run:blackboard]) should] equal:theValue(AOResultPending)];
         });
                 
         it(@"should stop running child if preceding child returns Success", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task1 stubAndReturn:theValue(Failure)] run:blackboard];
+            [[task1 stubAndReturn:theValue(AOResultFailure)] run:blackboard];
 
             id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task2 stubAndReturn:theValue(Pending)] run:blackboard];
+            [[task2 stubAndReturn:theValue(AOResultPending)] run:blackboard];
 
             [selector addChild:task1];
             [selector addChild:task2];
             
-            [[theValue([selector run:blackboard]) should] equal:theValue(Pending)];
+            [[theValue([selector run:blackboard]) should] equal:theValue(AOResultPending)];
             
             // second run setup
-            [[task1 stubAndReturn:theValue(Success)] run:blackboard];
+            [[task1 stubAndReturn:theValue(AOResultSuccess)] run:blackboard];
             [[task2 should] receive:@selector(stop:)];
-            [[theValue([selector run:blackboard]) should] equal:theValue(Success)];
+            [[theValue([selector run:blackboard]) should] equal:theValue(AOResultSuccess)];
         });
         
         it(@"should stop running child if preceding child returns Pending", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task1 stubAndReturn:theValue(Failure)] run:blackboard];
+            [[task1 stubAndReturn:theValue(AOResultFailure)] run:blackboard];
             
             id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task2 stubAndReturn:theValue(Pending)] run:blackboard];
+            [[task2 stubAndReturn:theValue(AOResultPending)] run:blackboard];
             
             [selector addChild:task1];
             [selector addChild:task2];
             
-            [[theValue([selector run:blackboard]) should] equal:theValue(Pending)];
+            [[theValue([selector run:blackboard]) should] equal:theValue(AOResultPending)];
             
             // second run setup
-            [[task1 stubAndReturn:theValue(Pending)] run:blackboard];
+            [[task1 stubAndReturn:theValue(AOResultPending)] run:blackboard];
             [[task2 should] receive:@selector(stop:)];
-            [[theValue([selector run:blackboard]) should] equal:theValue(Pending)];
+            [[theValue([selector run:blackboard]) should] equal:theValue(AOResultPending)];
         });
         
         context(@"a child is already Running", ^{
@@ -137,8 +137,8 @@ describe(@"Selector", ^{
                 [selector addChild:task1];
                 [selector addChild:task2];
                 
-                [[task1 stubAndReturn:theValue(Failure)] run:blackboard];
-                [[task2 stubAndReturn:theValue(Pending)] run:blackboard];
+                [[task1 stubAndReturn:theValue(AOResultFailure)] run:blackboard];
+                [[task2 stubAndReturn:theValue(AOResultPending)] run:blackboard];
                 [selector run:blackboard];
             });
 
@@ -148,16 +148,16 @@ describe(@"Selector", ^{
                     [task1 clearStubs];
                     [task2 clearStubs];
                     
-                    [[task1 should] receive:@selector(run:) andReturn:theValue(Pending)];
+                    [[task1 should] receive:@selector(run:) andReturn:theValue(AOResultPending)];
                     [[task2 should] receive:@selector(stop:)];
-                    [[task2 should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    [[task2 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
                     
                     [selector run:blackboard];
                 });
                 
                 it(@"should not stop already running child if same as child", ^{
                     [[task2 shouldNot] receive:@selector(stop:)];
-                    [[task2 shouldNot] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    [[task2 shouldNot] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
                     
                     [selector run:blackboard];
                 });
@@ -169,16 +169,16 @@ describe(@"Selector", ^{
                     [task1 clearStubs];
                     [task2 clearStubs];
                     
-                    [[task1 should] receive:@selector(run:) andReturn:theValue(Success)];
+                    [[task1 should] receive:@selector(run:) andReturn:theValue(AOResultSuccess)];
                     [[task2 should] receive:@selector(stop:)];
-                    [[task2 should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    [[task2 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
                     
                     [selector run:blackboard];
                 });
                 
                 it(@"should not stop already running child if same as child", ^{
                     [[task2 shouldNot] receive:@selector(stop:)];
-                    [[task2 shouldNot] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    [[task2 shouldNot] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
                     
                     [selector run:blackboard];
                 });

@@ -28,11 +28,11 @@
 
 @implementation TargetPrey
 
--(RunResult) run:(NSMutableDictionary*)blackboard {
+-(AOResult) run:(NSMutableDictionary*)blackboard {
     Prey *target = self.actor.world.prey;
     [blackboard setObject:target forKey:@"target"];
     
-    return Success;
+    return AOResultSuccess;
 }
 
 @end

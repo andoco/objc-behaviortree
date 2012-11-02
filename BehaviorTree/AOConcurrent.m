@@ -46,18 +46,18 @@
     _numFailed = 0;
 }
 
--(void) didReceiveResult:(RunResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
-    if (result == Failure)
+-(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
+    if (result == AOResultFailure)
         _numFailed++;
     
-    running_ = result == Pending ? task : nil;
+    running_ = result == AOResultPending ? task : nil;
 }
 
--(RunResult) defaultReturnResult {
+-(AOResult) defaultReturnResult {
     if (running_)
-        return Pending;
+        return AOResultPending;
     
-    return _failureLimit == 0 || _numFailed < _failureLimit ? Success : Failure;
+    return _failureLimit == 0 || _numFailed < _failureLimit ? AOResultSuccess : AOResultFailure;
 }
 
 @end

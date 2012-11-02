@@ -28,14 +28,14 @@
 
 @implementation TargetFood
 
--(RunResult) run:(NSMutableDictionary*)blackboard {
+-(AOResult) run:(NSMutableDictionary*)blackboard {
     if (self.actor.world.food.count == 0)
-        return Failure;
+        return AOResultFailure;
     
     Food *food = [self.actor.world.food objectAtIndex:0];
     [blackboard setObject:food forKey:@"target"];
     
-    return Success;
+    return AOResultSuccess;
 }
 
 @end

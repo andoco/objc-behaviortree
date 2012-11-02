@@ -32,22 +32,22 @@
 
 @implementation AOSequence
 
--(void) didReceiveResult:(RunResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
-    if (result == Failure || result == Pending) {
+-(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
+    if (result == AOResultFailure || result == AOResultPending) {
         if (running_ && running_ != task) {
             [running_ stop:(NSMutableDictionary*)blackboard];
-            running_.status = Ready;
+            running_.status = AOStatusReady;
         }
         
-        if (result == Pending)
+        if (result == AOResultPending)
             running_ = task;
         else
             running_ = nil;
     }
 }
 
--(BOOL) shouldReturnWithResult:(RunResult)result returnResult:(RunResult*)returnResult {
-    if (result == Failure || result == Pending) {
+-(BOOL) shouldReturnWithResult:(AOResult)result returnResult:(AOResult*)returnResult {
+    if (result == AOResultFailure || result == AOResultPending) {
         *returnResult = result;
         return YES;
     }
@@ -55,8 +55,8 @@
     return NO;
 }
 
--(RunResult) defaultReturnResult {
-    return Success;
+-(AOResult) defaultReturnResult {
+    return AOResultSuccess;
 }
 
 @end

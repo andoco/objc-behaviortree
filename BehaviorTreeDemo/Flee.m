@@ -26,7 +26,7 @@
 
 @implementation Flee
 
--(RunResult) run:(NSMutableDictionary *)blackboard {
+-(AOResult) run:(NSMutableDictionary *)blackboard {
     Actor *target = [blackboard objectForKey:@"target"];
         
     //NSLog(@"Fleeing target %@", target);
@@ -37,7 +37,7 @@
     
     self.actor.position = CGPointAdd(self.actor.position, v);
     
-    return Success;
+    return AOResultSuccess;
 }
 
 @end

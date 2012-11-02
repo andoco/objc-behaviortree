@@ -37,28 +37,28 @@
 
 -(void) stop:(NSMutableDictionary*)blackboard {
     [super stop:blackboard];
-    if (_task.status == Running)
+    if (_task.status == AOStatusRunning)
         [_task stop:blackboard];
 }
 
--(RunResult) run:(NSMutableDictionary *)blackboard {
+-(AOResult) run:(NSMutableDictionary *)blackboard {
     [super run:blackboard];
     
     if (![self evaluate:blackboard])
-        return Failure;
+        return AOResultFailure;
     
     DLog(@"Condition met for %@", self);
     
-    if (_task.status == Ready)
+    if (_task.status == AOStatusReady)
         [_task start:blackboard];
     
-    RunResult result = [_task run:blackboard];
+    AOResult result = [_task run:blackboard];
     
-    if (result == Success || result == Failure) {
+    if (result == AOResultSuccess || result == AOResultFailure) {
         [_task stop:blackboard];
-        _task.status = Ready;
-    } else if (result == Pending) {
-        _task.status = Running;
+        _task.status = AOStatusReady;
+    } else if (result == AOResultPending) {
+        _task.status = AOStatusRunning;
     }
     
     return result;

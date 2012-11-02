@@ -50,26 +50,26 @@
     return self;
 }
 
--(RunResult) run:(NSMutableDictionary *)blackboard {
+-(AOResult) run:(NSMutableDictionary *)blackboard {
     [super run:blackboard];
     
     for (id<AOTask> task in self.children) {
         DLog(@"Processing child %@", task);
         
-        if (task.status == Ready)
+        if (task.status == AOStatusReady)
             [task start:blackboard];
         
-        RunResult r = [task run:blackboard];
+        AOResult r = [task run:blackboard];
         DLog(@"Child %@ returned result %d", task, r);
         
         switch (r) {
-            case Pending:
-                task.status = Running;
+            case AOResultPending:
+                task.status = AOStatusRunning;
                 break;
-            case Success:
-            case Failure:
+            case AOResultSuccess:
+            case AOResultFailure:
                 [task stop:blackboard];
-                task.status = Ready;
+                task.status = AOStatusReady;
                 break;
             default:
                 break;
@@ -77,7 +77,7 @@
                 
         [self didReceiveResult:r forTask:task withBlackboard:blackboard];
         
-        RunResult returnResult;
+        AOResult returnResult;
         if ([self shouldReturnWithResult:r returnResult:&returnResult])
             return returnResult;
     }
@@ -89,16 +89,16 @@
     _children = [_children arrayByAddingObject:child];
 }
 
--(void) didReceiveResult:(RunResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
+-(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
     
 }
 
--(BOOL) shouldReturnWithResult:(RunResult)result returnResult:(RunResult*)returnResult {
+-(BOOL) shouldReturnWithResult:(AOResult)result returnResult:(AOResult*)returnResult {
     return NO;
 }
 
--(RunResult) defaultReturnResult {
-    return Success;
+-(AOResult) defaultReturnResult {
+    return AOResultSuccess;
 }
 
 @end

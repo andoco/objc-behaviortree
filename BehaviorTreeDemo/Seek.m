@@ -38,24 +38,24 @@
     return self;
 }
 
--(RunResult) run:(NSMutableDictionary *)blackboard {
+-(AOResult) run:(NSMutableDictionary *)blackboard {
     Actor *target = [blackboard objectForKey:@"target"];
     
     if (!target)
-        return Failure;
+        return AOResultFailure;
     
     //NSLog(@"Moving to target %@", target);
         
     CGPoint offset = CGPointSubtract(target.position, self.actor.position);
     
     if (CGPointMagnitude(offset) < 10)
-        return Success;
+        return AOResultSuccess;
     
     CGPoint v = CGPointScale(CGPointNormalize(offset), self.actor.speed);
     
     self.actor.position = CGPointAdd(self.actor.position, v);
     
-    return Failure;
+    return AOResultFailure;
 }
 
 @end

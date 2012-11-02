@@ -51,13 +51,13 @@ describe(@"Condition", ^{
     context(@"when stopped", ^{
         
         it(@"should not stop task if task is not Running", ^{
-            [[task should] receive:@selector(status) andReturn:theValue(Ready)];
+            [[task should] receive:@selector(status) andReturn:theValue(AOStatusReady)];
             [[task shouldNot] receive:@selector(stop:)];
             [condition stop:blackboard];
         });
 
         it(@"should stop task if task is Running", ^{
-            [[task should] receive:@selector(status) andReturn:theValue(Running)];
+            [[task should] receive:@selector(status) andReturn:theValue(AOStatusRunning)];
             [[task should] receive:@selector(stop:)];
             [condition stop:blackboard];
         });
@@ -79,7 +79,7 @@ describe(@"Condition", ^{
             });
             
             it(@"should return Failure", ^{
-                [[theValue([condition run:blackboard]) should] equal:theValue(Failure)];
+                [[theValue([condition run:blackboard]) should] equal:theValue(AOResultFailure)];
             });
             
             it(@"should not start task", ^{
@@ -107,7 +107,7 @@ describe(@"Condition", ^{
             context(@"when task status is Ready", ^{
                 
                 beforeEach(^{
-                    [[task should] receive:@selector(status) andReturn:theValue(Ready)];
+                    [[task should] receive:@selector(status) andReturn:theValue(AOStatusReady)];
                 });
                 
                 it(@"should start task", ^{
@@ -120,7 +120,7 @@ describe(@"Condition", ^{
             context(@"when task status is Running", ^{
 
                 beforeEach(^{
-                    [[task should] receive:@selector(status) andReturn:theValue(Running)];
+                    [[task should] receive:@selector(status) andReturn:theValue(AOStatusRunning)];
                 });
 
                 it(@"should not start task", ^{
@@ -133,7 +133,7 @@ describe(@"Condition", ^{
             context(@"when task returns Success", ^{
                 
                 beforeEach(^{
-                    [[task should] receive:@selector(run:) andReturn:theValue(Success)];
+                    [[task should] receive:@selector(run:) andReturn:theValue(AOResultSuccess)];
                 });
                 
                 it(@"should stop task", ^{
@@ -142,12 +142,12 @@ describe(@"Condition", ^{
                 });
                 
                 it(@"should set task status to Ready", ^{
-                    [[task should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    [[task should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
                     [condition run:blackboard];
                 });
                 
                 it(@"should return Success", ^{
-                    [[theValue([condition run:blackboard]) should] equal:theValue(Success)];
+                    [[theValue([condition run:blackboard]) should] equal:theValue(AOResultSuccess)];
                 });
                 
             });
@@ -155,7 +155,7 @@ describe(@"Condition", ^{
             context(@"when task returns Failure", ^{
 
                 beforeEach(^{
-                    [[task should] receive:@selector(run:) andReturn:theValue(Failure)];
+                    [[task should] receive:@selector(run:) andReturn:theValue(AOResultFailure)];
                 });
 
                 it(@"should stop task", ^{
@@ -164,12 +164,12 @@ describe(@"Condition", ^{
                 });
 
                 it(@"should set task status to Ready", ^{
-                    [[task should] receive:@selector(setStatus:) withArguments:theValue(Ready)];
+                    [[task should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
                     [condition run:blackboard];
                 });
 
                 it(@"should return Failure", ^{
-                    [[theValue([condition run:blackboard]) should] equal:theValue(Failure)];
+                    [[theValue([condition run:blackboard]) should] equal:theValue(AOResultFailure)];
                 });
 
             });
@@ -177,7 +177,7 @@ describe(@"Condition", ^{
             context(@"when task returns Pending", ^{
 
                 beforeEach(^{
-                    [[task should] receive:@selector(run:) andReturn:theValue(Pending)];
+                    [[task should] receive:@selector(run:) andReturn:theValue(AOResultPending)];
                 });
                 
                 it(@"should not stop task", ^{
@@ -186,12 +186,12 @@ describe(@"Condition", ^{
                 });
                 
                 it(@"should set task status to Running", ^{
-                    [[task should] receive:@selector(setStatus:) withArguments:theValue(Running)];
+                    [[task should] receive:@selector(setStatus:) withArguments:theValue(AOStatusRunning)];
                     [condition run:blackboard];
                 });
 
                 it(@"should return Pending", ^{
-                    [[theValue([condition run:blackboard]) should] equal:theValue(Pending)];
+                    [[theValue([condition run:blackboard]) should] equal:theValue(AOResultPending)];
                 });
 
             });

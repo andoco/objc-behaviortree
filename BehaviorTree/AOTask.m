@@ -32,9 +32,9 @@
     DLog(@"Starting %@", self);
 }
 
--(RunResult) run:(NSMutableDictionary*)blackboard {
+-(AOResult) run:(NSMutableDictionary*)blackboard {
     DLog(@"Running %@", self);
-    return Success;
+    return AOResultSuccess;
 }
 
 -(void) stop:(NSMutableDictionary*)blackboard {
