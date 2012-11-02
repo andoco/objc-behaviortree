@@ -216,24 +216,11 @@
 		49454961160527FC001F93A4 /* BehaviorTree */ = {
 			isa = PBXGroup;
 			children = (
-				4945499A16052F05001F93A4 /* AOAction.h */,
-				4945499B16052F05001F93A4 /* AOAction.m */,
+				49A15019164448AA0020FA2D /* Tasks */,
 				4985E1A61629936700571D2D /* AOBehaviorReader.h */,
 				4985E1A71629936700571D2D /* AOBehaviorReader.m */,
 				49454964160527FC001F93A4 /* AOBehaviorTree.h */,
 				49454966160527FC001F93A4 /* AOBehaviorTree.m */,
-				4945499216052BE3001F93A4 /* AOComposite.h */,
-				4945499316052BE3001F93A4 /* AOComposite.m */,
-				49AC0712160F24AF00516DDD /* AOConcurrent.h */,
-				49AC0713160F24AF00516DDD /* AOConcurrent.m */,
-				49AC07301610F3BF00516DDD /* AOCondition.h */,
-				49AC07311610F3BF00516DDD /* AOCondition.m */,
-				4945499716052D81001F93A4 /* AOSelector.h */,
-				4945499816052D81001F93A4 /* AOSelector.m */,
-				4945499F16053679001F93A4 /* AOSequence.h */,
-				494549A016053679001F93A4 /* AOSequence.m */,
-				4945499116052AFC001F93A4 /* AOTask.h */,
-				49AC072E1610F15500516DDD /* AOTask.m */,
 				49C724B316307CA5007C6900 /* BTreeLogging.h */,
 				49454962160527FC001F93A4 /* Supporting Files */,
 			);
@@ -273,6 +260,27 @@
 				49454979160527FD001F93A4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49A15019164448AA0020FA2D /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				4945499A16052F05001F93A4 /* AOAction.h */,
+				4945499B16052F05001F93A4 /* AOAction.m */,
+				4945499216052BE3001F93A4 /* AOComposite.h */,
+				4945499316052BE3001F93A4 /* AOComposite.m */,
+				49AC0712160F24AF00516DDD /* AOConcurrent.h */,
+				49AC0713160F24AF00516DDD /* AOConcurrent.m */,
+				49AC07301610F3BF00516DDD /* AOCondition.h */,
+				49AC07311610F3BF00516DDD /* AOCondition.m */,
+				4945499716052D81001F93A4 /* AOSelector.h */,
+				4945499816052D81001F93A4 /* AOSelector.m */,
+				4945499F16053679001F93A4 /* AOSequence.h */,
+				494549A016053679001F93A4 /* AOSequence.m */,
+				4945499116052AFC001F93A4 /* AOTask.h */,
+				49AC072E1610F15500516DDD /* AOTask.m */,
+			);
+			name = Tasks;
 			sourceTree = "<group>";
 		};
 		49FE27B31629B72900916552 /* TestTasks */ = {
