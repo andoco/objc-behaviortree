@@ -70,7 +70,7 @@
 		4964A57F1605C1D700FE3588 /* TargetFood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetFood.m; sourceTree = "<group>"; };
 		4964A5821605C37700FE3588 /* TargetPrey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetPrey.h; sourceTree = "<group>"; };
 		4964A5831605C37700FE3588 /* TargetPrey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetPrey.m; sourceTree = "<group>"; };
-		4998C48216349A8C00E38F3C /* libBehaviorTree-verbose.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libBehaviorTree-verbose.a"; path = "build/Release-iphoneos/libBehaviorTree-verbose.a"; sourceTree = "<group>"; };
+		4998C48216349A8C00E38F3C /* libBehaviorTree-verbose.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libBehaviorTree-verbose.a"; path = "build/Release-iphoneos/libBehaviorTree-verbose.a"; sourceTree = "<group>"; };
 		49C7245D163072FE007C6900 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		49C7246016307314007C6900 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		49C724B11630798C007C6900 /* libNSLoggerClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNSLoggerClient.a; path = "NSLoggerClient/build/Release-iphoneos/libNSLoggerClient.a"; sourceTree = "<group>"; };
@@ -333,7 +333,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -354,7 +354,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -369,6 +369,7 @@
 				GCC_PREFIX_HEADER = "BehaviorTreeDemo/BehaviorTreeDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "BehaviorTreeDemo/BehaviorTreeDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
@@ -385,6 +386,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BehaviorTreeDemo/BehaviorTreeDemo-Prefix.pch";
 				INFOPLIST_FILE = "BehaviorTreeDemo/BehaviorTreeDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
