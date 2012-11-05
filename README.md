@@ -9,6 +9,13 @@ obj-behaviortree is an implementation of a behavior tree for iOS. Supported task
 
 Behavior trees can be built programatically, or by reading from a JSON file.
 
+# Requirements
+
+The project currently builds and runs successfully with:
+
+* Xcode 4.5
+* iOS 5.0+
+
 # Setup
 
 Clone the repository to a location on your machine, then:
