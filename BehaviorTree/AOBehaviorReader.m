@@ -83,7 +83,7 @@
 -(id) buildCompositeTask:(Class)type data:(NSDictionary*)data {
     AOComposite *task = [[type alloc] init];
 
-	NSDictionary *children = data[@"children"];
+	NSDictionary *children = [data objectForKey:@"children"];
 		
 	for (NSDictionary *c in children) {
 		id<AOTask> t = [self buildTask:c];
@@ -94,17 +94,17 @@
 }
 
 -(id) buildDecoratorTask:(Class)type data:(NSDictionary*)data {
-    id<AOTask> subtask = [self buildTask:data[@"task"]];
+    id<AOTask> subtask = [self buildTask:[data objectForKey:@"task"]];
     
     return [[type alloc] initWithTask:subtask];
 }
 
 -(Class) taskClass:(NSDictionary*)data {
-	Class type = NSClassFromString(data[@"type"]);
+	Class type = NSClassFromString([data objectForKey:@"type"]);
     
     if (!type) {
         for (NSString *prefix in _prefixes) {
-            NSString *prefixedType = [prefix stringByAppendingString:data[@"type"]];
+            NSString *prefixedType = [prefix stringByAppendingString:[data objectForKey:@"type"]];
             type = NSClassFromString(prefixedType);
             if (type)
                 break;
@@ -112,7 +112,7 @@
     }
     
     if (!type)
-        [NSException raise:@"Unknown task type" format:@"%@", data[@"type"]];
+        [NSException raise:@"Unknown task type" format:@"%@", [data objectForKey:@"type"]];
     
     return type;
 }
