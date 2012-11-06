@@ -128,7 +128,7 @@
 -(void) populateProperties:(NSObject<AOTask>*)task fromData:(NSDictionary*)data {
     for (NSString *key in data.allKeys) {
         if (![self isReservedKey:key]) {
-            id val = data[key];
+            id val = [data objectForKey:key];
             
             if ([val isKindOfClass:[NSString class]] && [val hasPrefix:@"class:"])
                 val = NSClassFromString([val stringByReplacingOccurrencesOfString:@"class:" withString:@""]);
