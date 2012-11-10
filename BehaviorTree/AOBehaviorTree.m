@@ -40,9 +40,17 @@
 }
 
 -(void) runWithBlackboard:(NSMutableDictionary*)blackboard {
-    [_root start:blackboard];
-    [_root run:blackboard];
-    [_root stop:blackboard];
+    if (_root.status == AOStatusReady)
+        [_root start:blackboard];    
+
+    AOResult result = [_root run:blackboard];
+    
+    if (result == AOResultPending) {
+        _root.status = AOStatusRunning;
+    } else {
+        [_root stop:blackboard];
+        _root.status = AOStatusReady;
+    }
 }
 
 @end
