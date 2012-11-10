@@ -22,21 +22,52 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-
-#import "AOAction.h"
-#import "AOConcurrent.h"
-#import "AOCondition.h"
 #import "AODecorator.h"
-#import "AOSelector.h"
-#import "AOSequence.h"
 
-@interface AOBehaviorTree : NSObject
+@implementation AODecorator
 
-@property (nonatomic, readonly) id<AOTask> root;
+-(id) initWithTask:(id<AOTask>)task {
+    if ((self = [super init])) {
+        _task = task;
+    }
+    return self;
+}
 
--(id) initWithRootTask:(id<AOTask>)root;
--(void) run;
--(void) runWithBlackboard:(NSMutableDictionary*)blackboard;
+-(void) start:(NSMutableDictionary *)blackboard {
+    if ([self willStart:blackboard])
+        [_task start:blackboard];
+}
+
+-(AOResult) run:(NSMutableDictionary *)blackboard {
+    AOResult result = AOResultSuccess;
+    
+    if ([self willRun:blackboard])
+        result = [self evaluateResult:[_task run:blackboard] withBlackboard:blackboard];
+    
+    return result;
+}
+
+-(void) stop:(NSMutableDictionary *)blackboard {
+    if ([self willStop:blackboard])
+        [_task stop:blackboard];
+}
+
+#pragma mark Template methods
+
+-(BOOL) willStart:(NSMutableDictionary*)blackboard {
+    return YES;
+}
+
+-(BOOL) willRun:(NSMutableDictionary*)blackboard {
+    return YES;
+}
+
+-(BOOL) willStop:(NSMutableDictionary*)blackboard {
+    return YES;
+}
+
+-(AOResult) evaluateResult:(AOResult)result withBlackboard:(NSMutableDictionary*)blackboard {
+    return result;
+}
 
 @end

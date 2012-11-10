@@ -22,8 +22,8 @@
  * THE SOFTWARE.
  */
 
-#import "TestCondition.h"
+#import "TestDecorator.h"
 
-@implementation TestCondition
+@implementation TestDecorator
 
 @end

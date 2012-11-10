@@ -22,8 +22,26 @@
  * THE SOFTWARE.
  */
 
-#import "AOCondition.h"
+#import <UIKit/UIKit.h>
 
-@interface TestCondition : AOCondition
+#import "AOTask.h"
+
+@interface AODecorator : AOTask
+
+@property (nonatomic, readonly) id<AOTask> task;
+
+-(id) initWithTask:(id<AOTask>)task;
+
+/** Called when decorator is started to indicate if decorated task should be started */
+-(BOOL) willStart:(NSMutableDictionary*)blackboard;
+
+/** Called when decorator is run to indicate if decorated task should be run */
+-(BOOL) willRun:(NSMutableDictionary*)blackboard;
+
+/** Called when decorator is stopped to indicate if decorated task should be stopped */
+-(BOOL) willStop:(NSMutableDictionary*)blackboard;
+
+/** Evaluates the result from decorated task and returns a new result */
+-(AOResult) evaluateResult:(AOResult)result withBlackboard:(NSMutableDictionary*)blackboard;
 
 @end

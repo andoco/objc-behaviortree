@@ -27,7 +27,7 @@
 #import "AOBehaviorTree.h"
 #import "AOBehaviorReader.h"
 #import "TestAction.h"
-#import "TestCondition.h"
+#import "TestDecorator.h"
 #import "TestEntity.h"
 
 SPEC_BEGIN(BehaviorReaderSpec)
@@ -103,13 +103,13 @@ describe(@"BehaviorReader", ^{
             [[[[selector.children objectAtIndex:0] class] should] equal:[TestAction class]];
         });
         
-        it(@"should build condition", ^{
-            NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"condition" ofType:@"json"];
+        it(@"should build decorator", ^{
+            NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"decorator" ofType:@"json"];
             AOBehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
             
-            [[[tree.root class] should] equal:[TestCondition class]];
-            AOCondition *condition = tree.root;
-            [[[condition.task class] should] equal:[TestAction class]];
+            [[[tree.root class] should] equal:[TestDecorator class]];
+            AODecorator *decorator = tree.root;
+            [[[decorator.task class] should] equal:[TestAction class]];
         });
 
         context(@"and class does not exist for task type string", ^{

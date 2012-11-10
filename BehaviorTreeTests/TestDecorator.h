@@ -22,21 +22,8 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-
-#import "AOAction.h"
-#import "AOConcurrent.h"
 #import "AOCondition.h"
-#import "AODecorator.h"
-#import "AOSelector.h"
-#import "AOSequence.h"
 
-@interface AOBehaviorTree : NSObject
-
-@property (nonatomic, readonly) id<AOTask> root;
-
--(id) initWithRootTask:(id<AOTask>)root;
--(void) run;
--(void) runWithBlackboard:(NSMutableDictionary*)blackboard;
+@interface TestDecorator : AOCondition
 
 @end
