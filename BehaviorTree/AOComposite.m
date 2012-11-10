@@ -85,6 +85,15 @@
     return [self defaultReturnResult];
 }
 
+-(void) stop:(NSMutableDictionary *)blackboard {
+    [super stop:blackboard];
+    
+    for (id<AOTask> task in _children) {
+        if (task.status == AOStatusRunning)
+            [task stop:blackboard];
+    }
+}
+
 -(void) addChild:(id<AOTask>)child {
     _children = [_children arrayByAddingObject:child];
 }

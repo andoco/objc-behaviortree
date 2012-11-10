@@ -30,6 +30,7 @@ SPEC_BEGIN(CompositeSpec)
 
 describe(@"Composite", ^{
     __block AOComposite *task;
+    __block NSMutableDictionary *blackboard;
     
     beforeEach(^{
         task = [[AOComposite alloc] init];
@@ -69,8 +70,7 @@ describe(@"Composite", ^{
     });
     
     context(@"when run", ^{
-        __block NSMutableDictionary *blackboard;
-        
+                
         beforeEach(^{
             blackboard = [NSMutableDictionary dictionary];
         });
@@ -159,6 +159,26 @@ describe(@"Composite", ^{
             });
         });
 
+    });
+    
+    context(@"when stopped", ^{
+
+        it(@"should stop running children", ^{
+            
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            [[task1 stubAndReturn:theValue(AOStatusRunning)] status];
+            [[task1 should] receive:@selector(stop:) withArguments:blackboard];
+
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            [[task2 stubAndReturn:theValue(AOStatusRunning)] status];
+            [[task2 should] receive:@selector(stop:) withArguments:blackboard];
+
+            [task addChild:task1];
+            [task addChild:task2];
+            
+            [task stop:blackboard];
+        });
+        
     });
 });
 
