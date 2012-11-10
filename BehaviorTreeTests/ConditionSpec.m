@@ -50,16 +50,32 @@ describe(@"Condition", ^{
     
     context(@"when stopped", ^{
         
-        it(@"should not stop task if task is not Running", ^{
-            [[task should] receive:@selector(status) andReturn:theValue(AOStatusReady)];
-            [[task shouldNot] receive:@selector(stop:)];
-            [condition stop:blackboard];
+        context(@"and task not running", ^{
+            
+            it(@"should not stop task", ^{
+                [[task should] receive:@selector(status) andReturn:theValue(AOStatusReady)];
+                [[task shouldNot] receive:@selector(stop:)];
+                [condition stop:blackboard];
+            });
+            
         });
 
-        it(@"should stop task if task is Running", ^{
-            [[task should] receive:@selector(status) andReturn:theValue(AOStatusRunning)];
-            [[task should] receive:@selector(stop:)];
-            [condition stop:blackboard];
+        context(@"and task running", ^{
+            
+            beforeEach(^{
+                [[task should] receive:@selector(status) andReturn:theValue(AOStatusRunning)];
+            });
+            
+            it(@"should stop task", ^{
+                [[task should] receive:@selector(stop:)];
+                [condition stop:blackboard];
+            });
+            
+            it(@"should change task status to Ready", ^{
+                [[task should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
+                [condition stop:blackboard];
+            });
+            
         });
 
     });

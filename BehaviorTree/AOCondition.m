@@ -37,8 +37,10 @@
 
 -(void) stop:(NSMutableDictionary*)blackboard {
     [super stop:blackboard];
-    if (_task.status == AOStatusRunning)
+    if (_task.status == AOStatusRunning) {
         [_task stop:blackboard];
+        _task.status = AOStatusReady;
+    }
 }
 
 -(AOResult) run:(NSMutableDictionary *)blackboard {
