@@ -122,7 +122,7 @@
 }
 
 -(BOOL) isDecoratorTask:(Class)type {
-    return [type isSubclassOfClass:[AOCondition class]];
+    return [type isSubclassOfClass:[AODecorator class]];
 }
 
 -(void) populateProperties:(NSObject<AOTask>*)task fromData:(NSDictionary*)data {

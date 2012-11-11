@@ -22,8 +22,8 @@
  * THE SOFTWARE.
  */
 
-#import "AOCondition.h"
+#import "AODecorator.h"
 
-@interface TestDecorator : AOCondition
+@interface TestDecorator : AODecorator
 
 @end
