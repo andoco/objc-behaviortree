@@ -41,7 +41,11 @@
 /** Called when decorator is stopped to indicate if decorated task should be stopped */
 -(BOOL) willStop:(NSMutableDictionary*)blackboard;
 
-/** Evaluates the result from decorated task and returns a new result */
--(AOResult) evaluateResult:(AOResult)result withBlackboard:(NSMutableDictionary*)blackboard;
+/** Evaluates the result from decorated task and returns a new result 
+ 
+ If the decorated task was not run then the default value of the the result
+ argument will be AOResultSuccess.
+ */
+-(AOResult) evaluateResult:(AOResult)result withBlackboard:(NSMutableDictionary*)blackboard andDidRun:(BOOL)didRun;
 
 @end

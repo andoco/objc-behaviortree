@@ -26,43 +26,38 @@
 
 @implementation AOCondition
 
--(id) initWithTask:(id<AOTask>)task
-{
-    self = [super init];
-    if (self) {
-        _task = task;
-    }
-    return self;
+-(BOOL) willStart:(NSMutableDictionary *)blackboard {
+    return NO;
 }
 
--(void) stop:(NSMutableDictionary*)blackboard {
-    [super stop:blackboard];
-    if (_task.status == AOStatusRunning) {
-        [_task stop:blackboard];
-        _task.status = AOStatusReady;
+-(BOOL) willRun:(NSMutableDictionary *)blackboard {
+    if ([self evaluate:blackboard]) {
+        DLog(@"Condition met for %@", self);
+        
+        if (self.task.status == AOStatusReady)
+            [self.task start:blackboard];
+        
+        return YES;
     }
-}
-
--(AOResult) run:(NSMutableDictionary *)blackboard {
-    [super run:blackboard];
     
-    if (![self evaluate:blackboard])
+    return NO;
+}
+
+-(BOOL) willStop:(NSMutableDictionary *)blackboard {
+    return self.task.status == AOStatusRunning;
+}
+
+-(AOResult) evaluateResult:(AOResult)result withBlackboard:(NSMutableDictionary *)blackboard andDidRun:(BOOL)didRun {
+    if (!didRun)
         return AOResultFailure;
     
-    DLog(@"Condition met for %@", self);
-    
-    if (_task.status == AOStatusReady)
-        [_task start:blackboard];
-    
-    AOResult result = [_task run:blackboard];
-    
     if (result == AOResultSuccess || result == AOResultFailure) {
-        [_task stop:blackboard];
-        _task.status = AOStatusReady;
+        [self.task stop:blackboard];
+        self.task.status = AOStatusReady;
     } else if (result == AOResultPending) {
-        _task.status = AOStatusRunning;
+        self.task.status = AOStatusRunning;
     }
-    
+
     return result;
 }
 

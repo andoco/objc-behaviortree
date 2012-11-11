@@ -66,11 +66,23 @@ describe(@"Decorator", ^{
             [[decorator should] receive:@selector(willStop:)];
             [decorator stop:blackboard];
         });
+        
+        context(@"and willStop returns YES", ^{
+            
+            beforeEach(^{
+                [[decorator stubAndReturn:theValue(YES)] willStop:blackboard];
+            });
 
-        it(@"should stop decorated task if willStop returns YES", ^{
-            [[decorator stubAndReturn:theValue(YES)] willStop:blackboard];
-            [[task should] receive:@selector(stop:) withArguments:blackboard];
-            [decorator stop:blackboard];
+            it(@"should stop decorated task", ^{
+                [[task should] receive:@selector(stop:) withArguments:blackboard];
+                [decorator stop:blackboard];
+            });
+            
+            it(@"should change decorated task status to Ready", ^{
+                [[task should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
+                [decorator stop:blackboard];
+            });
+
         });
         
         it(@"should not stop decorated task if willStop returns NO", ^{
@@ -88,31 +100,51 @@ describe(@"Decorator", ^{
             [decorator run:blackboard];
         });
         
-        it(@"should run decorated task if willRun returns YES", ^{
-            [[decorator stubAndReturn:theValue(YES)] willRun:blackboard];
-            [[task should] receive:@selector(run:) withArguments:blackboard];
-            [decorator run:blackboard];
-        });
-        
-        it(@"should not run decorated task if willRun returns NO", ^{
-            [[decorator stubAndReturn:theValue(NO)] willRun:blackboard];
-            [[task shouldNot] receive:@selector(run:)];
-            [decorator run:blackboard];
-        });
-        
-        context(@"and decorated task run", ^{
+        context(@"and willRun returns YES", ^{
             
+            beforeEach(^{
+                [[decorator should] receive:@selector(willRun:) andReturn:theValue(YES) withArguments:blackboard];
+            });
+
+            it(@"should run decorated task", ^{
+                [[task should] receive:@selector(run:) withArguments:blackboard];
+                [decorator run:blackboard];
+            });
+
             it(@"should call evaluateResult template method with result of decorated task", ^{
-                [[decorator stubAndReturn:theValue(YES)] willRun:blackboard];
                 [[task stubAndReturn:theValue(AOResultSuccess)] run:blackboard];
-                [[decorator should] receive:@selector(evaluateResult:withBlackboard:) withArguments:theValue(AOResultSuccess),blackboard];
+                [[decorator should] receive:@selector(evaluateResult:withBlackboard:andDidRun:) withArguments:theValue(AOResultSuccess),blackboard,theValue(YES)];
                 [decorator run:blackboard];
             });
             
             it(@"should return evaluated result of decorated task", ^{
-                [[decorator stubAndReturn:theValue(YES)] willRun:blackboard];
                 [[task stubAndReturn:theValue(AOResultFailure)] run:blackboard];
-                [[decorator stubAndReturn:theValue(AOResultSuccess)] evaluateResult:AOResultFailure withBlackboard:blackboard];
+                [[decorator stubAndReturn:theValue(AOResultSuccess)] evaluateResult:AOResultFailure withBlackboard:blackboard andDidRun:YES];
+                
+                [[theValue([decorator run:blackboard]) should] equal:theValue(AOResultSuccess)];
+            });
+
+        });
+        
+        context(@"and willRun returns NO", ^{
+            
+            beforeEach(^{
+                [[decorator should] receive:@selector(willRun:) andReturn:theValue(NO) withArguments:blackboard];
+            });
+        
+            it(@"should not run decorated task", ^{
+                [[task shouldNot] receive:@selector(run:)];
+                [decorator run:blackboard];
+            });
+            
+            it(@"should call evaluateResult with default result", ^{
+                [[decorator should] receive:@selector(evaluateResult:withBlackboard:andDidRun:) withArguments:theValue(AOResultSuccess),blackboard,theValue(NO)];
+                [decorator run:blackboard];
+            });
+            
+            it(@"should return evaluated result of decorated task", ^{
+                [[task stubAndReturn:theValue(AOResultFailure)] run:blackboard];
+                [[decorator stubAndReturn:theValue(AOResultSuccess)] evaluateResult:AOResultFailure withBlackboard:blackboard andDidRun:NO];
                 
                 [[theValue([decorator run:blackboard]) should] equal:theValue(AOResultSuccess)];
             });

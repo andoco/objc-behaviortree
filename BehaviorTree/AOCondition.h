@@ -22,13 +22,10 @@
  * THE SOFTWARE.
  */
 
-#import "AOTask.h"
+#import "AODecorator.h"
 
-@interface AOCondition : AOTask
+@interface AOCondition : AODecorator
 
-@property (nonatomic, readonly) id<AOTask> task;
-
--(id) initWithTask:(id<AOTask>)task;
 -(BOOL) evaluate:(NSMutableDictionary*)blackboard;
 
 @end
