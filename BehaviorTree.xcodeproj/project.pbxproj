@@ -43,6 +43,7 @@
 		49AC072F1610F15600516DDD /* AOTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC072E1610F15500516DDD /* AOTask.m */; };
 		49AC07321610F3BF00516DDD /* AOCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC07311610F3BF00516DDD /* AOCondition.m */; };
 		49AC07341610F48600516DDD /* ConditionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC07331610F48600516DDD /* ConditionSpec.m */; };
+		49BA37CB1656BAF400217B48 /* AODecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F84AB4164E68C800328A7A /* AODecorator.m */; };
 		49BC784D1631CF5C00F2516A /* libNSLoggerClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC784C1631CF5C00F2516A /* libNSLoggerClient.a */; };
 		49BC784F1631CF7700F2516A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC784E1631CF7700F2516A /* CFNetwork.framework */; };
 		49BC78511631CF7F00F2516A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BC78501631CF7F00F2516A /* SystemConfiguration.framework */; };
@@ -491,6 +492,7 @@
 				4998C46D163494FF00E38F3C /* AOTask.m in Sources */,
 				4998C46E163494FF00E38F3C /* AOCondition.m in Sources */,
 				4998C46F163494FF00E38F3C /* AOBehaviorReader.m in Sources */,
+				49BA37CB1656BAF400217B48 /* AODecorator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
