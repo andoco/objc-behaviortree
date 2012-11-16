@@ -25,14 +25,17 @@
 #import "TargetFood.h"
 
 #import "Food.h"
+#import "World.h"
 
 @implementation TargetFood
 
 -(AOResult) run:(NSMutableDictionary*)blackboard {
-    if (self.actor.world.food.count == 0)
+    World *world = blackboard.world;
+    
+    if (world.food.count == 0)
         return AOResultFailure;
     
-    Food *food = [self.actor.world.food objectAtIndex:0];
+    Food *food = [world.food objectAtIndex:0];
     [blackboard setObject:food forKey:@"target"];
     
     return AOResultSuccess;

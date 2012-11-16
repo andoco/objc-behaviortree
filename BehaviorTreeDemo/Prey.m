@@ -24,6 +24,7 @@
 
 #import "Prey.h"
 
+#import "AOBehaviorReader.h"
 #import "AOBehaviorTree.h"
 #import "EatFood.h"
 #import "Flee.h"
@@ -39,21 +40,9 @@
     if (self) {
         self.color = [UIColor blueColor];
         self.speed = 3;
-        
-        id fleeSeq = [[AOSequence alloc] init];
-        [fleeSeq addChild:[[PredatorDetected alloc] initWithActor:self]];
-        [fleeSeq addChild:[[Flee alloc] initWithActor:self]];
-        
-        id gatherSeq = [[AOSequence alloc] init];
-        [gatherSeq addChild:[[TargetFood alloc] initWithActor:self]];
-        [gatherSeq addChild:[[Seek alloc] initWithActor:self]];
-        [gatherSeq addChild:[[EatFood alloc] initWithActor:self]];
-        
-        id selector = [[AOSelector alloc] init];
-        [selector addChild:fleeSeq];
-        [selector addChild:gatherSeq];
-        
-        self.behavior = [[AOBehaviorTree alloc] initWithRootTask:selector];
+                
+        AOBehaviorReader *reader = [[AOBehaviorReader alloc] init];
+        self.behavior = [reader buildTreeWithFile:[[NSBundle mainBundle] pathForResource:@"PreyBehavior" ofType:@"json"]];
     }
     return self;
 }

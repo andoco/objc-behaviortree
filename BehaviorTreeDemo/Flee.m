@@ -24,18 +24,19 @@
 
 #import "Flee.h"
 
+#import "Actor.h"
+
 @implementation Flee
 
 -(AOResult) run:(NSMutableDictionary *)blackboard {
+    Actor *actor = blackboard.actor;
     Actor *target = [blackboard objectForKey:@"target"];
-        
-    //NSLog(@"Fleeing target %@", target);
     
-    CGPoint offset = CGPointSubtract(target.position, self.actor.position);
+    CGPoint offset = CGPointSubtract(target.position, actor.position);
         
-    CGPoint v = CGPointScale(CGPointNormalize(offset), -self.actor.speed);
+    CGPoint v = CGPointScale(CGPointNormalize(offset), -actor.speed);
     
-    self.actor.position = CGPointAdd(self.actor.position, v);
+    actor.position = CGPointAdd(actor.position, v);
     
     return AOResultSuccess;
 }

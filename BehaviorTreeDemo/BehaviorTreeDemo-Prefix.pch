@@ -12,4 +12,6 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "BPGeometry.h"
+    #import "BTreeLogging.h"
+    #import "NSMutableDictionary+Blackboard.h"
 #endif

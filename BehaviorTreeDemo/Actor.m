@@ -43,7 +43,8 @@
 }
 
 -(void) update {
-    [_behavior run];
+    id blackboard = [NSMutableDictionary dictionaryWithObjectsAndKeys:self, @"actor", _world, @"world", nil];
+    [_behavior runWithBlackboard:blackboard];
 }
 
 @end

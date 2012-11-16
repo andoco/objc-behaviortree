@@ -21,12 +21,14 @@
 		494549E71605AEF9001F93A4 /* Prey.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549E61605AEF9001F93A4 /* Prey.m */; };
 		494549EA1605AF5B001F93A4 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549E91605AF5B001F93A4 /* Actor.m */; };
 		494549ED1605B22A001F93A4 /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549EC1605B22A001F93A4 /* World.m */; };
-		494549F01605B657001F93A4 /* ActorAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549EF1605B657001F93A4 /* ActorAction.m */; };
 		494549F31605BC3B001F93A4 /* EatFood.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549F21605BC3B001F93A4 /* EatFood.m */; };
 		494549F61605BE6A001F93A4 /* Predator.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549F51605BE6A001F93A4 /* Predator.m */; };
 		4964A5801605C1D800FE3588 /* TargetFood.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964A57F1605C1D700FE3588 /* TargetFood.m */; };
 		4964A5841605C37700FE3588 /* TargetPrey.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964A5831605C37700FE3588 /* TargetPrey.m */; };
 		4998C48316349A8C00E38F3C /* libBehaviorTree-verbose.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4998C48216349A8C00E38F3C /* libBehaviorTree-verbose.a */; };
+		49BA37C91656B98000217B48 /* PredatorBehavior.json in Resources */ = {isa = PBXBuildFile; fileRef = 49BA37C81656B98000217B48 /* PredatorBehavior.json */; };
+		49BA37D01656BE4D00217B48 /* NSMutableDictionary+Blackboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BA37CF1656BE4D00217B48 /* NSMutableDictionary+Blackboard.m */; };
+		49BA37D21656C08A00217B48 /* PreyBehavior.json in Resources */ = {isa = PBXBuildFile; fileRef = 49BA37D11656C08A00217B48 /* PreyBehavior.json */; };
 		49C7245E163072FE007C6900 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C7245D163072FE007C6900 /* CFNetwork.framework */; };
 		49C7246116307314007C6900 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C7246016307314007C6900 /* SystemConfiguration.framework */; };
 		49C724B21630798C007C6900 /* libNSLoggerClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C724B11630798C007C6900 /* libNSLoggerClient.a */; };
@@ -60,8 +62,6 @@
 		494549E91605AF5B001F93A4 /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Actor.m; sourceTree = "<group>"; };
 		494549EB1605B22A001F93A4 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		494549EC1605B22A001F93A4 /* World.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = World.m; sourceTree = "<group>"; };
-		494549EE1605B657001F93A4 /* ActorAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorAction.h; sourceTree = "<group>"; };
-		494549EF1605B657001F93A4 /* ActorAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorAction.m; sourceTree = "<group>"; };
 		494549F11605BC3B001F93A4 /* EatFood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EatFood.h; sourceTree = "<group>"; };
 		494549F21605BC3B001F93A4 /* EatFood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EatFood.m; sourceTree = "<group>"; };
 		494549F41605BE6A001F93A4 /* Predator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Predator.h; sourceTree = "<group>"; };
@@ -71,6 +71,10 @@
 		4964A5821605C37700FE3588 /* TargetPrey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetPrey.h; sourceTree = "<group>"; };
 		4964A5831605C37700FE3588 /* TargetPrey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetPrey.m; sourceTree = "<group>"; };
 		4998C48216349A8C00E38F3C /* libBehaviorTree-verbose.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libBehaviorTree-verbose.a"; path = "build/Release-iphoneos/libBehaviorTree-verbose.a"; sourceTree = "<group>"; };
+		49BA37C81656B98000217B48 /* PredatorBehavior.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PredatorBehavior.json; sourceTree = "<group>"; };
+		49BA37CE1656BE4D00217B48 /* NSMutableDictionary+Blackboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Blackboard.h"; sourceTree = "<group>"; };
+		49BA37CF1656BE4D00217B48 /* NSMutableDictionary+Blackboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Blackboard.m"; sourceTree = "<group>"; };
+		49BA37D11656C08A00217B48 /* PreyBehavior.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PreyBehavior.json; sourceTree = "<group>"; };
 		49C7245D163072FE007C6900 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		49C7246016307314007C6900 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		49C724B11630798C007C6900 /* libNSLoggerClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNSLoggerClient.a; path = "NSLoggerClient/build/Release-iphoneos/libNSLoggerClient.a"; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				494549C9160548EC001F93A4 /* AppDelegate.m */,
 				49DAC7F91605E49900BD1DE5 /* BPGeometry.h */,
 				49DAC7FA1605E49900BD1DE5 /* BPGeometry.m */,
+				49BA37D31656CEA000217B48 /* Categories */,
 				494549C0160548EC001F93A4 /* Supporting Files */,
 				494549CB160548EC001F93A4 /* ViewController.h */,
 				494549CC160548EC001F93A4 /* ViewController.m */,
@@ -164,8 +169,6 @@
 		494549DB1605AE2B001F93A4 /* Behaviors */ = {
 			isa = PBXGroup;
 			children = (
-				494549EE1605B657001F93A4 /* ActorAction.h */,
-				494549EF1605B657001F93A4 /* ActorAction.m */,
 				494549F11605BC3B001F93A4 /* EatFood.h */,
 				494549F21605BC3B001F93A4 /* EatFood.m */,
 				49DAC7F61605E3A400BD1DE5 /* Flee.h */,
@@ -182,18 +185,29 @@
 			name = Behaviors;
 			sourceTree = "<group>";
 		};
+		49BA37D31656CEA000217B48 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				49BA37CE1656BE4D00217B48 /* NSMutableDictionary+Blackboard.h */,
+				49BA37CF1656BE4D00217B48 /* NSMutableDictionary+Blackboard.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		49DAC81D1606433F00BD1DE5 /* Actors */ = {
 			isa = PBXGroup;
 			children = (
-				494549DB1605AE2B001F93A4 /* Behaviors */,
 				494549E81605AF5B001F93A4 /* Actor.h */,
 				494549E91605AF5B001F93A4 /* Actor.m */,
+				494549DB1605AE2B001F93A4 /* Behaviors */,
 				494549DF1605AEC4001F93A4 /* Food.h */,
 				494549E01605AEC4001F93A4 /* Food.m */,
 				494549F41605BE6A001F93A4 /* Predator.h */,
 				494549F51605BE6A001F93A4 /* Predator.m */,
+				49BA37C81656B98000217B48 /* PredatorBehavior.json */,
 				494549E51605AEF9001F93A4 /* Prey.h */,
 				494549E61605AEF9001F93A4 /* Prey.m */,
+				49BA37D11656C08A00217B48 /* PreyBehavior.json */,
 			);
 			name = Actors;
 			sourceTree = "<group>";
@@ -252,6 +266,8 @@
 				494549C4160548EC001F93A4 /* InfoPlist.strings in Resources */,
 				494549D0160548EC001F93A4 /* ViewController_iPhone.xib in Resources */,
 				494549D3160548EC001F93A4 /* ViewController_iPad.xib in Resources */,
+				49BA37C91656B98000217B48 /* PredatorBehavior.json in Resources */,
+				49BA37D21656C08A00217B48 /* PreyBehavior.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +286,6 @@
 				494549E71605AEF9001F93A4 /* Prey.m in Sources */,
 				494549EA1605AF5B001F93A4 /* Actor.m in Sources */,
 				494549ED1605B22A001F93A4 /* World.m in Sources */,
-				494549F01605B657001F93A4 /* ActorAction.m in Sources */,
 				494549F31605BC3B001F93A4 /* EatFood.m in Sources */,
 				494549F61605BE6A001F93A4 /* Predator.m in Sources */,
 				4964A5801605C1D800FE3588 /* TargetFood.m in Sources */,
@@ -278,6 +293,7 @@
 				49DAC7F41605E30700BD1DE5 /* PredatorDetected.m in Sources */,
 				49DAC7F81605E3A400BD1DE5 /* Flee.m in Sources */,
 				49DAC7FB1605E49900BD1DE5 /* BPGeometry.m in Sources */,
+				49BA37D01656BE4D00217B48 /* NSMutableDictionary+Blackboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +390,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/**";
 				WRAPPER_EXTENSION = app;
@@ -391,6 +408,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/BehaviorTree-fqceqlrpkzmkklcztajsjqxprzjs/Build/Products/Debug-iphoneos\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "${SOURCE_ROOT}/**";
 				WRAPPER_EXTENSION = app;

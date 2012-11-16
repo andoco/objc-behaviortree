@@ -22,10 +22,8 @@
  * THE SOFTWARE.
  */
 
-#import "ActorAction.h"
+#import "AOAction.h"
 
-@interface PredatorDetected : ActorAction {
-    NSInteger counter_;
-}
+@interface PredatorDetected : AOAction
 
 @end

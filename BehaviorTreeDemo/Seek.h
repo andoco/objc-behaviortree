@@ -22,11 +22,11 @@
  * THE SOFTWARE.
  */
 
-#import "ActorAction.h"
+#import "AOAction.h"
 
 @class World;
 
-@interface Seek : ActorAction
+@interface Seek : AOAction
 
 @property (nonatomic, assign) CGFloat rate;
 

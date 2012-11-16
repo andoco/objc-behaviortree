@@ -25,11 +25,13 @@
 #import "TargetPrey.h"
 
 #import "Prey.h"
+#import "World.h"
 
 @implementation TargetPrey
 
 -(AOResult) run:(NSMutableDictionary*)blackboard {
-    Prey *target = self.actor.world.prey;
+    World *world = blackboard.world;
+    Prey *target = world.prey;
     [blackboard setObject:target forKey:@"target"];
     
     return AOResultSuccess;

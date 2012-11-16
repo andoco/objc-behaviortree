@@ -32,9 +32,8 @@
 -(AOResult) run:(NSMutableDictionary *)blackboard {
     Food *food = [blackboard objectForKey:@"target"];
     
-    //NSLog(@"Eating food %@", food);
     [food.view removeFromSuperview];
-    [food.world.food removeObject:food];
+    [blackboard.world.food removeObject:food];
     
     return AOResultSuccess;
 }

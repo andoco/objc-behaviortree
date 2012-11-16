@@ -22,8 +22,8 @@
  * THE SOFTWARE.
  */
 
-#import "ActorAction.h"
+#import "AOAction.h"
 
-@interface TargetPrey : ActorAction
+@interface TargetPrey : AOAction
 
 @end

@@ -25,13 +25,12 @@
 #import "Seek.h"
 
 #import "Food.h"
-#import "World.h"
 
 @implementation Seek
 
-- (id)initWithActor:(Actor *)actor
+- (id)init
 {
-    self = [super initWithActor:actor];
+    self = [super init];
     if (self) {
         _rate = 0.1;
     }
@@ -39,21 +38,20 @@
 }
 
 -(AOResult) run:(NSMutableDictionary *)blackboard {
+    Actor *actor = blackboard.actor;
     Actor *target = [blackboard objectForKey:@"target"];
     
     if (!target)
         return AOResultFailure;
-    
-    //NSLog(@"Moving to target %@", target);
         
-    CGPoint offset = CGPointSubtract(target.position, self.actor.position);
+    CGPoint offset = CGPointSubtract(target.position, actor.position);
     
     if (CGPointMagnitude(offset) < 10)
         return AOResultSuccess;
     
-    CGPoint v = CGPointScale(CGPointNormalize(offset), self.actor.speed);
+    CGPoint v = CGPointScale(CGPointNormalize(offset), actor.speed);
     
-    self.actor.position = CGPointAdd(self.actor.position, v);
+    actor.position = CGPointAdd(actor.position, v);
     
     return AOResultFailure;
 }

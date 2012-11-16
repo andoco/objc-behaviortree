@@ -1,0 +1,11 @@
+{"type":"Selector","children":[
+	{"type":"Sequence","children":[
+		{"type":"PredatorDetected"},
+		{"type":"Flee"}
+	]},
+	{"type":"Sequence","children":[
+		{"type":"TargetFood"},
+		{"type":"Seek"},
+		{"type":"EatFood"}
+	]}
+]}

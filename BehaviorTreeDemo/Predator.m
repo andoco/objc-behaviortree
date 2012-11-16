@@ -24,6 +24,7 @@
 
 #import "Predator.h"
 
+#import "AOBehaviorReader.h"
 #import "AOBehaviorTree.h"
 #import "Seek.h"
 #import "TargetPrey.h"
@@ -36,13 +37,9 @@
     if (self) {
         self.color = [UIColor redColor];
         self.speed = 1;
-                
-        id hunt = [[AOSequence alloc] init];
-        [hunt addChild:[[TargetPrey alloc] initWithActor:self]];
-        [hunt addChild:[[Seek alloc] initWithActor:self]];
         
-        self.behavior = [[AOBehaviorTree alloc] initWithRootTask:hunt];
-
+        AOBehaviorReader *reader = [[AOBehaviorReader alloc] init];
+        self.behavior = [reader buildTreeWithFile:[[NSBundle mainBundle] pathForResource:@"PredatorBehavior" ofType:@"json"]];
     }
     return self;
 }

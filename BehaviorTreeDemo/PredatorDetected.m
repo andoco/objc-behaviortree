@@ -25,15 +25,18 @@
 #import "PredatorDetected.h"
 
 #import "Predator.h"
+#import "World.h"
 
-@implementation PredatorDetected
+@implementation PredatorDetected {
+    NSInteger counter_;
+}
 
 -(AOResult) run:(NSMutableDictionary *)blackboard {
-    CGPoint p = self.actor.position;
-    Predator *predator = self.actor.world.predator;
+    Actor *actor = blackboard.actor;
+    CGPoint p = actor.position;
+    Predator *predator = blackboard.world.predator;
     
     if (CGPointMagnitude(CGPointSubtract(predator.position, p)) <= 50) {
-        //NSLog(@"Predator detected");
         [blackboard setObject:predator forKey:@"target"];
         return AOResultSuccess;
     }
