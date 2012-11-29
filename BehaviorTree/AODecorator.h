@@ -33,19 +33,19 @@
 -(id) initWithTask:(id<AOTask>)task;
 
 /** Called when decorator is started to indicate if decorated task should be started */
--(BOOL) willStart:(NSMutableDictionary*)blackboard;
+-(BOOL) willStart:(id)blackboard;
 
 /** Called when decorator is run to indicate if decorated task should be run */
--(BOOL) willRun:(NSMutableDictionary*)blackboard;
+-(BOOL) willRun:(id)blackboard;
 
 /** Called when decorator is stopped to indicate if decorated task should be stopped */
--(BOOL) willStop:(NSMutableDictionary*)blackboard;
+-(BOOL) willStop:(id)blackboard;
 
 /** Evaluates the result from decorated task and returns a new result 
  
  If the decorated task was not run then the default value of the the result
  argument will be AOResultSuccess.
  */
--(AOResult) evaluateResult:(AOResult)result withBlackboard:(NSMutableDictionary*)blackboard andDidRun:(BOOL)didRun;
+-(AOResult) evaluateResult:(AOResult)result withBlackboard:(id)blackboard andDidRun:(BOOL)didRun;
 
 @end

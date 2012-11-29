@@ -32,7 +32,7 @@
 
 @implementation AOSelector
 
--(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
+-(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(id)blackboard {
     if (result == AOResultSuccess || result == AOResultPending) {
         if (running_ && running_ != task) {
             [running_ stop:blackboard];

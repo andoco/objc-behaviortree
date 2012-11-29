@@ -37,6 +37,6 @@
 
 -(id) initWithRootTask:(id<AOTask>)root;
 -(void) run;
--(void) runWithBlackboard:(NSMutableDictionary*)blackboard;
+-(void) runWithBlackboard:(id)blackboard;
 
 @end

@@ -29,7 +29,7 @@
 
 @implementation EatFood
 
--(AOResult) run:(NSMutableDictionary *)blackboard {
+-(AOResult) run:(id)blackboard {
     Food *food = [blackboard objectForKey:@"target"];
     
     [food.view removeFromSuperview];

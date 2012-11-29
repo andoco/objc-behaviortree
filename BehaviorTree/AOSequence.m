@@ -32,10 +32,10 @@
 
 @implementation AOSequence
 
--(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
+-(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(id)blackboard {
     if (result == AOResultFailure || result == AOResultPending) {
         if (running_ && running_ != task) {
-            [running_ stop:(NSMutableDictionary*)blackboard];
+            [running_ stop:(id)blackboard];
             running_.status = AOStatusReady;
         }
         

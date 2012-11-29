@@ -50,7 +50,7 @@
     return self;
 }
 
--(AOResult) run:(NSMutableDictionary *)blackboard {
+-(AOResult) run:(id)blackboard {
     [super run:blackboard];
     
     for (id<AOTask> task in self.children) {
@@ -85,7 +85,7 @@
     return [self defaultReturnResult];
 }
 
--(void) stop:(NSMutableDictionary *)blackboard {
+-(void) stop:(id)blackboard {
     [super stop:blackboard];
     
     for (id<AOTask> task in _children) {
@@ -98,7 +98,7 @@
     _children = [_children arrayByAddingObject:child];
 }
 
--(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
+-(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(id)blackboard {
     
 }
 

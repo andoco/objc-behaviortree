@@ -26,11 +26,11 @@
 
 @implementation AOCondition
 
--(BOOL) willStart:(NSMutableDictionary *)blackboard {
+-(BOOL) willStart:(id)blackboard {
     return NO;
 }
 
--(BOOL) willRun:(NSMutableDictionary *)blackboard {
+-(BOOL) willRun:(id)blackboard {
     if ([self evaluate:blackboard]) {
         DLog(@"Condition met for %@", self);
         
@@ -43,11 +43,11 @@
     return NO;
 }
 
--(BOOL) willStop:(NSMutableDictionary *)blackboard {
+-(BOOL) willStop:(id)blackboard {
     return self.task.status == AOStatusRunning;
 }
 
--(AOResult) evaluateResult:(AOResult)result withBlackboard:(NSMutableDictionary *)blackboard andDidRun:(BOOL)didRun {
+-(AOResult) evaluateResult:(AOResult)result withBlackboard:(id)blackboard andDidRun:(BOOL)didRun {
     if (!didRun)
         return AOResultFailure;
     
@@ -61,7 +61,7 @@
     return result;
 }
 
--(BOOL) evaluate:(NSMutableDictionary*)blackboard {
+-(BOOL) evaluate:(id)blackboard {
     return YES;
 }
 

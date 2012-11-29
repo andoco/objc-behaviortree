@@ -29,7 +29,7 @@
 
 @implementation TargetFood
 
--(AOResult) run:(NSMutableDictionary*)blackboard {
+-(AOResult) run:(id)blackboard {
     World *world = blackboard.world;
     
     if (world.food.count == 0)

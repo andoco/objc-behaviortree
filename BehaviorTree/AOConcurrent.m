@@ -41,12 +41,12 @@
     return self;
 }
 
--(void) start:(NSMutableDictionary*)blackboard {
+-(void) start:(id)blackboard {
     [super start:blackboard];
     _numFailed = 0;
 }
 
--(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(NSMutableDictionary*)blackboard {
+-(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(id)blackboard {
     if (result == AOResultFailure)
         _numFailed++;
     

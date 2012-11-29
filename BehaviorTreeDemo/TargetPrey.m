@@ -29,7 +29,7 @@
 
 @implementation TargetPrey
 
--(AOResult) run:(NSMutableDictionary*)blackboard {
+-(AOResult) run:(id)blackboard {
     World *world = blackboard.world;
     Prey *target = world.prey;
     [blackboard setObject:target forKey:@"target"];

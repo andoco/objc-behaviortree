@@ -31,7 +31,7 @@
     NSInteger counter_;
 }
 
--(AOResult) run:(NSMutableDictionary *)blackboard {
+-(AOResult) run:(id)blackboard {
     Actor *actor = blackboard.actor;
     CGPoint p = actor.position;
     Predator *predator = blackboard.world.predator;

@@ -26,6 +26,6 @@
 
 @interface AOCondition : AODecorator
 
--(BOOL) evaluate:(NSMutableDictionary*)blackboard;
+-(BOOL) evaluate:(id)blackboard;
 
 @end

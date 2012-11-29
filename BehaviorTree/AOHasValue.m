@@ -26,8 +26,8 @@
 
 @implementation AOHasValue
 
--(BOOL) evaluate:(NSMutableDictionary *)blackboard {
-    return [blackboard objectForKey:_key] == _value;
+-(BOOL) evaluate:(id)blackboard {
+    return [blackboard valueForKey:_key] == _value;
 }
 
 @end

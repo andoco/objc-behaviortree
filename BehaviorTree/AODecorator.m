@@ -35,12 +35,12 @@
 
 #pragma mark Task methods
 
--(void) start:(NSMutableDictionary *)blackboard {
+-(void) start:(id)blackboard {
     if ([self willStart:blackboard])
         [_task start:blackboard];
 }
 
--(AOResult) run:(NSMutableDictionary *)blackboard {
+-(AOResult) run:(id)blackboard {
     AOResult result = AOResultSuccess;
     
     BOOL willRun = [self willRun:blackboard];
@@ -53,7 +53,7 @@
     return result;
 }
 
--(void) stop:(NSMutableDictionary *)blackboard {
+-(void) stop:(id)blackboard {
     if ([self willStop:blackboard]) {
         [_task stop:blackboard];
         _task.status = AOStatusReady;
@@ -62,19 +62,19 @@
 
 #pragma mark Template methods
 
--(BOOL) willStart:(NSMutableDictionary*)blackboard {
+-(BOOL) willStart:(id)blackboard {
     return YES;
 }
 
--(BOOL) willRun:(NSMutableDictionary*)blackboard {
+-(BOOL) willRun:(id)blackboard {
     return YES;
 }
 
--(BOOL) willStop:(NSMutableDictionary*)blackboard {
+-(BOOL) willStop:(id)blackboard {
     return YES;
 }
 
--(AOResult) evaluateResult:(AOResult)result withBlackboard:(NSMutableDictionary*)blackboard andDidRun:(BOOL)didRun {
+-(AOResult) evaluateResult:(AOResult)result withBlackboard:(id)blackboard andDidRun:(BOOL)didRun {
     return result;
 }
 

@@ -39,7 +39,7 @@
     [self runWithBlackboard:[NSMutableDictionary dictionary]];
 }
 
--(void) runWithBlackboard:(NSMutableDictionary*)blackboard {
+-(void) runWithBlackboard:(id)blackboard {
     if (_root.status == AOStatusReady)
         [_root start:blackboard];    
 

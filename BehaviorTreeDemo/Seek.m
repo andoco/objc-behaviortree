@@ -37,7 +37,7 @@
     return self;
 }
 
--(AOResult) run:(NSMutableDictionary *)blackboard {
+-(AOResult) run:(id)blackboard {
     Actor *actor = blackboard.actor;
     Actor *target = [blackboard objectForKey:@"target"];
     

@@ -39,9 +39,9 @@ typedef enum {
 
 @property (nonatomic, assign) AOStatus status;
 
--(void) start:(NSMutableDictionary*)blackboard;
--(AOResult) run:(NSMutableDictionary*)blackboard;
--(void) stop:(NSMutableDictionary*)blackboard;
+-(void) start:(id)blackboard;
+-(AOResult) run:(id)blackboard;
+-(void) stop:(id)blackboard;
 
 @end
 

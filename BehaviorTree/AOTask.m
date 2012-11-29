@@ -28,16 +28,16 @@
 
 @synthesize status;
 
--(void) start:(NSMutableDictionary*)blackboard {
+-(void) start:(id)blackboard {
     DLog(@"Starting %@", self);
 }
 
--(AOResult) run:(NSMutableDictionary*)blackboard {
+-(AOResult) run:(id)blackboard {
     DLog(@"Running %@", self);
     return AOResultSuccess;
 }
 
--(void) stop:(NSMutableDictionary*)blackboard {
+-(void) stop:(id)blackboard {
     DLog(@"Stopping %@", self);    
 }
 
