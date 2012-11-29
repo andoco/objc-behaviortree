@@ -29,7 +29,10 @@
  */
 @interface AOHasValue : AOCondition
 
+/** KeyPath of the value to check in the blackboard */
 @property (nonatomic, strong) NSString *key;
+
+/** Value to compare against blackboard value */
 @property (nonatomic, strong) id value;
 
 @end

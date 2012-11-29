@@ -27,7 +27,7 @@
 @implementation AOHasValue
 
 -(BOOL) evaluate:(id)blackboard {
-    return [blackboard valueForKey:_key] == _value;
+    return [blackboard valueForKeyPath:_key] == _value;
 }
 
 @end

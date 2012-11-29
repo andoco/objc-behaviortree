@@ -138,6 +138,22 @@ describe(@"HasValue", ^{
  
         });
         
+        context(@"and configured key is keyPath", ^{
+
+            it(@"should run subtask", ^{
+                NSDictionary *d1 = [NSDictionary dictionaryWithObject:@"testStringVal" forKey:@"testString"];
+                [blackboard setObject:d1 forKey:@"test"];
+                
+                task.key = @"test.testString";
+                task.value = @"testStringVal";
+                
+                [[subtask should] receive:@selector(run:)];
+                
+                [task run:blackboard];
+            });
+
+        });
+        
         context(@"and configured value not present in blackboard", ^{
             it(@"should not run subtask", ^{
                 task.key = @"testNumber";
