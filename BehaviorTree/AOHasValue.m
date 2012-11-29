@@ -27,7 +27,20 @@
 @implementation AOHasValue
 
 -(BOOL) evaluate:(id)blackboard {
-    return [blackboard valueForKeyPath:_key] == _value;
+    id actualVal = [blackboard valueForKeyPath:_key];
+    
+    if (!actualVal)
+        return NO;
+    
+    BOOL result;
+    
+    if ([_value isKindOfClass:[NSNumber class]]) {
+        result = [_value isEqualToNumber:actualVal];
+    } else {
+        result = _value == actualVal;
+    }
+    
+    return result;
 }
 
 @end
