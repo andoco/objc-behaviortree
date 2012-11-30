@@ -33,7 +33,7 @@
     Food *food = [blackboard objectForKey:@"target"];
     
     [food.view removeFromSuperview];
-    [blackboard.world.food removeObject:food];
+    [[blackboard world].food removeObject:food];
     
     return AOResultSuccess;
 }

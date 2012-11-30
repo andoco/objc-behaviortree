@@ -22,26 +22,13 @@
  * THE SOFTWARE.
  */
 
-#import "PredatorDetected.h"
+#import "AOSetValue.h"
 
-#import "Predator.h"
-#import "World.h"
-
-@implementation PredatorDetected {
-    NSInteger counter_;
-}
+@implementation AOSetValue
 
 -(AOResult) run:(id)blackboard {
-    Actor *actor = [blackboard actor];
-    CGPoint p = actor.position;
-    Predator *predator = [blackboard world].predator;
-    
-    if (CGPointMagnitude(CGPointSubtract(predator.position, p)) <= 50) {
-        [blackboard setObject:predator forKey:@"target"];
-        return AOResultSuccess;
-    }
-    
-    return AOResultFailure;
+    [blackboard setValue:_value forKeyPath:_key];
+    return AOResultSuccess;
 }
 
 @end

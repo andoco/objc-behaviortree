@@ -30,7 +30,7 @@
 @implementation TargetFood
 
 -(AOResult) run:(id)blackboard {
-    World *world = blackboard.world;
+    World *world = [blackboard world];
     
     if (world.food.count == 0)
         return AOResultFailure;

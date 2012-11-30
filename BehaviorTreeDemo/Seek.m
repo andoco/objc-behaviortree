@@ -38,7 +38,7 @@
 }
 
 -(AOResult) run:(id)blackboard {
-    Actor *actor = blackboard.actor;
+    Actor *actor = [blackboard actor];
     Actor *target = [blackboard objectForKey:@"target"];
     
     if (!target)

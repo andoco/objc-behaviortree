@@ -29,7 +29,7 @@
 @implementation Flee
 
 -(AOResult) run:(id)blackboard {
-    Actor *actor = blackboard.actor;
+    Actor *actor = [blackboard actor];
     Actor *target = [blackboard objectForKey:@"target"];
     
     CGPoint offset = CGPointSubtract(target.position, actor.position);

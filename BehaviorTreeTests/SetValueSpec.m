@@ -22,26 +22,39 @@
  * THE SOFTWARE.
  */
 
-#import "PredatorDetected.h"
+#import "Kiwi.h"
 
-#import "Predator.h"
-#import "World.h"
+#import "AOSetValue.h"
 
-@implementation PredatorDetected {
-    NSInteger counter_;
-}
+SPEC_BEGIN(SetValueSpec)
 
--(AOResult) run:(id)blackboard {
-    Actor *actor = [blackboard actor];
-    CGPoint p = actor.position;
-    Predator *predator = [blackboard world].predator;
-    
-    if (CGPointMagnitude(CGPointSubtract(predator.position, p)) <= 50) {
-        [blackboard setObject:predator forKey:@"target"];
-        return AOResultSuccess;
-    }
-    
-    return AOResultFailure;
-}
+describe(@"SetValue", ^{
 
-@end
+	__block AOSetValue *task;
+	__block NSMutableDictionary *blackboard;
+	
+	beforeEach(^{
+		task = [[AOSetValue alloc] init];
+		blackboard = [NSMutableDictionary dictionary];
+	});
+
+	context(@"When run", ^{
+		
+		it(@"should set value in blackboard", ^{
+			task.key = @"testKey";
+			task.value = @"Test value";
+			[task run:blackboard];
+			
+			[[[blackboard objectForKey:@"testKey"] should] equal:@"Test value"];
+		});
+        
+        it(@"should return Success", ^{
+			task.key = @"testKey";
+			task.value = @"Test value";
+			[[theValue([task run:blackboard]) should] equal:theValue(AOResultSuccess)];
+        });
+	});
+
+});
+
+SPEC_END

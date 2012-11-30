@@ -25,6 +25,9 @@
 		4945499E16053026001F93A4 /* CompositeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945499D16053026001F93A4 /* CompositeSpec.m */; };
 		494549A116053679001F93A4 /* AOSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A016053679001F93A4 /* AOSequence.m */; };
 		494549A3160536B1001F93A4 /* SequenceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 494549A2160536B1001F93A4 /* SequenceSpec.m */; };
+		49575FF81669239300CB47C7 /* SetValueSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 49575FF71669239200CB47C7 /* SetValueSpec.m */; };
+		49575FFC166923E400CB47C7 /* AOSetValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 49575FFB166923E300CB47C7 /* AOSetValue.m */; };
+		49575FFD166923E400CB47C7 /* AOSetValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 49575FFB166923E300CB47C7 /* AOSetValue.m */; };
 		495DC45E1667D63B00A9F332 /* HasValueSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 495DC45D1667D63B00A9F332 /* HasValueSpec.m */; };
 		495DC4621667D6BB00A9F332 /* AOHasValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 495DC4611667D6BB00A9F332 /* AOHasValue.m */; };
 		495DC4631667D6BB00A9F332 /* AOHasValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 495DC4611667D6BB00A9F332 /* AOHasValue.m */; };
@@ -122,6 +125,9 @@
 		4945499F16053679001F93A4 /* AOSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOSequence.h; sourceTree = "<group>"; };
 		494549A016053679001F93A4 /* AOSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOSequence.m; sourceTree = "<group>"; };
 		494549A2160536B1001F93A4 /* SequenceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequenceSpec.m; sourceTree = "<group>"; };
+		49575FF71669239200CB47C7 /* SetValueSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetValueSpec.m; sourceTree = "<group>"; };
+		49575FFA166923E200CB47C7 /* AOSetValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOSetValue.h; sourceTree = "<group>"; };
+		49575FFB166923E300CB47C7 /* AOSetValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOSetValue.m; sourceTree = "<group>"; };
 		495DC45D1667D63B00A9F332 /* HasValueSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HasValueSpec.m; sourceTree = "<group>"; };
 		495DC4601667D6BB00A9F332 /* AOHasValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOHasValue.h; sourceTree = "<group>"; };
 		495DC4611667D6BB00A9F332 /* AOHasValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOHasValue.m; sourceTree = "<group>"; };
@@ -260,6 +266,7 @@
 				49FE27BA1629B79100916552 /* Resources */,
 				4945499516052CC1001F93A4 /* SelectorSpec.m */,
 				494549A2160536B1001F93A4 /* SequenceSpec.m */,
+				49575FF71669239200CB47C7 /* SetValueSpec.m */,
 				49454977160527FD001F93A4 /* Supporting Files */,
 				49FE27CE162A2B1B00916552 /* TestEntities */,
 				49FE27B31629B72900916552 /* TestTasks */,
@@ -295,6 +302,8 @@
 				4945499816052D81001F93A4 /* AOSelector.m */,
 				4945499F16053679001F93A4 /* AOSequence.h */,
 				494549A016053679001F93A4 /* AOSequence.m */,
+				49575FFA166923E200CB47C7 /* AOSetValue.h */,
+				49575FFB166923E300CB47C7 /* AOSetValue.m */,
 				4945499116052AFC001F93A4 /* AOTask.h */,
 				49AC072E1610F15500516DDD /* AOTask.m */,
 			);
@@ -467,6 +476,7 @@
 				4985E1A81629936700571D2D /* AOBehaviorReader.m in Sources */,
 				49F84AB5164E68C800328A7A /* AODecorator.m in Sources */,
 				495DC4621667D6BB00A9F332 /* AOHasValue.m in Sources */,
+				49575FFC166923E400CB47C7 /* AOSetValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +497,7 @@
 				49243ED71642EF1A0040271B /* AOPrefixedAction.m in Sources */,
 				49F84AB8164E695D00328A7A /* DecoratorSpec.m in Sources */,
 				495DC45E1667D63B00A9F332 /* HasValueSpec.m in Sources */,
+				49575FF81669239300CB47C7 /* SetValueSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +516,7 @@
 				4998C46F163494FF00E38F3C /* AOBehaviorReader.m in Sources */,
 				49BA37CB1656BAF400217B48 /* AODecorator.m in Sources */,
 				495DC4631667D6BB00A9F332 /* AOHasValue.m in Sources */,
+				49575FFD166923E400CB47C7 /* AOSetValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

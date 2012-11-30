@@ -30,7 +30,7 @@
 @implementation TargetPrey
 
 -(AOResult) run:(id)blackboard {
-    World *world = blackboard.world;
+    World *world = [blackboard world];
     Prey *target = world.prey;
     [blackboard setObject:target forKey:@"target"];
     
