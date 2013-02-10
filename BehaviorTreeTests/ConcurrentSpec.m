@@ -138,8 +138,10 @@ describe(@"Concurrent", ^{
             id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [task2 stub:@selector(run:) andReturn:theValue(AOResultPending)];
             
-            [concurrent addChild:task1];
-            [concurrent addChild:task2];
+            id task3 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            [task3 stub:@selector(run:) andReturn:theValue(AOResultSuccess)];
+            
+            [concurrent addChildren:task1, task2, task3, nil];
             
             [[theValue([concurrent run:blackboard]) should] equal:theValue(AOResultPending)];
         });        

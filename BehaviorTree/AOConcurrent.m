@@ -25,18 +25,29 @@
 #import "AOConcurrent.h"
 
 @interface AOConcurrent () {
-    id<AOTask> running_;
+    NSMutableSet *running_;
 }
 
 @end
 
 @implementation AOConcurrent
 
--(id) initWithLimit:(NSInteger)limit
+- (id)init
 {
     self = [super init];
     if (self) {
+        _failureLimit = 0;
+        running_ = [NSMutableSet set];        
+    }
+    return self;
+}
+
+-(id) initWithLimit:(NSInteger)limit
+{
+    self = [self init];
+    if (self) {
         _failureLimit = limit;
+        running_ = [NSMutableSet set];
     }
     return self;
 }
@@ -50,11 +61,14 @@
     if (result == AOResultFailure)
         _numFailed++;
     
-    running_ = result == AOResultPending ? task : nil;
+    if (result == AOResultSuccess || result == AOResultFailure)
+        [running_ removeObject:task];
+    else if (result == AOResultPending)
+        [running_ addObject:task];
 }
 
 -(AOResult) defaultReturnResult {
-    if (running_)
+    if (running_.count > 0)
         return AOResultPending;
     
     return _failureLimit == 0 || _numFailed < _failureLimit ? AOResultSuccess : AOResultFailure;
