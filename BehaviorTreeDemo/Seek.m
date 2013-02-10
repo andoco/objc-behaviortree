@@ -53,7 +53,7 @@
     
     actor.position = CGPointAdd(actor.position, v);
     
-    return AOResultFailure;
+    return AOResultPending;
 }
 
 @end
