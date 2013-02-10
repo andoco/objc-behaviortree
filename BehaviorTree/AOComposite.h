@@ -32,5 +32,6 @@
 
 -(id) initWithChildren:(id<AOTask>)firstArg, ... NS_REQUIRES_NIL_TERMINATION;
 -(void) addChild:(id<AOTask>)child;
+-(void) addChildren:(id<AOTask>)firstArg, ... NS_REQUIRES_NIL_TERMINATION;
 
 @end

@@ -98,6 +98,16 @@
     _children = [_children arrayByAddingObject:child];
 }
 
+-(void) addChildren:(id<AOTask>)firstArg, ... {
+    va_list args;
+    va_start(args, firstArg);
+    for (id<AOTask> arg = firstArg; arg != nil; arg = va_arg(args, id<AOTask>))
+    {
+        [self addChild:arg];
+    }
+    va_end(args);
+}
+
 -(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(id)blackboard {
     
 }

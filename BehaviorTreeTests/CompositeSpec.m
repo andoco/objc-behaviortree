@@ -57,6 +57,19 @@ describe(@"Composite", ^{
         });
     });
     
+    context(@"when child added using variadic method", ^{
+        it(@"should be added to children", ^{
+            id action1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            id action2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            
+            [task addChildren:action1, action2, nil];
+            
+            [[theValue(task.children.count) should] equal:theValue(2)];
+            [[[task.children objectAtIndex:0] should] equal:action1];
+            [[[task.children objectAtIndex:1] should] equal:action2];
+        });
+    });    
+    
     context(@"when initialized with children", ^{
         
         it(@"arguments should be added to children", ^{
