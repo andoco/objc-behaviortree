@@ -176,15 +176,17 @@ describe(@"Composite", ^{
     
     context(@"when stopped", ^{
 
-        it(@"should stop running children", ^{
+        it(@"should stop running children and set child status to Ready", ^{
             
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 stubAndReturn:theValue(AOStatusRunning)] status];
             [[task1 should] receive:@selector(stop:) withArguments:blackboard];
+            [[task1 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
 
             id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task2 stubAndReturn:theValue(AOStatusRunning)] status];
             [[task2 should] receive:@selector(stop:) withArguments:blackboard];
+            [[task2 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
 
             [task addChild:task1];
             [task addChild:task2];

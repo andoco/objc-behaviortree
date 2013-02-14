@@ -54,6 +54,7 @@
 
 -(void) start:(id)blackboard {
     [super start:blackboard];
+    [running_ removeAllObjects];
     _numFailed = 0;
 }
 

@@ -89,8 +89,10 @@
     [super stop:blackboard];
     
     for (id<AOTask> task in _children) {
-        if (task.status == AOStatusRunning)
+        if (task.status == AOStatusRunning) {
             [task stop:blackboard];
+            task.status = AOStatusReady;
+        }
     }
 }
 
