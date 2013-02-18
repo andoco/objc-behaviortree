@@ -32,6 +32,14 @@
 
 @implementation AOSequence
 
+-(NSIndexSet*) tasksToRun {
+    if (!running_)
+        return [super tasksToRun];
+    
+    NSUInteger runningIndex = [self.children indexOfObject:running_];
+    return [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(runningIndex, self.children.count - runningIndex)];
+}
+
 -(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(id)blackboard {
     if (result == AOResultFailure || result == AOResultPending) {
         if (running_ && running_ != task) {

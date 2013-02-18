@@ -34,4 +34,11 @@
 -(void) addChild:(id<AOTask>)child;
 -(void) addChildren:(id<AOTask>)firstArg, ... NS_REQUIRES_NIL_TERMINATION;
 
+#pragma mark Template methods
+
+-(NSIndexSet*) tasksToRun;
+-(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(id)blackboard;
+-(BOOL) shouldReturnWithResult:(AOResult)result returnResult:(AOResult*)returnResult;
+-(AOResult) defaultReturnResult;
+
 @end

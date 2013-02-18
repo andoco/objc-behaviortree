@@ -30,6 +30,7 @@ typedef enum {
 } AOStatus;
 
 typedef enum {
+    AOResultNone,
     AOResultSuccess,
     AOResultFailure,
     AOResultPending

@@ -88,86 +88,112 @@ describe(@"Composite", ^{
             blackboard = [NSMutableDictionary dictionary];
         });
         
-        it(@"should start all child tasks with status Ready", ^{
+        it(@"Should return all child tasks from tasksToRun method", ^{
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            
+            [task addChildren:task1, task2, nil];
+            
+            [[theValue([task tasksToRun].count) should] equal:theValue(2)];
+        });
+        
+//        it(@"Should only visit tasks returned by tasksToRun template method", ^{
+//            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+//            [[task1 stubAndReturn:theValue(AOStatusReady)] status];
+//            [[task1 shouldNot] receive:@selector(start:)];
+//            
+//            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+//            [[task2 stubAndReturn:theValue(AOStatusReady)] status];
+//            [[task2 should] receive:@selector(start)];
+//            
+//            [task addChildren:task1, task2, nil];
+//            
+//            [[task tasksToRun] stubAndReturn:[NSIndexSet indexSetWithIndex:1]];
+//            [task run:blackboard];
+//        });
+        
+        it(@"should start tasks with status Ready", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 stubAndReturn:theValue(AOStatusReady)] status];
             [[task1 should] receive:@selector(start:)];
             
-            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task2 stubAndReturn:theValue(AOStatusRunning)] status];
-            [[task2 shouldNot] receive:@selector(start)];
-            
-            [task addChild:task1];
-            [task addChild:task2];
-            
-            [task run:blackboard];
-        });
-        
-        it(@"should stop child task that returns Success", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task1 stubAndReturn:theValue(AOStatusReady)] status];
-            [[task1 stubAndReturn:theValue(AOResultSuccess)] run:blackboard];
-            [[task1 should] receive:@selector(stop:)];
-            
             [task addChild:task1];
             
             [task run:blackboard];
         });
         
-        it(@"should stop child task that returns Failure", ^{
+        it(@"should not start tasks with status Running", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task1 stubAndReturn:theValue(AOStatusReady)] status];
-            [[task1 stubAndReturn:theValue(AOResultFailure)] run:blackboard];
-            [[task1 should] receive:@selector(stop:)];
+            [[task1 stubAndReturn:theValue(AOStatusRunning)] status];
+            [[task1 shouldNot] receive:@selector(start)];
             
             [task addChild:task1];
             
             [task run:blackboard];
         });
-
-        it(@"should not stop child task that returns Pending", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task1 stubAndReturn:theValue(AOStatusReady)] status];
-            [[task1 stubAndReturn:theValue(AOResultPending)] run:blackboard];
-            [[task1 shouldNot] receive:@selector(stop)];
-            
-            [task addChild:task1];
-            
-            [task run:blackboard];            
-        });
-        
+                        
         context(@"child task returns Success", ^{
-            it(@"should change task status to Ready", ^{
-                id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-                [[task1 should] receive:@selector(run:) andReturn:theValue(AOResultSuccess)];
-                [[task1 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
-                
+            
+            __block id task1;
+            
+            beforeEach(^{
+                task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [[task1 stubAndReturn:theValue(AOStatusReady)] status];
+                [[task1 stubAndReturn:theValue(AOResultSuccess)] run:blackboard];
                 [task addChild:task1];
-                
+            });
+            
+            it(@"should stop task", ^{
+                [[task1 should] receive:@selector(stop:)];
+                [task run:blackboard];
+            });
+
+            it(@"should change task status to Ready", ^{
+                [[task1 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
                 [task run:blackboard];
             });
         });
 
         context(@"child task returns Failure", ^{
-            it(@"should change task status to Ready", ^{
-                id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-                [[task1 should] receive:@selector(run:) andReturn:theValue(AOResultFailure)];
-                [[task1 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
-                
+            
+            __block id task1;
+            
+            beforeEach(^{
+                task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [[task1 stubAndReturn:theValue(AOStatusReady)] status];
+                [[task1 stubAndReturn:theValue(AOResultFailure)] run:blackboard];
                 [task addChild:task1];
-                
+            });
+            
+            it(@"should stop task", ^{
+                [[task1 should] receive:@selector(stop:)];
+                [task run:blackboard];
+            });
+            
+            it(@"should change task status to Ready", ^{
+                [[task1 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
                 [task run:blackboard];
             });
         });
 
         context(@"child task returns Pending", ^{
-            it(@"should change task status to Running", ^{
-                id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-                [[task1 should] receive:@selector(run:) andReturn:theValue(AOResultPending)];
-                [[task1 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusRunning)];
-                
+            
+            __block id task1;
+            
+            beforeEach(^{
+                task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [[task1 stubAndReturn:theValue(AOStatusReady)] status];
+                [[task1 stubAndReturn:theValue(AOResultPending)] run:blackboard];
                 [task addChild:task1];
-                
+            });
+            
+            it(@"should not stop task", ^{
+                [[task1 shouldNot] receive:@selector(stop:)];
+                [task run:blackboard];
+            });
+
+            it(@"should change task status to Running", ^{
+                [[task1 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusRunning)];
                 [task run:blackboard];
             });
         });
@@ -182,14 +208,17 @@ describe(@"Composite", ^{
             [[task1 stubAndReturn:theValue(AOStatusRunning)] status];
             [[task1 should] receive:@selector(stop:) withArguments:blackboard];
             [[task1 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
-
+            
             id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task2 stubAndReturn:theValue(AOStatusRunning)] status];
-            [[task2 should] receive:@selector(stop:) withArguments:blackboard];
-            [[task2 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
+            [[task2 stubAndReturn:theValue(AOStatusReady)] status];
+            [[task2 shouldNot] receive:@selector(stop:) withArguments:blackboard];
 
-            [task addChild:task1];
-            [task addChild:task2];
+            id task3 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            [[task3 stubAndReturn:theValue(AOStatusRunning)] status];
+            [[task3 should] receive:@selector(stop:) withArguments:blackboard];
+            [[task3 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
+
+            [task addChildren:task1, task2, task3, nil];
             
             [task stop:blackboard];
         });

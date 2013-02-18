@@ -40,6 +40,14 @@ describe(@"Concurrent", ^{
     
     context(@"when run", ^{
         
+        it(@"should return indices of all children from tasksToRun method", ^{
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            [concurrent addChildren:task1, task2, nil];
+            
+            [[[concurrent tasksToRun] should] equal:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, concurrent.children.count)]];
+        });
+        
         it(@"should run all children", ^{
             
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
@@ -144,7 +152,32 @@ describe(@"Concurrent", ^{
             [concurrent addChildren:task1, task2, task3, nil];
             
             [[theValue([concurrent run:blackboard]) should] equal:theValue(AOResultPending)];
-        });        
+        });
+        
+        context(@"a child is already running", ^{
+            
+            __block id task1;
+            __block id task2;
+            __block id task3;
+            
+            beforeEach(^{
+                task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                task3 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                
+                [concurrent addChildren:task1, task2, task3, nil];
+                
+                [[task1 stubAndReturn:theValue(AOResultFailure)] run:blackboard];
+                [[task2 stubAndReturn:theValue(AOResultPending)] run:blackboard];
+                [[task2 stubAndReturn:theValue(AOResultSuccess)] run:blackboard];
+                [concurrent run:blackboard];
+            });
+            
+            it(@"should return indices of all children from tasksToRun method", ^{
+                [[[concurrent tasksToRun] should] equal:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, concurrent.children.count)]];
+            });
+            
+        });
     });
 });
 

@@ -40,6 +40,14 @@ describe(@"Selector", ^{
     
     context(@"when run", ^{
         
+        it(@"should indices of all children from tasksToRun method", ^{
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            [selector addChildren:task1, task2, nil];
+
+            [[[selector tasksToRun] should] equal:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, selector.children.count)]];
+        });
+        
         it(@"should run children until child returns Success", ^{
             
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
@@ -89,99 +97,26 @@ describe(@"Selector", ^{
             [[theValue([selector run:blackboard]) should] equal:theValue(AOResultPending)];
         });
                 
-        it(@"should stop running child if preceding child returns Success", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task1 stubAndReturn:theValue(AOResultFailure)] run:blackboard];
-
-            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task2 stubAndReturn:theValue(AOResultPending)] run:blackboard];
-
-            [selector addChild:task1];
-            [selector addChild:task2];
-            
-            [[theValue([selector run:blackboard]) should] equal:theValue(AOResultPending)];
-            
-            // second run setup
-            [[task1 stubAndReturn:theValue(AOResultSuccess)] run:blackboard];
-            [[task2 should] receive:@selector(stop:)];
-            [[theValue([selector run:blackboard]) should] equal:theValue(AOResultSuccess)];
-        });
-        
-        it(@"should stop running child if preceding child returns Pending", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task1 stubAndReturn:theValue(AOResultFailure)] run:blackboard];
-            
-            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [[task2 stubAndReturn:theValue(AOResultPending)] run:blackboard];
-            
-            [selector addChild:task1];
-            [selector addChild:task2];
-            
-            [[theValue([selector run:blackboard]) should] equal:theValue(AOResultPending)];
-            
-            // second run setup
-            [[task1 stubAndReturn:theValue(AOResultPending)] run:blackboard];
-            [[task2 should] receive:@selector(stop:)];
-            [[theValue([selector run:blackboard]) should] equal:theValue(AOResultPending)];
-        });
-        
         context(@"a child is already Running", ^{
             
             __block id task1;
             __block id task2;
+            __block id task3;
             
             beforeEach(^{
                 task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
                 task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                task3 = [KWMock nullMockForProtocol:@protocol(AOTask)];
                 
-                [selector addChild:task1];
-                [selector addChild:task2];
+                [selector addChildren:task1, task2, task3, nil];
                 
                 [[task1 stubAndReturn:theValue(AOResultFailure)] run:blackboard];
                 [[task2 stubAndReturn:theValue(AOResultPending)] run:blackboard];
                 [selector run:blackboard];
             });
-
-            context(@"a child returns Pending", ^{
-                
-                it(@"should stop already running child if not same as child", ^{
-                    [task1 clearStubs];
-                    [task2 clearStubs];
-                    
-                    [[task1 should] receive:@selector(run:) andReturn:theValue(AOResultPending)];
-                    [[task2 should] receive:@selector(stop:)];
-                    [[task2 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
-                    
-                    [selector run:blackboard];
-                });
-                
-                it(@"should not stop already running child if same as child", ^{
-                    [[task2 shouldNot] receive:@selector(stop:)];
-                    [[task2 shouldNot] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
-                    
-                    [selector run:blackboard];
-                });
-            });
             
-            context(@"a child returns Success", ^{
-                
-                it(@"should stop already running child if not same as child", ^{
-                    [task1 clearStubs];
-                    [task2 clearStubs];
-                    
-                    [[task1 should] receive:@selector(run:) andReturn:theValue(AOResultSuccess)];
-                    [[task2 should] receive:@selector(stop:)];
-                    [[task2 should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
-                    
-                    [selector run:blackboard];
-                });
-                
-                it(@"should not stop already running child if same as child", ^{
-                    [[task2 shouldNot] receive:@selector(stop:)];
-                    [[task2 shouldNot] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
-                    
-                    [selector run:blackboard];
-                });
+            it(@"should return children from index of running task from tasksToRun method", ^{
+                [[[selector tasksToRun] should] equal:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 2)]];
             });
 
         });

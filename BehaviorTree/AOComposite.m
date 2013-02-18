@@ -53,7 +53,9 @@
 -(AOResult) run:(id)blackboard {
     [super run:blackboard];
     
-    for (id<AOTask> task in self.children) {
+    __block AOResult returnResult = AOResultNone;
+    
+    [self.children enumerateObjectsAtIndexes:[self tasksToRun] options:0 usingBlock:^(id<AOTask> task, NSUInteger idx, BOOL *stop) {
         DLog(@"Processing child %@", task);
         
         if (task.status == AOStatusReady)
@@ -74,13 +76,15 @@
             default:
                 break;
         }
-                
+        
         [self didReceiveResult:r forTask:task withBlackboard:blackboard];
         
-        AOResult returnResult;
         if ([self shouldReturnWithResult:r returnResult:&returnResult])
-            return returnResult;
-    }
+            *stop = YES;
+    }];
+    
+    if (returnResult != AOResultNone)
+        return returnResult;
     
     return [self defaultReturnResult];
 }
@@ -108,6 +112,12 @@
         [self addChild:arg];
     }
     va_end(args);
+}
+
+#pragma mark Template methods
+
+-(NSIndexSet*) tasksToRun {
+    return [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.children.count)];
 }
 
 -(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(id)blackboard {
