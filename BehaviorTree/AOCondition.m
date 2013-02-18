@@ -26,39 +26,14 @@
 
 @implementation AOCondition
 
--(BOOL) willStart:(id)blackboard {
-    return NO;
-}
-
--(BOOL) willRun:(id)blackboard {
+-(AOResult) run:(id)blackboard {
     if ([self evaluate:blackboard]) {
         DLog(@"Condition met for %@", self);
         
-        if (self.task.status == AOStatusReady)
-            [self.task start:blackboard];
-        
-        return YES;
+        return self.monitor ? AOResultPending : AOResultSuccess;
     }
     
-    return NO;
-}
-
--(BOOL) willStop:(id)blackboard {
-    return self.task.status == AOStatusRunning;
-}
-
--(AOResult) evaluateResult:(AOResult)result withBlackboard:(id)blackboard andDidRun:(BOOL)didRun {
-    if (!didRun)
-        return AOResultFailure;
-    
-    if (result == AOResultSuccess || result == AOResultFailure) {
-        [self.task stop:blackboard];
-        self.task.status = AOStatusReady;
-    } else if (result == AOResultPending) {
-        self.task.status = AOStatusRunning;
-    }
-
-    return result;
+    return AOResultFailure;
 }
 
 -(BOOL) evaluate:(id)blackboard {

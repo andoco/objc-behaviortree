@@ -22,9 +22,11 @@
  * THE SOFTWARE.
  */
 
-#import "AODecorator.h"
+#import "AOAction.h"
 
-@interface AOCondition : AODecorator
+@interface AOCondition : AOAction
+
+@property (nonatomic, assign) BOOL monitor;
 
 -(BOOL) evaluate:(id)blackboard;
 

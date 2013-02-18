@@ -31,55 +31,16 @@ SPEC_BEGIN(ConditionSpec)
 
 describe(@"Condition", ^{
     __block AOCondition *condition;
-    __block id task;
     __block NSMutableDictionary *blackboard;
     
     beforeEach(^{
-        task = [KWMock nullMockForProtocol:@protocol(AOTask)];
-        condition = [[AOCondition alloc] initWithTask:task];
+        condition = [[AOCondition alloc] init];
     });
     
-    context(@"when started", ^{
-        
-        it(@"should not start task", ^{
-            [[task shouldNot] receive:@selector(start:)];
-            [condition start:blackboard];
-        });
-        
+    it(@"should evaluate to YES by default", ^{
+        [[theValue([condition evaluate:blackboard]) should] equal:theValue(YES)];
     });
-    
-    context(@"when stopped", ^{
         
-        context(@"and task not running", ^{
-            
-            it(@"should not stop task", ^{
-                [[task should] receive:@selector(status) andReturn:theValue(AOStatusReady)];
-                [[task shouldNot] receive:@selector(stop:)];
-                [condition stop:blackboard];
-            });
-            
-        });
-
-        context(@"and task running", ^{
-            
-            beforeEach(^{
-                [[task should] receive:@selector(status) andReturn:theValue(AOStatusRunning)];
-            });
-            
-            it(@"should stop task", ^{
-                [[task should] receive:@selector(stop:)];
-                [condition stop:blackboard];
-            });
-            
-            it(@"should change task status to Ready", ^{
-                [[task should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
-                [condition stop:blackboard];
-            });
-            
-        });
-
-    });
-    
     context(@"when run", ^{
         
         it(@"should call evaluate with blackboard", ^{
@@ -88,78 +49,24 @@ describe(@"Condition", ^{
             [condition run:blackboard];
         });
         
-        context(@"and evaluates to NO", ^{
-            
-            beforeEach(^{
-                [[condition should] receive:@selector(evaluate:) andReturn:theValue(NO)];
-            });
-            
-            it(@"should return Failure", ^{
-                [[theValue([condition run:blackboard]) should] equal:theValue(AOResultFailure)];
-            });
-            
-            it(@"should not start task", ^{
-                [[task shouldNot] receive:@selector(start:)];
-                [condition run:blackboard];
-            });
-            
-            it(@"should not run task", ^{
-                [[task shouldNot] receive:@selector(run:)];
-                [condition run:blackboard];
-            });
-        });
-        
-        context(@"and evaluates to YES", ^{
+        context(@"condition in instant mode", ^{
 
-            beforeEach(^{
-                [[condition should] receive:@selector(evaluate:) andReturn:theValue(YES)];
-            });
-
-            it(@"should run task", ^{
-                [[task should] receive:@selector(run:)];
-                [condition run:blackboard];
-            });
-            
-            context(@"when task status is Ready", ^{
+            context(@"and evaluates to NO", ^{
                 
                 beforeEach(^{
-                    [[task should] receive:@selector(status) andReturn:theValue(AOStatusReady)];
+                    [[condition should] receive:@selector(evaluate:) andReturn:theValue(NO)];
                 });
                 
-                it(@"should start task", ^{
-                    [[task should] receive:@selector(start:)];
-                    [condition run:blackboard];
+                it(@"should return Failure", ^{
+                    [[theValue([condition run:blackboard]) should] equal:theValue(AOResultFailure)];
                 });
-
+                
             });
             
-            context(@"when task status is Running", ^{
-
-                beforeEach(^{
-                    [[task should] receive:@selector(status) andReturn:theValue(AOStatusRunning)];
-                });
-
-                it(@"should not start task", ^{
-                    [[task shouldNot] receive:@selector(start:)];
-                    [condition run:blackboard];
-                });
-
-            });
-            
-            context(@"when task returns Success", ^{
+            context(@"and evaluates to YES", ^{
                 
                 beforeEach(^{
-                    [[task should] receive:@selector(run:) andReturn:theValue(AOResultSuccess)];
-                });
-                
-                it(@"should stop task", ^{
-                    [[task should] receive:@selector(stop:)];
-                    [condition run:blackboard];
-                });
-                
-                it(@"should set task status to Ready", ^{
-                    [[task should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
-                    [condition run:blackboard];
+                    [[condition should] receive:@selector(evaluate:) andReturn:theValue(YES)];
                 });
                 
                 it(@"should return Success", ^{
@@ -167,52 +74,41 @@ describe(@"Condition", ^{
                 });
                 
             });
+
+        });
+        
+        context(@"condition in monitor mode", ^{
             
-            context(@"when task returns Failure", ^{
-
+            beforeEach(^{
+                condition.monitor = YES;
+            });
+            
+            context(@"and evaluates to NO", ^{
+                
                 beforeEach(^{
-                    [[task should] receive:@selector(run:) andReturn:theValue(AOResultFailure)];
+                    [[condition should] receive:@selector(evaluate:) andReturn:theValue(NO)];
                 });
-
-                it(@"should stop task", ^{
-                    [[task should] receive:@selector(stop:)];
-                    [condition run:blackboard];
-                });
-
-                it(@"should set task status to Ready", ^{
-                    [[task should] receive:@selector(setStatus:) withArguments:theValue(AOStatusReady)];
-                    [condition run:blackboard];
-                });
-
+                
                 it(@"should return Failure", ^{
                     [[theValue([condition run:blackboard]) should] equal:theValue(AOResultFailure)];
                 });
-
+                
             });
             
-            context(@"when task returns Pending", ^{
-
+            context(@"and evaluates to YES", ^{
+                
                 beforeEach(^{
-                    [[task should] receive:@selector(run:) andReturn:theValue(AOResultPending)];
+                    [[condition should] receive:@selector(evaluate:) andReturn:theValue(YES)];
                 });
                 
-                it(@"should not stop task", ^{
-                    [[task shouldNot] receive:@selector(stop:)];
-                    [condition run:blackboard];
-                });
-                
-                it(@"should set task status to Running", ^{
-                    [[task should] receive:@selector(setStatus:) withArguments:theValue(AOStatusRunning)];
-                    [condition run:blackboard];
-                });
-
                 it(@"should return Pending", ^{
                     [[theValue([condition run:blackboard]) should] equal:theValue(AOResultPending)];
                 });
-
+                
             });
 
         });
+        
         
     });
 });

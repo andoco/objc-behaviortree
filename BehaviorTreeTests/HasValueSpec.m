@@ -35,64 +35,54 @@ describe(@"HasValue", ^{
     context(@"When run", ^{
         
         __block AOHasValue *task;
-        __block id subtask;
         __block NSMutableDictionary *blackboard;
 
         beforeEach(^{
-            subtask = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            task = [[AOHasValue alloc] initWithTask:subtask];
+            task = [[AOHasValue alloc] init];
             blackboard = [NSMutableDictionary dictionary];
         });
 
         context(@"and configured property value matches blackboard value", ^{
             
             context(@"for NSString", ^{
-                it(@"should run subtask", ^{
+                it(@"should evaluate to YES", ^{
                     task.key = @"testString";
                     task.value = @"testStringVal";
                     [blackboard setObject:@"testStringVal" forKey:@"testString"];
-                    
-                    [[subtask should] receive:@selector(run:)];
-                    
-                    [task run:blackboard];
+
+                    [[theValue([task evaluate:blackboard]) should] equal:theValue(YES)];
                 });
             });
 
             context(@"for NSNumber", ^{
-                it(@"should run subtask", ^{
+                it(@"should evaluate to YES", ^{
                     task.key = @"testNumber";
                     task.value = [NSNumber numberWithInt:5];
                     [blackboard setObject:[NSNumber numberWithInt:5] forKey:@"testNumber"];
                     
-                    [[subtask should] receive:@selector(run:)];
-                    
-                    [task run:blackboard];
+                    [[theValue([task evaluate:blackboard]) should] equal:theValue(YES)];
                 });
             });
 
             context(@"for Class", ^{
-                it(@"should run subtask", ^{
+                it(@"should evaluate to YES", ^{
                     task.key = @"testClass";
                     task.value = [TestEntity class];
                     [blackboard setObject:[TestEntity class] forKey:@"testClass"];
                     
-                    [[subtask should] receive:@selector(run:)];
-                    
-                    [task run:blackboard];
+                    [[theValue([task evaluate:blackboard]) should] equal:theValue(YES)];
                 });
             });
             
             context(@"for object instance", ^{
-                it(@"should run subtask", ^{
+                it(@"should evaluate to YES", ^{
                     TestEntity *obj = [[TestEntity alloc] init];
                     
                     task.key = @"testObj";
                     task.value = obj;
                     [blackboard setObject:obj forKey:@"testObj"];
                     
-                    [[subtask should] receive:@selector(run:)];
-                    
-                    [task run:blackboard];
+                    [[theValue([task evaluate:blackboard]) should] equal:theValue(YES)];
                 });                
             });
 
@@ -101,38 +91,32 @@ describe(@"HasValue", ^{
         context(@"and configured property value does not match blackboard value", ^{
 
             context(@"for NSString", ^{
-                it(@"should run subtask", ^{
+                it(@"should evaluate to NO", ^{
                     task.key = @"testString";
                     task.value = @"testStringVal";
                     [blackboard setObject:@"not testStringVal" forKey:@"testString"];
                     
-                    [[subtask shouldNot] receive:@selector(run:)];
-                    
-                    [task run:blackboard];
+                    [[theValue([task evaluate:blackboard]) should] equal:theValue(NO)];
                 });
             });
             
             context(@"for NSNumber", ^{
-                it(@"should run subtask", ^{
+                it(@"should evaluate to NO", ^{
                     task.key = @"testNumber";
                     task.value = [NSNumber numberWithInt:5];
                     [blackboard setObject:[NSNumber numberWithInt:6] forKey:@"testNumber"];
                     
-                    [[subtask shouldNot] receive:@selector(run:)];
-                    
-                    [task run:blackboard];
+                    [[theValue([task evaluate:blackboard]) should] equal:theValue(NO)];
                 });
             });
             
             context(@"for Class", ^{
-                it(@"should run subtask", ^{
+                it(@"should evaluate to NO", ^{
                     task.key = @"testClass";
                     task.value = [TestEntity class];
                     [blackboard setObject:[NSString class] forKey:@"testClass"];
-                    
-                    [[subtask shouldNot] receive:@selector(run:)];
-                    
-                    [task run:blackboard];
+
+                    [[theValue([task evaluate:blackboard]) should] equal:theValue(NO)];
                 });
             });
  
@@ -140,55 +124,47 @@ describe(@"HasValue", ^{
         
         context(@"and configured key is keyPath", ^{
 
-            it(@"should run subtask", ^{
+            it(@"should evaluate to YES", ^{
                 NSDictionary *d1 = [NSDictionary dictionaryWithObject:@"testStringVal" forKey:@"testString"];
                 [blackboard setObject:d1 forKey:@"test"];
                 
                 task.key = @"test.testString";
                 task.value = @"testStringVal";
                 
-                [[subtask should] receive:@selector(run:)];
-                
-                [task run:blackboard];
+                [[theValue([task evaluate:blackboard]) should] equal:theValue(YES)];
             });
 
         });
         
         context(@"and configured value not present in blackboard", ^{
-            it(@"should not run subtask", ^{
+            it(@"should evaluate to NO", ^{
                 task.key = @"testNumber";
                 task.value = [NSNumber numberWithInt:1];
-                
-                [[subtask shouldNot] receive:@selector(run:)];
-                
-                [task run:blackboard];
+
+                [[theValue([task evaluate:blackboard]) should] equal:theValue(NO)];
             });
         });
 
         context(@"and configured value type does not match actual value type", ^{
-            it(@"should not run subtask", ^{
+            it(@"should evaluate to NO", ^{
                 task.key = @"testString";
                 task.value = @"testStringVal";
                 [blackboard setObject:[NSNumber numberWithInt:1] forKey:@"testString"];
-                
-                [[subtask shouldNot] receive:@selector(run:)];
-                
-                [task run:blackboard];
+
+                [[theValue([task evaluate:blackboard]) should] equal:theValue(NO)];
             });
         });
         
         context(@"for object instance", ^{
-            it(@"should run subtask", ^{
+            it(@"should evaluate to NO", ^{
                 TestEntity *obj1 = [[TestEntity alloc] init];
                 TestEntity *obj2 = [[TestEntity alloc] init];
                 
                 task.key = @"testObj";
                 task.value = obj1;
                 [blackboard setObject:obj2 forKey:@"testObj"];
-                
-                [[subtask shouldNot] receive:@selector(run:)];
-                
-                [task run:blackboard];
+
+                [[theValue([task evaluate:blackboard]) should] equal:theValue(NO)];
             });
         });
         
