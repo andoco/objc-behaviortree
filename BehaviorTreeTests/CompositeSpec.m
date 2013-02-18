@@ -97,20 +97,24 @@ describe(@"Composite", ^{
             [[theValue([task tasksToRun].count) should] equal:theValue(2)];
         });
         
-//        it(@"Should only visit tasks returned by tasksToRun template method", ^{
-//            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-//            [[task1 stubAndReturn:theValue(AOStatusReady)] status];
-//            [[task1 shouldNot] receive:@selector(start:)];
-//            
-//            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-//            [[task2 stubAndReturn:theValue(AOStatusReady)] status];
-//            [[task2 should] receive:@selector(start)];
-//            
-//            [task addChildren:task1, task2, nil];
-//            
-//            [[task tasksToRun] stubAndReturn:[NSIndexSet indexSetWithIndex:1]];
-//            [task run:blackboard];
-//        });
+        it(@"Should only visit tasks returned by tasksToRun template method", ^{
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            [[task1 stubAndReturn:theValue(AOStatusReady)] status];
+            [[task1 shouldNot] receive:@selector(start:)];
+            
+            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            [[task2 stubAndReturn:theValue(AOStatusReady)] status];
+            [[task2 should] receive:@selector(start:)];
+
+            id task3 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            [[task3 stubAndReturn:theValue(AOStatusReady)] status];
+            [[task3 shouldNot] receive:@selector(start:)];
+
+            [task addChildren:task1, task2, task3, nil];
+            
+            [task stub:@selector(tasksToRun) andReturn:[NSIndexSet indexSetWithIndex:1]];
+            [task run:blackboard];
+        });
         
         it(@"should start tasks with status Ready", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
