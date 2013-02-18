@@ -22,26 +22,8 @@
  * THE SOFTWARE.
  */
 
-#import "PredatorDetected.h"
+#import "AOCondition.h"
 
-#import "Predator.h"
-#import "World.h"
-
-@implementation PredatorDetected {
-    NSInteger counter_;
-}
-
--(AOResult) run:(id)blackboard {
-    Actor *actor = [blackboard actor];
-    CGPoint p = actor.position;
-    Predator *predator = [blackboard world].predator;
-    
-    if (CGPointMagnitude(CGPointSubtract(predator.position, p)) <= 50) {
-        [blackboard setObject:predator forKey:@"target"];
-        return AOResultSuccess;
-    }
-    
-    return AOResultFailure;
-}
+@interface IsSafe : AOCondition
 
 @end

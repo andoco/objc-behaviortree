@@ -1,11 +1,12 @@
 {"type":"Selector","children":[
-	{"type":"Sequence","children":[
-		{"type":"PredatorDetected"},
-		{"type":"Flee"}
+	{"type":"Concurrent","failureLimit":1,"children":[
+		{"type":"Sequence","children":[
+			{"type":"IsSafe"},
+			{"type":"TargetFood"},
+			{"type":"Seek"},
+			{"type":"EatFood"}
+		]},
+		{"type":"IsSafe","monitor":true}
 	]},
-	{"type":"Sequence","children":[
-		{"type":"TargetFood"},
-		{"type":"Seek"},
-		{"type":"EatFood"}
-	]}
+	{"type":"Flee"}
 ]}

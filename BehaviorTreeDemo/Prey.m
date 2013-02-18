@@ -26,11 +26,6 @@
 
 #import "AOBehaviorReader.h"
 #import "AOBehaviorTree.h"
-#import "EatFood.h"
-#import "Flee.h"
-#import "Seek.h"
-#import "PredatorDetected.h"
-#import "TargetFood.h"
 
 @implementation Prey
 

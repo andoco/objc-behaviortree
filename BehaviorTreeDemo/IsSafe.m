@@ -22,8 +22,24 @@
  * THE SOFTWARE.
  */
 
-#import "AOAction.h"
+#import "IsSafe.h"
 
-@interface PredatorDetected : AOAction
+#import "Predator.h"
+#import "World.h"
+
+@implementation IsSafe
+
+-(BOOL) evaluate:(id)blackboard {
+    Actor *actor = [blackboard actor];
+    CGPoint p = actor.position;
+    Predator *predator = [blackboard world].predator;
+    
+    if (CGPointMagnitude(CGPointSubtract(predator.position, p)) <= 50) {
+        [blackboard setObject:predator forKey:@"target"];
+        return NO;
+    }
+    
+    return YES;
+}
 
 @end
