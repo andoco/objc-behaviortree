@@ -1,3 +1,15 @@
+# Changelog
+
+v1.1
+
+* Sequence and Selector resume the task that returned a status of Running on the last update, instead of re-running all preceding tasks.
+* Conditions are now implemented as actions and can be configured as monitors (see http://aigamedev.com/open/tutorial/monitoring-assumptions-polling-conditions/)
+
+v1.0
+
+* Sequences and Selectors visit every child tasks each time they are run.
+* Conditions are implemented as decorators, and require a subtask that gets run when the condition is met.
+
 # Introduction
 
 obj-behaviortree is an implementation of a behavior tree for iOS. Supported tasks include:
@@ -37,12 +49,14 @@ A behavior tree can be built from a JSON representation:
 
 ```json
 {"type":"Selector","children":[
-    {"type":"ShouldFlee","task":
-    	{"type":"Flee"}
-	},
-	{"type":"ShouldSeek":"task":
+    {"type":"Sequence","children":[
+	    {"type":"ShouldFlee"},
+		{"type":"Flee"}
+	]},
+	{"type":"Sequence","children":[
+		{"type":"ShouldSeek"},
 		{"type":"Seek"}
-	}
+	]}
 ]}
 ```
 
