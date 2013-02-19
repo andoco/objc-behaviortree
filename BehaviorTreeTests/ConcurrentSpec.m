@@ -66,22 +66,21 @@ describe(@"Concurrent", ^{
             [concurrent run:blackboard];
         });
                 
-        it(@"should increment numFailedChildren for each failed child", ^{
+        it(@"should increment numFailed for each failed child", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 should] receive:@selector(run:) andReturn:theValue(AOResultSuccess)];
             
             id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task2 should] receive:@selector(run:) andReturn:theValue(AOResultFailure)];
                         
-            [concurrent addChild:task1];
-            [concurrent addChild:task2];
+            [concurrent addChildren:task1, task2, nil];
             
             [concurrent run:blackboard];
             
             [[theValue(concurrent.numFailed) should] equal:theValue(1)];
         });
         
-        it(@"should reset numFailedChildren when started", ^{
+        it(@"should reset numFailed when started", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
             [[task1 should] receive:@selector(run:) andReturn:theValue(AOResultSuccess)];
             
@@ -97,6 +96,20 @@ describe(@"Concurrent", ^{
             
             [[theValue(concurrent.numFailed) should] equal:theValue(0)];
         });
+        
+        it(@"should reset numFailed before each run", ^{
+            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+            
+            [[task1 should] receive:@selector(run:) andReturn:theValue(AOResultFailure) withCount:2];
+            
+            [concurrent addChild:task1];
+            
+            [[theValue(concurrent.numFailed) should] equal:theValue(0)];
+            [concurrent run:blackboard];
+            [[theValue(concurrent.numFailed) should] equal:theValue(1)];
+            [concurrent run:blackboard];
+            [[theValue(concurrent.numFailed) should] equal:theValue(1)];
+        });
 
         it(@"should return Success if failureLimit is zero and has failed children", ^{
             id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
@@ -107,34 +120,6 @@ describe(@"Concurrent", ^{
             
             [concurrent addChild:task1];
             [concurrent addChild:task2];
-            
-            [[theValue([concurrent run:blackboard]) should] equal:theValue(AOResultSuccess)];
-        });
-
-        it(@"should return Failure if failed children is greater than or equal to failure limit", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [task1 stub:@selector(run:) andReturn:theValue(AOResultFailure)];
-            
-            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [task2 stub:@selector(run:) andReturn:theValue(AOResultSuccess)];
-            
-            [concurrent addChild:task1];
-            [concurrent addChild:task2];
-            concurrent.failureLimit = 1;
-            
-            [[theValue([concurrent run:blackboard]) should] equal:theValue(AOResultFailure)];
-        });
-
-        it(@"should return Success if failed children is less than failure limit", ^{
-            id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [task1 stub:@selector(run:) andReturn:theValue(AOResultFailure)];
-            
-            id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
-            [task1 stub:@selector(run:) andReturn:theValue(AOResultSuccess)];
-            
-            [concurrent addChild:task1];
-            [concurrent addChild:task2];
-            concurrent.failureLimit = 2;
             
             [[theValue([concurrent run:blackboard]) should] equal:theValue(AOResultSuccess)];
         });
@@ -154,6 +139,51 @@ describe(@"Concurrent", ^{
             [[theValue([concurrent run:blackboard]) should] equal:theValue(AOResultPending)];
         });
         
+        context(@"failure limit greater than zero", ^{
+
+            it(@"should return Failure if failed children is greater than or equal to failure limit", ^{
+                id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [task1 stub:@selector(run:) andReturn:theValue(AOResultFailure)];
+                
+                id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [task2 stub:@selector(run:) andReturn:theValue(AOResultSuccess)];
+                
+                [concurrent addChild:task1];
+                [concurrent addChild:task2];
+                concurrent.failureLimit = 1;
+                
+                [[theValue([concurrent run:blackboard]) should] equal:theValue(AOResultFailure)];
+            });
+            
+            it(@"should return Failure if failed children is greater than or equal to failure limit and a child returns Pending", ^{
+                id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [task1 stub:@selector(run:) andReturn:theValue(AOResultFailure)];
+                
+                id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [task2 stub:@selector(run:) andReturn:theValue(AOResultPending)];
+                
+                [concurrent addChildren:task1, task2, nil];
+                concurrent.failureLimit = 1;
+                
+                [[theValue([concurrent run:blackboard]) should] equal:theValue(AOResultFailure)];                
+            });
+            
+            it(@"should return Success if failed children is less than failure limit", ^{
+                id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [task1 stub:@selector(run:) andReturn:theValue(AOResultFailure)];
+                
+                id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [task1 stub:@selector(run:) andReturn:theValue(AOResultSuccess)];
+                
+                [concurrent addChild:task1];
+                [concurrent addChild:task2];
+                concurrent.failureLimit = 2;
+                
+                [[theValue([concurrent run:blackboard]) should] equal:theValue(AOResultSuccess)];
+            });
+            
+        });
+                
         context(@"a child is already running", ^{
             
             __block id task1;

@@ -58,6 +58,11 @@
     _numFailed = 0;
 }
 
+-(AOResult) run:(id)blackboard {
+    _numFailed = 0;
+    return [super run:blackboard];
+}
+
 -(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(id)blackboard {
     if (result == AOResultFailure)
         _numFailed++;
@@ -69,10 +74,15 @@
 }
 
 -(AOResult) defaultReturnResult {
+    if (_failureLimit > 0) {
+        if (_numFailed >= _failureLimit)
+            return AOResultFailure;
+    }
+
     if (running_.count > 0)
         return AOResultPending;
     
-    return _failureLimit == 0 || _numFailed < _failureLimit ? AOResultSuccess : AOResultFailure;
+    return AOResultSuccess;
 }
 
 @end
