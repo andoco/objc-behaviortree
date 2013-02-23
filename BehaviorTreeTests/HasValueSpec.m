@@ -86,6 +86,14 @@ describe(@"HasValue", ^{
                 });                
             });
 
+            context(@"for nil object instance", ^{
+                it(@"should evaluate to YES", ^{
+                    task.key = @"testObj";
+                    task.value = nil;
+                    
+                    [[theValue([task evaluate:blackboard]) should] equal:theValue(YES)];
+                });
+            });
         });
 
         context(@"and configured property value does not match blackboard value", ^{

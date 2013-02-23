@@ -29,7 +29,9 @@
 -(BOOL) evaluate:(id)blackboard {
     id actualVal = [blackboard valueForKeyPath:_key];
     
-    if (!actualVal)
+    if (!_value && !actualVal)
+        return YES;
+    else if (!actualVal)
         return NO;
     
     BOOL result;

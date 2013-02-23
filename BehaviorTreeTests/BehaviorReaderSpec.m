@@ -89,6 +89,15 @@ describe(@"BehaviorReader", ^{
             [[theValue(task.boolProperty) should] equal:theValue(YES)];
             [[task.classProperty should] equal:[TestEntity class]];
         });
+        
+        it(@"should convert NSNull to nil", ^{
+            NSDictionary *testActionData = [NSDictionary dictionaryWithObjectsAndKeys:@"TestAction", @"type", [NSNull null], @"objectProperty", nil];
+            AOBehaviorTree *tree = [reader buildTree:testActionData];
+            
+            TestAction *task = tree.root;
+            
+            [[theValue(task.objectProperty == nil) should] equal:theValue(YES)];
+        });
                 
         it(@"should build selector", ^{
             NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"selector" ofType:@"json"];

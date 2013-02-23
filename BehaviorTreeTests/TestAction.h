@@ -30,5 +30,6 @@
 @property (nonatomic, assign) NSInteger intProperty;
 @property (nonatomic, assign) BOOL boolProperty;
 @property (nonatomic, strong) Class classProperty;
+@property (nonatomic, strong) id objectProperty;
 
 @end

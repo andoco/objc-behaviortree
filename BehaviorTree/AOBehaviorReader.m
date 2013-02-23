@@ -141,6 +141,8 @@
             
             if ([val isKindOfClass:[NSString class]] && [val hasPrefix:@"class:"])
                 val = NSClassFromString([val stringByReplacingOccurrencesOfString:@"class:" withString:@""]);
+            else if (val == [NSNull null])
+                val = nil;
             
             [task setValue:val forKey:key];
         }
