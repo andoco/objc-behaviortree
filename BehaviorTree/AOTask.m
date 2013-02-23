@@ -52,7 +52,7 @@
 }
 
 -(NSString*) description {
-    return [NSString stringWithFormat:@"<%@: %p, status=%d>", NSStringFromClass(self.class), self, self.status];
+    return [NSString stringWithFormat:@"<%@: %p, taskId=%@, status=%d>", NSStringFromClass(self.class), self, self.taskId, self.status];
 }
 
 @end
