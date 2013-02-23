@@ -38,8 +38,10 @@ typedef enum {
 
 @protocol AOTask <NSObject>
 
+@property (nonatomic, readonly) NSString *taskId;
 @property (nonatomic, assign) AOStatus status;
 
+-(id) initWithTaskId:(NSString*)taskId;
 -(void) start:(id)blackboard;
 -(AOResult) run:(id)blackboard;
 -(void) stop:(id)blackboard;

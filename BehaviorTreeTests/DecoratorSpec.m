@@ -36,7 +36,7 @@ describe(@"Decorator", ^{
     
     beforeEach(^{
         task = [KWMock nullMockForProtocol:@protocol(AOTask)];
-        decorator = [[AODecorator alloc] initWithTask:task];
+        decorator = [[AODecorator alloc] initWithTaskId:@"1" task:task];
     });
     
     context(@"when started", ^{

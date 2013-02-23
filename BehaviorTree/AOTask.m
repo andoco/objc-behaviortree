@@ -26,7 +26,17 @@
 
 @implementation AOTask
 
-@synthesize status;
+@synthesize taskId = _taskId;
+@synthesize status = _status;
+
+-(id) initWithTaskId:(NSString *)taskId
+{
+    self = [self init];
+    if (self) {
+        _taskId = taskId;
+    }
+    return self;
+}
 
 -(void) start:(id)blackboard {
     DLog(@"Starting %@", self);

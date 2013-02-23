@@ -34,7 +34,7 @@ describe(@"AlwaysFail", ^{
     
     beforeEach(^{
         subtask = [KWMock nullMockForProtocol:@protocol(AOTask)];
-        task = [[AOAlwaysFail alloc] initWithTask:subtask];
+        task = [[AOAlwaysFail alloc] initWithTaskId:@"1" task:subtask];
         blackboard = [NSMutableDictionary dictionary];
     });
     

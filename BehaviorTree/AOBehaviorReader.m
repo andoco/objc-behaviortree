@@ -26,7 +26,9 @@
 
 #import "AOBehaviorTree.h"
 
-@implementation AOBehaviorReader
+@implementation AOBehaviorReader {
+    NSUInteger currenttaskId_;
+}
 
 - (id)init
 {
@@ -55,6 +57,8 @@
 }
 
 -(id) buildTree:(NSDictionary*)jsonObj {
+    currenttaskId_ = 0;
+    
 	id<AOTask> root = [self buildTask:jsonObj];
 	
     AOBehaviorTree *tree = [[AOBehaviorTree alloc] initWithRootTask:root];
@@ -72,7 +76,8 @@
     } else if ([self isCompositeTask:type]) {
 		task = [self buildCompositeTask:type data:data];
 	} else {
-        task = [[type alloc] init];
+        currenttaskId_++;
+        task = [[type alloc] initWithTaskId:[self formatTaskId:data]];
     }
     
     [self populateProperties:task fromData:data];
@@ -81,7 +86,8 @@
 }
 
 -(id) buildCompositeTask:(Class)type data:(NSDictionary*)data {
-    AOComposite *task = [[type alloc] init];
+    currenttaskId_++;
+    AOComposite *task = [[type alloc] initWithTaskId:[self formatTaskId:data]];
 
 	NSDictionary *children = [data objectForKey:@"children"];
 		
@@ -96,7 +102,10 @@
 -(id) buildDecoratorTask:(Class)type data:(NSDictionary*)data {
     id<AOTask> subtask = [self buildTask:[data objectForKey:@"task"]];
     
-    return [[type alloc] initWithTask:subtask];
+    currenttaskId_++;
+    id<AOTask> decorator = [[type alloc] initWithTaskId:[self formatTaskId:data] task:subtask];
+    
+    return decorator;
 }
 
 -(Class) taskClass:(NSDictionary*)data {
@@ -139,9 +148,19 @@
 }
 
 -(BOOL) isReservedKey:(NSString*)key {
-    return  [key isEqualToString:@"type"] ||
+    return  [key isEqualToString:@"id"] ||
+            [key isEqualToString:@"type"] ||
             [key isEqualToString:@"children"] ||
             [key isEqualToString:@"task"];
+}
+
+-(NSString*) formatTaskId:(NSDictionary*)taskData {
+    NSString *taskId = [taskData objectForKey:@"id"];
+    
+    if (taskId)
+        return taskId;
+    
+    return [NSString stringWithFormat:@"%d", currenttaskId_];
 }
 
 @end

@@ -26,8 +26,8 @@
 
 @implementation AODecorator
 
--(id) initWithTask:(id<AOTask>)task {
-    if ((self = [super init])) {
+-(id) initWithTaskId:(NSString*)taskId task:(id<AOTask>)task {
+    if ((self = [super initWithTaskId:taskId])) {
         _task = task;
     }
     return self;

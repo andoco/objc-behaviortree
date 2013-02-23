@@ -67,8 +67,17 @@ describe(@"BehaviorReader", ^{
             AOBehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
             
             [[[tree.root class] should] equal:[TestAction class]];
+            [[tree.root.taskId should] beNonNil];
         });
         
+        it(@"should build task with id from data source", ^{
+            NSMutableDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:@"test task 1", @"id", @"TestAction", @"type", nil];
+            AOBehaviorTree *tree = [reader buildTree:data];
+            
+            [[[tree.root class] should] equal:[TestAction class]];
+            [[tree.root.taskId should] equal:@"test task 1"];
+        });
+                
         it(@"should populate task properties", ^{
             NSString *jsonPath = [[NSBundle bundleForClass:[BehaviorReaderSpec class]] pathForResource:@"action" ofType:@"json"];
             AOBehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
@@ -87,6 +96,7 @@ describe(@"BehaviorReader", ^{
             
             [[[tree.root class] should] equal:[AOSelector class]];
             AOSelector *selector = tree.root;
+            [[selector.taskId should] beNonNil];
             [[theValue(selector.children.count) should] equal:theValue(2)];
             [[[[selector.children objectAtIndex:0] class] should] equal:[TestAction class]];
             [[[[selector.children objectAtIndex:0] class] should] equal:[TestAction class]];
@@ -97,10 +107,11 @@ describe(@"BehaviorReader", ^{
             AOBehaviorTree *tree = [reader buildTreeWithFile:jsonPath];
             
             [[[tree.root class] should] equal:[AOSequence class]];
-            AOSequence *selector = tree.root;
-            [[theValue(selector.children.count) should] equal:theValue(2)];
-            [[[[selector.children objectAtIndex:0] class] should] equal:[TestAction class]];
-            [[[[selector.children objectAtIndex:0] class] should] equal:[TestAction class]];
+            AOSequence *sequence = tree.root;
+            [[sequence.taskId should] beNonNil];
+            [[theValue(sequence.children.count) should] equal:theValue(2)];
+            [[[[sequence.children objectAtIndex:0] class] should] equal:[TestAction class]];
+            [[[[sequence.children objectAtIndex:0] class] should] equal:[TestAction class]];
         });
         
         it(@"should build decorator", ^{
@@ -109,6 +120,7 @@ describe(@"BehaviorReader", ^{
             
             [[[tree.root class] should] equal:[TestDecorator class]];
             AODecorator *decorator = tree.root;
+            [[decorator.taskId should] beNonNil];
             [[[decorator.task class] should] equal:[TestAction class]];
         });
 

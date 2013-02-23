@@ -30,7 +30,7 @@
 
 @property (nonatomic, readonly) id<AOTask> task;
 
--(id) initWithTask:(id<AOTask>)task;
+-(id) initWithTaskId:(NSString*)taskId task:(id<AOTask>)task;
 
 /** Called when decorator is started to indicate if decorated task should be started */
 -(BOOL) willStart:(id)blackboard;

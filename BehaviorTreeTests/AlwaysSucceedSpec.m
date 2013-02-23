@@ -34,7 +34,7 @@ describe(@"AlwaysSucceed", ^{
     
     beforeEach(^{
         subtask = [KWMock nullMockForProtocol:@protocol(AOTask)];
-        task = [[AOAlwaysSucceed alloc] initWithTask:subtask];
+        task = [[AOAlwaysSucceed alloc] initWithTaskId:@"1" task:subtask];
         blackboard = [NSMutableDictionary dictionary];
     });
     
