@@ -40,14 +40,18 @@
 }
 
 -(void) runWithBlackboard:(id)blackboard {
-    if (_root.status == AOStatusReady)
-        [_root start:blackboard];    
+    if (_root.status == AOStatusReady) {
+        TraceTask(@"Starting root %@", _root);
+        [_root start:blackboard];
+    }
 
+    TraceTask(@"Running root %@", _root);
     AOResult result = [_root run:blackboard];
     
     if (result == AOResultPending) {
         _root.status = AOStatusRunning;
     } else {
+        TraceTask(@"Stopping root %@", _root);
         [_root stop:blackboard];
         _root.status = AOStatusReady;
     }

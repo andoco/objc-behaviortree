@@ -37,6 +37,12 @@
     #define DLog(fmt, ...) \
         BTreeNSLog(fmt, ##__VA_ARGS__); \
         BTreeNSLogger(fmt, ##__VA_ARGS__);
+
+    #define TraceTask(fmt, task, ...) if (task.trace) { \
+        BTreeNSLog(fmt, task, ##__VA_ARGS__); \
+        BTreeNSLogger(fmt, task, ##__VA_ARGS__); \
+        }
 #else
     #define DLog(...)
+    #define Trace(...)
 #endif

@@ -28,6 +28,7 @@
 
 @synthesize taskId = _taskId;
 @synthesize status = _status;
+@synthesize trace = _trace;
 
 -(id) initWithTaskId:(NSString *)taskId
 {
@@ -39,16 +40,15 @@
 }
 
 -(void) start:(id)blackboard {
-    DLog(@"Starting %@", self);
+    
 }
 
 -(AOResult) run:(id)blackboard {
-    DLog(@"Running %@", self);
     return AOResultSuccess;
 }
 
 -(void) stop:(id)blackboard {
-    DLog(@"Stopping %@", self);    
+    
 }
 
 -(NSString*) description {

@@ -56,13 +56,18 @@
     __block AOResult returnResult = AOResultNone;
     
     [self.children enumerateObjectsAtIndexes:[self tasksToRun] options:0 usingBlock:^(id<AOTask> task, NSUInteger idx, BOOL *stop) {
-        DLog(@"Processing child %@", task);
         
-        if (task.status == AOStatusReady)
+        TraceTask(@"Processing child %@", task);
+        
+        if (task.status == AOStatusReady) {
+            TraceTask(@"Starting child %@", task);
             [task start:blackboard];
+        }
         
+        TraceTask(@"Running child %@", task);
         AOResult r = [task run:blackboard];
-        DLog(@"Child %@ returned result %d", task, r);
+        
+        TraceTask(@"Child %@ returned result %d", task, r);
         
         switch (r) {
             case AOResultPending:
@@ -70,6 +75,7 @@
                 break;
             case AOResultSuccess:
             case AOResultFailure:
+                TraceTask(@"Stopping child %@", task);
                 [task stop:blackboard];
                 task.status = AOStatusReady;
                 break;

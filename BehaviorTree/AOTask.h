@@ -40,6 +40,7 @@ typedef enum {
 
 @property (nonatomic, readonly) NSString *taskId;
 @property (nonatomic, assign) AOStatus status;
+@property (nonatomic, assign) BOOL trace;
 
 -(id) initWithTaskId:(NSString*)taskId;
 -(void) start:(id)blackboard;

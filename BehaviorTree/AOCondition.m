@@ -28,8 +28,6 @@
 
 -(AOResult) run:(id)blackboard {
     if ([self evaluate:blackboard]) {
-        DLog(@"Condition met for %@", self);
-        
         return self.monitor ? AOResultPending : AOResultSuccess;
     }
     
