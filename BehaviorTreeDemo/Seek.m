@@ -28,15 +28,6 @@
 
 @implementation Seek
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        _rate = 0.1;
-    }
-    return self;
-}
-
 -(AOResult) run:(id)blackboard {
     Actor *actor = [blackboard actor];
     Actor *target = [blackboard objectForKey:@"target"];

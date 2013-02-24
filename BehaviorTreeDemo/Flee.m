@@ -25,20 +25,25 @@
 #import "Flee.h"
 
 #import "Actor.h"
+#import "Predator.h"
+#import "World.h"
 
 @implementation Flee
 
 -(AOResult) run:(id)blackboard {
     Actor *actor = [blackboard actor];
-    Actor *target = [blackboard objectForKey:@"target"];
+    Predator *predator = [blackboard world].predator;
     
-    CGPoint offset = CGPointSubtract(target.position, actor.position);
-        
+    CGPoint offset = CGPointSubtract(predator.position, actor.position);
+    
+    if (CGPointMagnitude(offset) >= actor.detectionRadius)
+        return AOResultSuccess;
+    
     CGPoint v = CGPointScale(CGPointNormalize(offset), -actor.speed);
     
     actor.position = CGPointAdd(actor.position, v);
     
-    return AOResultSuccess;
+    return AOResultPending;
 }
 
 @end

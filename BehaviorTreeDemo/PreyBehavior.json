@@ -1,12 +1,12 @@
 {"type":"Selector","children":[
-	{"type":"Concurrent","failureLimit":1,"children":[
+	{"id":"gathering","type":"Concurrent","failureLimit":1,"children":[
 		{"type":"Sequence","children":[
 			{"type":"IsSafe"},
 			{"type":"TargetFood"},
 			{"type":"Seek"},
 			{"type":"EatFood"}
 		]},
-		{"type":"IsSafe","monitor":true}
+		{"id":"isSafeMonitor","type":"IsSafe","monitor":true}
 	]},
 	{"type":"Flee"}
 ]}

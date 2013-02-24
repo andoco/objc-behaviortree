@@ -28,6 +28,4 @@
 
 @interface Seek : AOAction
 
-@property (nonatomic, assign) CGFloat rate;
-
 @end

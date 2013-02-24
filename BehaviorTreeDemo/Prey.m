@@ -35,6 +35,7 @@
     if (self) {
         self.color = [UIColor blueColor];
         self.speed = 3;
+        self.detectionRadius = 50;
                 
         AOBehaviorReader *reader = [[AOBehaviorReader alloc] init];
         self.behavior = [reader buildTreeWithFile:[[NSBundle mainBundle] pathForResource:@"PreyBehavior" ofType:@"json"]];

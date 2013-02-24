@@ -35,6 +35,7 @@
 @property (nonatomic, strong) AOBehaviorTree *behavior;
 @property (nonatomic, strong) UIView *view;
 @property (nonatomic, assign) CGFloat speed;
+@property (nonatomic, assign) CGFloat detectionRadius;
 
 -(void) update;
 

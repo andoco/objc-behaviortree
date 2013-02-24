@@ -31,15 +31,12 @@
 
 -(BOOL) evaluate:(id)blackboard {
     Actor *actor = [blackboard actor];
-    CGPoint p = actor.position;
     Predator *predator = [blackboard world].predator;
     
-    if (CGPointMagnitude(CGPointSubtract(predator.position, p)) <= 50) {
-        [blackboard setObject:predator forKey:@"target"];
-        return NO;
-    }
+    if (CGPointMagnitude(CGPointSubtract(predator.position, actor.position)) > actor.detectionRadius)
+        return YES;
     
-    return YES;
+    return NO;
 }
 
 @end
