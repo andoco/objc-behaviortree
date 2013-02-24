@@ -127,6 +127,43 @@ describe(@"Sequence", ^{
                 [[[sequence tasksToRun] should] equal:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, 2)]];
             });
             
+            context(@"running child is the last child", ^{
+                
+                beforeEach(^{
+                    [[task2 stubAndReturn:theValue(AOResultSuccess)] run:blackboard];
+                    [[task3 stubAndReturn:theValue(AOResultPending)] run:blackboard];
+                    [sequence run:blackboard];
+                });
+                
+                context(@"running child returns Success", ^{
+                    
+                    beforeEach(^{
+                        [[task3 stubAndReturn:theValue(AOResultSuccess)] run:blackboard];
+                        [sequence run:blackboard];
+                    });
+                
+                    it(@"tasksToRun should return all children on next run", ^{                        
+                        [[theValue(sequence.tasksToRun.count) should] equal:theValue(sequence.children.count)];
+                    });
+
+                });
+                
+                context(@"running child returns Failure", ^{
+                    
+                    beforeEach(^{
+                        [[task3 stubAndReturn:theValue(AOResultFailure)] run:blackboard];
+                        [sequence run:blackboard];
+                    });
+                    
+                    it(@"tasksToRun should return all children on next run", ^{
+                        [[theValue(sequence.tasksToRun.count) should] equal:theValue(sequence.children.count)];
+                    });
+                    
+                });
+
+                
+            });
+                        
         });
 
     });

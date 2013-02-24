@@ -41,16 +41,10 @@
 }
 
 -(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(id)blackboard {
-    if (result == AOResultSuccess || result == AOResultPending) {
-        if (running_ && running_ != task) {
-            [running_ stop:blackboard];
-            running_.status = AOStatusReady;
-        }
-        
-        if (result == AOResultPending)
-            running_ = task;
-        else
-            running_ = nil;
+    if (result == AOResultPending) {
+        running_ = task;
+    } else {
+        running_ = nil;
     }
 }
 
