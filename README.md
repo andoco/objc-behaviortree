@@ -1,9 +1,12 @@
 # Changelog
 
-v1.1
+Current (will be v1.1)
 
 * Sequence and Selector resume the task that returned a status of Running on the last update, instead of re-running all preceding tasks.
 * Conditions are now implemented as actions and can be configured as monitors (see http://aigamedev.com/open/tutorial/monitoring-assumptions-polling-conditions/)
+* Tasks can be given an identifier.
+* Tracing can be enabled on individual tasks.
+* Various other bug fixes.
 
 v1.0
 
@@ -100,9 +103,17 @@ and your JSON contains the task:
 
 then the BehaviorReader will first attempt to find a class named "MyTask", and then if that class does not exist it will attempt to find a class named "ABMyTask".
 
-# Logging
+# Tracing
 
-Logging can be enabled by setting preprocessor macro flags on the BehaviorTree target.
+To trace operations performed on a task, enable tracing on it by setting the _trace_ property to YES.
+
+This can be done in JSON format using the syntax:
+
+```json
+{"type":"MyTask","trace":true}
+```
+
+Logging output must be enabled by setting preprocessor macro flags.
 
     BTree_NSLog
 
