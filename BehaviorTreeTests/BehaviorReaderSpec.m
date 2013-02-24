@@ -147,7 +147,7 @@ describe(@"BehaviorReader", ^{
             context(@"task type not found in registered prefixes", ^{
 
                 it(@"should raise exception", ^{
-                    NSDictionary *data = @{@"type":@"UnknownAction"};
+                    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:@"UnknownAction", @"type", nil];
                     
                     [[theBlock(^{
                         [reader buildTree:data];
