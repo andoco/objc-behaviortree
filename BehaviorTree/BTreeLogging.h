@@ -45,4 +45,5 @@
 #else
     #define DLog(...)
     #define Trace(...)
+    #define TraceTask(...)
 #endif
