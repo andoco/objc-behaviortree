@@ -37,7 +37,7 @@ describe(@"Sequence", ^{
         sequence = [[AOSequence alloc] init];
         blackboard = [NSMutableDictionary dictionary];
     });
-    
+        
     context(@"when run", ^{
         
         it(@"should indices of all children from tasksToRun method", ^{
@@ -167,6 +167,26 @@ describe(@"Sequence", ^{
         });
 
     });
+    
+    context(@"when stopped", ^{
+        context(@"and child running", ^{
+            it(@"tasksToRun should return all children", ^{
+                id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [task1 stub:@selector(run:) andReturn:theValue(AOResultSuccess)];
+                
+                id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [task2 stub:@selector(run:) andReturn:theValue(AOResultPending)];
+                
+                [sequence addChildren:task1, task2, nil];
+                
+                [sequence run:blackboard];
+                [sequence stop:blackboard];
+                
+                [[[sequence tasksToRun] should] equal:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, sequence.children.count)]];
+            });
+        });
+    });
+
 });
 
 SPEC_END

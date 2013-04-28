@@ -40,6 +40,11 @@
     return [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(runningIndex, self.children.count - runningIndex)];
 }
 
+-(void) stop:(id)blackboard {
+    [super stop:blackboard];
+    running_ = nil;
+}
+
 -(void) didReceiveResult:(AOResult)result forTask:(id<AOTask>)task withBlackboard:(id)blackboard {
     if (result == AOResultPending) {
         running_ = task;

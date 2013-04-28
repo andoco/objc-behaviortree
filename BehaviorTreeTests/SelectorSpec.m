@@ -159,6 +159,26 @@ describe(@"Selector", ^{
 
         });
     });
+    
+    context(@"when stopped", ^{
+        context(@"and child running", ^{
+            it(@"tasksToRun should return all children", ^{
+                id task1 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [task1 stub:@selector(run:) andReturn:theValue(AOResultFailure)];
+                
+                id task2 = [KWMock nullMockForProtocol:@protocol(AOTask)];
+                [task2 stub:@selector(run:) andReturn:theValue(AOResultPending)];
+                
+                [selector addChildren:task1, task2, nil];
+                
+                [selector run:blackboard];
+                [selector stop:blackboard];
+                
+                [[[selector tasksToRun] should] equal:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, selector.children.count)]];
+            });
+        });
+    });
+
 });
 
 SPEC_END
