@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		491D7987174F2B6400FC14B4 /* LimitSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D7986174F2B6400FC14B4 /* LimitSpec.m */; };
+		491D798A174F2BAA00FC14B4 /* AOLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D7989174F2BAA00FC14B4 /* AOLimit.m */; };
+		491D798B174F2BAA00FC14B4 /* AOLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D7989174F2BAA00FC14B4 /* AOLimit.m */; };
 		4920EF2416D0F38800C8C0A0 /* AlwaysFailSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4920EF2316D0F38800C8C0A0 /* AlwaysFailSpec.m */; };
 		4920EF2816D0F3CA00C8C0A0 /* AOAlwaysFail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4920EF2716D0F3CA00C8C0A0 /* AOAlwaysFail.m */; };
 		4920EF2916D0F3CA00C8C0A0 /* AOAlwaysFail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4920EF2716D0F3CA00C8C0A0 /* AOAlwaysFail.m */; };
@@ -105,6 +108,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		491D7986174F2B6400FC14B4 /* LimitSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LimitSpec.m; sourceTree = "<group>"; };
+		491D7988174F2BAA00FC14B4 /* AOLimit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOLimit.h; sourceTree = "<group>"; };
+		491D7989174F2BAA00FC14B4 /* AOLimit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOLimit.m; sourceTree = "<group>"; };
 		4920EF2316D0F38800C8C0A0 /* AlwaysFailSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlwaysFailSpec.m; sourceTree = "<group>"; };
 		4920EF2616D0F3C900C8C0A0 /* AOAlwaysFail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOAlwaysFail.h; sourceTree = "<group>"; };
 		4920EF2716D0F3CA00C8C0A0 /* AOAlwaysFail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOAlwaysFail.m; sourceTree = "<group>"; };
@@ -233,6 +239,8 @@
 				4920EF2B16D0F62700C8C0A0 /* AOAlwaysSucceed.m */,
 				49F84AB3164E68C800328A7A /* AODecorator.h */,
 				49F84AB4164E68C800328A7A /* AODecorator.m */,
+				491D7988174F2BAA00FC14B4 /* AOLimit.h */,
+				491D7989174F2BAA00FC14B4 /* AOLimit.m */,
 			);
 			name = Decorator;
 			sourceTree = "<group>";
@@ -320,6 +328,7 @@
 				49AC07331610F48600516DDD /* ConditionSpec.m */,
 				49F84AB7164E695D00328A7A /* DecoratorSpec.m */,
 				495DC45D1667D63B00A9F332 /* HasValueSpec.m */,
+				491D7986174F2B6400FC14B4 /* LimitSpec.m */,
 				49FE27BA1629B79100916552 /* Resources */,
 				4945499516052CC1001F93A4 /* SelectorSpec.m */,
 				494549A2160536B1001F93A4 /* SequenceSpec.m */,
@@ -521,6 +530,7 @@
 				49575FFC166923E400CB47C7 /* AOSetValue.m in Sources */,
 				4920EF2816D0F3CA00C8C0A0 /* AOAlwaysFail.m in Sources */,
 				4920EF2C16D0F62800C8C0A0 /* AOAlwaysSucceed.m in Sources */,
+				491D798A174F2BAA00FC14B4 /* AOLimit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +554,7 @@
 				49575FF81669239300CB47C7 /* SetValueSpec.m in Sources */,
 				4920EF2416D0F38800C8C0A0 /* AlwaysFailSpec.m in Sources */,
 				4920EF2F16D0F68000C8C0A0 /* AlwaysSucceedSpec.m in Sources */,
+				491D7987174F2B6400FC14B4 /* LimitSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +576,7 @@
 				49575FFD166923E400CB47C7 /* AOSetValue.m in Sources */,
 				4920EF2916D0F3CA00C8C0A0 /* AOAlwaysFail.m in Sources */,
 				4920EF2D16D0F62800C8C0A0 /* AOAlwaysSucceed.m in Sources */,
+				491D798B174F2BAA00FC14B4 /* AOLimit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
