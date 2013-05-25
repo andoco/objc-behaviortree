@@ -10,6 +10,9 @@
 		491D7987174F2B6400FC14B4 /* LimitSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D7986174F2B6400FC14B4 /* LimitSpec.m */; };
 		491D798A174F2BAA00FC14B4 /* AOLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D7989174F2BAA00FC14B4 /* AOLimit.m */; };
 		491D798B174F2BAA00FC14B4 /* AOLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D7989174F2BAA00FC14B4 /* AOLimit.m */; };
+		491D798D1750ED0000FC14B4 /* TimerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D798C1750ED0000FC14B4 /* TimerSpec.m */; };
+		491D79901750ED2C00FC14B4 /* AOTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D798F1750ED2B00FC14B4 /* AOTimer.m */; };
+		491D79911750ED2C00FC14B4 /* AOTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D798F1750ED2B00FC14B4 /* AOTimer.m */; };
 		4920EF2416D0F38800C8C0A0 /* AlwaysFailSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4920EF2316D0F38800C8C0A0 /* AlwaysFailSpec.m */; };
 		4920EF2816D0F3CA00C8C0A0 /* AOAlwaysFail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4920EF2716D0F3CA00C8C0A0 /* AOAlwaysFail.m */; };
 		4920EF2916D0F3CA00C8C0A0 /* AOAlwaysFail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4920EF2716D0F3CA00C8C0A0 /* AOAlwaysFail.m */; };
@@ -111,6 +114,9 @@
 		491D7986174F2B6400FC14B4 /* LimitSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LimitSpec.m; sourceTree = "<group>"; };
 		491D7988174F2BAA00FC14B4 /* AOLimit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOLimit.h; sourceTree = "<group>"; };
 		491D7989174F2BAA00FC14B4 /* AOLimit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOLimit.m; sourceTree = "<group>"; };
+		491D798C1750ED0000FC14B4 /* TimerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerSpec.m; sourceTree = "<group>"; };
+		491D798E1750ED2B00FC14B4 /* AOTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOTimer.h; sourceTree = "<group>"; };
+		491D798F1750ED2B00FC14B4 /* AOTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOTimer.m; sourceTree = "<group>"; };
 		4920EF2316D0F38800C8C0A0 /* AlwaysFailSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlwaysFailSpec.m; sourceTree = "<group>"; };
 		4920EF2616D0F3C900C8C0A0 /* AOAlwaysFail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOAlwaysFail.h; sourceTree = "<group>"; };
 		4920EF2716D0F3CA00C8C0A0 /* AOAlwaysFail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOAlwaysFail.m; sourceTree = "<group>"; };
@@ -241,6 +247,8 @@
 				49F84AB4164E68C800328A7A /* AODecorator.m */,
 				491D7988174F2BAA00FC14B4 /* AOLimit.h */,
 				491D7989174F2BAA00FC14B4 /* AOLimit.m */,
+				491D798E1750ED2B00FC14B4 /* AOTimer.h */,
+				491D798F1750ED2B00FC14B4 /* AOTimer.m */,
 			);
 			name = Decorator;
 			sourceTree = "<group>";
@@ -336,6 +344,7 @@
 				49454977160527FD001F93A4 /* Supporting Files */,
 				49FE27CE162A2B1B00916552 /* TestEntities */,
 				49FE27B31629B72900916552 /* TestTasks */,
+				491D798C1750ED0000FC14B4 /* TimerSpec.m */,
 			);
 			path = BehaviorTreeTests;
 			sourceTree = "<group>";
@@ -531,6 +540,7 @@
 				4920EF2816D0F3CA00C8C0A0 /* AOAlwaysFail.m in Sources */,
 				4920EF2C16D0F62800C8C0A0 /* AOAlwaysSucceed.m in Sources */,
 				491D798A174F2BAA00FC14B4 /* AOLimit.m in Sources */,
+				491D79901750ED2C00FC14B4 /* AOTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +565,7 @@
 				4920EF2416D0F38800C8C0A0 /* AlwaysFailSpec.m in Sources */,
 				4920EF2F16D0F68000C8C0A0 /* AlwaysSucceedSpec.m in Sources */,
 				491D7987174F2B6400FC14B4 /* LimitSpec.m in Sources */,
+				491D798D1750ED0000FC14B4 /* TimerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +588,7 @@
 				4920EF2916D0F3CA00C8C0A0 /* AOAlwaysFail.m in Sources */,
 				4920EF2D16D0F62800C8C0A0 /* AOAlwaysSucceed.m in Sources */,
 				491D798B174F2BAA00FC14B4 /* AOLimit.m in Sources */,
+				491D79911750ED2C00FC14B4 /* AOTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
