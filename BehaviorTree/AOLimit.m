@@ -28,21 +28,22 @@ NSString* const AOLimitCountBlackboardKey = @"limitTask.count";
 
 @implementation AOLimit
 
+-(BOOL) willStart:(id)blackboard {
+    return ![self limitReached:[self currentCount:blackboard]];
+}
+
 -(BOOL) willRun:(id)blackboard {
-    id currentCount = blackboard[AOLimitCountBlackboardKey];
-    
-    if (!currentCount)
-        return YES;
-    
-    return [currentCount intValue] < self.count;
+    return ![self limitReached:[self currentCount:blackboard]];
+}
+
+-(BOOL) willStop:(id)blackboard {
+    return ![self limitReached:[self currentCount:blackboard]];
 }
 
 -(AOResult) evaluateResult:(AOResult)result withBlackboard:(id)blackboard andDidRun:(BOOL)didRun {
-    id currentCountVal = blackboard[AOLimitCountBlackboardKey];
+    NSInteger currentCount = [self currentCount:blackboard];
     
-    NSInteger currentCount = currentCountVal == nil ? 0 : [currentCountVal intValue];
-    
-    if (currentCount == self.count) {
+    if ([self limitReached:currentCount]) {
         result = AOResultFailure;
     } else {
         currentCount++;
@@ -51,6 +52,18 @@ NSString* const AOLimitCountBlackboardKey = @"limitTask.count";
     blackboard[AOLimitCountBlackboardKey] = [NSNumber numberWithInt:currentCount];
         
     return result;
+}
+
+-(NSInteger) currentCount:(id)blackboard {
+    id currentCountVal = blackboard[AOLimitCountBlackboardKey];
+    
+    NSInteger currentCount = currentCountVal == nil ? 0 : [currentCountVal intValue];
+
+    return currentCount;
+}
+
+-(BOOL) limitReached:(NSInteger)currentCount {
+    return currentCount == self.count;
 }
 
 @end

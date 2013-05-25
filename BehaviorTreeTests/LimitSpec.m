@@ -39,46 +39,64 @@ describe(@"Limit", ^{
         task.count = 1;
         blackboard = [NSMutableDictionary dictionary];
     });
-        
-    context(@"When willRun called", ^{
-                
-        context(@"and times run not in blackboard", ^{
-            it(@"should return YES", ^{
-                [[theValue([task willRun:blackboard]) should] equal:theValue(YES)];
-            });
+    
+    context(@"when times run not in blackboard", ^{
+        it(@"willStart should return YES", ^{
+            [[theValue([task willStart:blackboard]) should] equal:theValue(YES)];
         });
-        
-        context(@"and times run equal to limit", ^{
-            it(@"should return NO", ^{
-                blackboard[AOLimitCountBlackboardKey] = [NSNumber numberWithInt:1];
-                
-                [[theValue([task willRun:blackboard]) should] equal:theValue(NO)];
-            });
+        it(@"willRun should return YES", ^{
+            [[theValue([task willRun:blackboard]) should] equal:theValue(YES)];
+        });
+        it(@"willStop should return YES", ^{
+            [[theValue([task willStop:blackboard]) should] equal:theValue(YES)];
+        });
+        it(@"evaluateResult should set times run to 1 in blackboard", ^{
+            [task evaluateResult:AOResultSuccess withBlackboard:blackboard andDidRun:YES];
+            [[theValue([blackboard[AOLimitCountBlackboardKey] intValue]) should] equal:theValue(1)];
         });
     });
     
-    context(@"when evaluateResult called", ^{
-        context(@"and times run less than limit", ^{
-            it(@"should increment times run", ^{
-                [task run:blackboard];
-                [[theValue([blackboard[AOLimitCountBlackboardKey] intValue]) should] equal:theValue(1)];
-            });            
+    context(@"when times run less than limit", ^{
+        beforeEach(^{
+            blackboard[AOLimitCountBlackboardKey] = [NSNumber numberWithInt:0];
         });
-        
-        context(@"and times run equal to limit", ^{
-            beforeEach(^{
-                blackboard[AOLimitCountBlackboardKey] = [NSNumber numberWithInt:1];
-            });
-            
-            it(@"should not increment times run", ^{
-                [task evaluateResult:AOResultSuccess withBlackboard:blackboard andDidRun:NO];
-                [[blackboard[AOLimitCountBlackboardKey] should] equal:[NSNumber numberWithInt:1]];
-            });
-            
-            it(@"should return Failure", ^{
-                [[theValue([task evaluateResult:AOResultSuccess withBlackboard:blackboard andDidRun:NO]) should] equal:theValue(AOResultFailure)];
-            });
+        it(@"willStart should return YES", ^{
+            [[theValue([task willStart:blackboard]) should] equal:theValue(YES)];
         });
+        it(@"willRun should return YES", ^{
+            [[theValue([task willRun:blackboard]) should] equal:theValue(YES)];
+        });
+        it(@"willStop should return YES", ^{
+            [[theValue([task willStop:blackboard]) should] equal:theValue(YES)];
+        });
+        it(@"evaluateResult should increment times run in blackboard", ^{
+            blackboard[AOLimitCountBlackboardKey] = [NSNumber numberWithInt:0];
+            [task evaluateResult:AOResultSuccess withBlackboard:blackboard andDidRun:YES];
+            [[theValue([blackboard[AOLimitCountBlackboardKey] intValue]) should] equal:theValue(1)];
+        });
+    });
+    
+    context(@"when times run equal to limit", ^{
+        beforeEach(^{
+            blackboard[AOLimitCountBlackboardKey] = [NSNumber numberWithInt:1];
+        });
+        it(@"willStart should return NO", ^{
+            [[theValue([task willStart:blackboard]) should] equal:theValue(NO)];
+        });
+        it(@"willRun should return NO", ^{
+            [[theValue([task willRun:blackboard]) should] equal:theValue(NO)];
+        });
+        it(@"willStop should return NO", ^{
+            [[theValue([task willStop:blackboard]) should] equal:theValue(NO)];
+        });
+        it(@"evaluateResult should not increment times run", ^{
+            [task evaluateResult:AOResultSuccess withBlackboard:blackboard andDidRun:NO];
+            [[blackboard[AOLimitCountBlackboardKey] should] equal:[NSNumber numberWithInt:1]];
+        });
+        it(@"evaluateResult should return Failure", ^{
+            [[theValue([task evaluateResult:AOResultSuccess withBlackboard:blackboard andDidRun:NO]) should] equal:theValue(AOResultFailure)];
+        });
+
     });
 });
 
