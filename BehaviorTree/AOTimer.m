@@ -69,12 +69,14 @@ NSString* const AOTimerCurrentTimeBlackboardKey = @"timerTask.currentTime";
 
 -(AOResult) evaluateResult:(AOResult)result withBlackboard:(id)blackboard andDidRun:(BOOL)didRun {
     CGFloat currentTime = [self currentTime:blackboard];
-    currentTime += [blackboard[self.deltaKey] floatValue];
-    blackboard[AOTimerCurrentTimeBlackboardKey] = [NSNumber numberWithFloat:currentTime];
     
     if ([self timeElapsed:currentTime]) {
         return result;
     }
+    
+    // time may elapse this update but need to wait for next update before allowing decorated task to be run
+    currentTime += [blackboard[self.deltaKey] floatValue];
+    blackboard[AOTimerCurrentTimeBlackboardKey] = [NSNumber numberWithFloat:currentTime];
     
     return AOResultPending;
 }
