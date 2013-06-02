@@ -24,7 +24,7 @@
 
 #import "AOLimit.h"
 
-NSString* const AOLimitCountBlackboardKey = @"limitTask.count";
+NSString* const AOLimitCountBlackboardKey = @"currentCount";
 
 @implementation AOLimit
 
@@ -49,13 +49,17 @@ NSString* const AOLimitCountBlackboardKey = @"limitTask.count";
         currentCount++;
     }
     
-    blackboard[AOLimitCountBlackboardKey] = [NSNumber numberWithInt:currentCount];
+    blackboard[[self currentCountBlackboardKey]] = [NSNumber numberWithInt:currentCount];
         
     return result;
 }
 
+-(NSString*) currentCountBlackboardKey {
+    return [NSString stringWithFormat:@"%@.%@", self.taskId, AOLimitCountBlackboardKey];
+}
+
 -(NSInteger) currentCount:(id)blackboard {
-    id currentCountVal = blackboard[AOLimitCountBlackboardKey];
+    id currentCountVal = blackboard[[self currentCountBlackboardKey]];
     
     NSInteger currentCount = currentCountVal == nil ? 0 : [currentCountVal intValue];
 
