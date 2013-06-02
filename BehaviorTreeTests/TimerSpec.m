@@ -33,17 +33,19 @@ describe(@"Timer", ^{
     
     __block AOTimer *task;
     __block NSMutableDictionary *blackboard;
+    __block NSString *currentTimeBlackboardKey;
     
     beforeEach(^{
         task = [[AOTimer alloc] initWithTaskId:@"1"];
         task.time = 1;
         blackboard = [NSMutableDictionary dictionary];
+        currentTimeBlackboardKey = [NSString stringWithFormat:@"%@.%@", task.taskId, AOTimerCurrentTimeBlackboardKey];
     });
     
     context(@"when started", ^{
         it(@"should set currentTime to 0 in blackboard", ^{
             [task start:blackboard];
-            id val = blackboard[AOTimerCurrentTimeBlackboardKey];
+            id val = blackboard[currentTimeBlackboardKey];
             [[val shouldNot] beNil];
             [[theValue([val floatValue]) should] equal:theValue(0.0)];
         });
@@ -51,7 +53,7 @@ describe(@"Timer", ^{
         
     context(@"when currentTime less than time", ^{
         beforeEach(^{
-            blackboard[AOTimerCurrentTimeBlackboardKey] = [NSNumber numberWithFloat:0];
+            blackboard[currentTimeBlackboardKey] = [NSNumber numberWithFloat:0];
         });
         it(@"willStart should return NO", ^{
             [[theValue([task willStart:blackboard]) should] equal:theValue(NO)];
@@ -68,13 +70,13 @@ describe(@"Timer", ^{
         it(@"evaluateResult should add delta time to current time in blackboard", ^{
             blackboard[task.deltaKey] = [NSNumber numberWithFloat:0.5];
             [task evaluateResult:AOResultSuccess withBlackboard:blackboard andDidRun:NO];
-            [[theValue([blackboard[AOTimerCurrentTimeBlackboardKey] floatValue]) should] equal:theValue(0.5)];
+            [[theValue([blackboard[currentTimeBlackboardKey] floatValue]) should] equal:theValue(0.5)];
         });
     });
     
     context(@"when currentTime greater or equal to time", ^{
         beforeEach(^{
-            blackboard[AOTimerCurrentTimeBlackboardKey] = [NSNumber numberWithFloat:1];
+            blackboard[currentTimeBlackboardKey] = [NSNumber numberWithFloat:1];
         });
         it(@"willStart should return YES", ^{
             [[theValue([task willStart:blackboard]) should] equal:theValue(YES)];

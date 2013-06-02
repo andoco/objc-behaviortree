@@ -24,7 +24,7 @@
 
 #import "AOTimer.h"
 
-NSString* const AOTimerCurrentTimeBlackboardKey = @"timerTask.currentTime";
+NSString* const AOTimerCurrentTimeBlackboardKey = @"currentTime";
 
 @implementation AOTimer
 
@@ -38,8 +38,12 @@ NSString* const AOTimerCurrentTimeBlackboardKey = @"timerTask.currentTime";
     return self;
 }
 
+-(NSString*) currentTimeBlackboardKey {
+    return [NSString stringWithFormat:@"%@.%@", self.taskId, AOTimerCurrentTimeBlackboardKey];
+}
+
 -(CGFloat) currentTime:(id)blackboard {
-    return [blackboard[AOTimerCurrentTimeBlackboardKey] floatValue];
+    return [blackboard[[self currentTimeBlackboardKey]] floatValue];
 }
 
 -(BOOL) timeElapsed:(CGFloat)currentTime {
@@ -49,7 +53,7 @@ NSString* const AOTimerCurrentTimeBlackboardKey = @"timerTask.currentTime";
 #pragma mark Task methods
 
 -(void) start:(id)blackboard {
-    blackboard[AOTimerCurrentTimeBlackboardKey] = [NSNumber numberWithFloat:0];
+    blackboard[[self currentTimeBlackboardKey]] = [NSNumber numberWithFloat:0];
     [super start:blackboard];
 }
 
@@ -76,7 +80,7 @@ NSString* const AOTimerCurrentTimeBlackboardKey = @"timerTask.currentTime";
     
     // time may elapse this update but need to wait for next update before allowing decorated task to be run
     currentTime += [blackboard[self.deltaKey] floatValue];
-    blackboard[AOTimerCurrentTimeBlackboardKey] = [NSNumber numberWithFloat:currentTime];
+    blackboard[[self currentTimeBlackboardKey]] = [NSNumber numberWithFloat:currentTime];
     
     return AOResultPending;
 }
